@@ -1,7 +1,7 @@
 # GMLIB
 ## Group Mountain Library
-[![Latest Tag](https://img.shields.io/github/v/tag/GroupMountain/GMLIB?label=LATEST%20TAG&style=for-the-badge)
-[![Downloads](https://img.shields.io/github/downloads/GroupMountain/GMLIB/total?style=for-the-badge&color=%2300ff00)](https://github.com/GroupMountain/GMLIB/releases) 
+![Latest Tag](https://img.shields.io/github/v/tag/GroupMountain/GMLIB?label=LATEST%20TAG&style=for-the-badge)    
+[![Downloads](https://img.shields.io/github/downloads/GroupMountain/GMLIB/total?style=for-the-badge&color=%2300ff00)](https://github.com/GroupMountain/GMLIB/releases)     
 QQ交流群: 931689535
 
 `GMLIB` 是一个基于 `LeviLamina` 加载器的第三方插件前置库。为基岩版专用服务器 —— `Bedrock Dedicated Server`（以下简称**
