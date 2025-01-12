@@ -1,9 +1,9 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Cancellable.h"
 #include "ll/api/event/entity/ActorEvent.h"
 
-namespace gmlib::event::entity {
+namespace GMLIB::Event::EntityEvent {
 
 class ActorChangeDimensionBeforeEvent final : public ll::event::Cancellable<ll::event::entity::ActorEvent> {
 protected:
@@ -42,4 +42,4 @@ public:
     GMLIB_NDAPI DimensionType&      getToDimensionId() const;
 };
 
-} // namespace gmlib::event::entity
+} // namespace GMLIB::Event::EntityEvent

@@ -1,9 +1,9 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/entity/MobEvent.h"
 #include "mc/world/actor/ActorDamageSource.h"
 
-namespace gmlib::event::entity {
+namespace GMLIB::Event::EntityEvent {
 
 class MobHurtAfterEvent final : public ll::event::MobEvent {
 protected:
@@ -20,4 +20,4 @@ public:
     GMLIB_NDAPI float&             getDamage() const;
 };
 
-} // namespace gmlib::event::entity
+} // namespace GMLIB::Event::EntityEvent

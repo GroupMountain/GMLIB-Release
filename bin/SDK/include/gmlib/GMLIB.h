@@ -2,7 +2,7 @@
 #include "Macros.h"
 #include "mc/deps/core/sem_ver/SemVersion.h"
 
-namespace gmlib {
+namespace GMLIB {
 
 class Version : public SemVersion {
 public:
@@ -19,11 +19,9 @@ public:
 
     GMLIB_NDAPI Version(class SemVersion const& version);
 
-    GMLIB_NDAPI bool isInRange(Version const& minVersion, Version const& maxVersion) const;
+    GMLIB_NDAPI bool isInRange(Version const& minVersion, Version const& maxVersion);
 
-    GMLIB_NDAPI std::string toString(bool prefix = true) const;
-
-    GMLIB_NDAPI std::vector<int> toVector() const;
+    GMLIB_NDAPI std::string toString(bool prefix = true);
 
 public:
     GMLIB_NDAPI static bool isValidVersionString(std::string const& version);
@@ -57,4 +55,4 @@ public:
     GMLIB_NDAPI static std::string getLeviLaminaVersionString();
 };
 
-} // namespace gmlib
+} // namespace GMLIB

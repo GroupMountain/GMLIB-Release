@@ -1,8 +1,8 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/world/WorldEvent.h"
 
-namespace gmlib::event::redstone {
+namespace GMLIB::Event::RedStoneEvent {
 
 
 class BlockMovedByPistonAfterEvent final : public ll::event::world::WorldEvent {
@@ -24,4 +24,4 @@ public:
     GMLIB_NDAPI Block&          getBlock() const;
 };
 
-} // namespace gmlib::event::redstone
+} // namespace GMLIB::Event::RedStoneEvent

@@ -1,11 +1,11 @@
 #pragma once
 #include "GMLIB/Event/Entity/ItemActorEvent.h"
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Cancellable.h"
 #include "ll/api/event/entity/ActorEvent.h"
 
 
-namespace gmlib::event::entity {
+namespace GMLIB::Event::EntityEvent {
 
 class ItemActorSpawnBeforeEvent final : public ll::event::Cancellable<ll::event::Event> {
 protected:
@@ -68,4 +68,4 @@ public:
     GMLIB_NDAPI int&                getThrowTime() const;
 };
 
-} // namespace gmlib::event::entity
+} // namespace GMLIB::Event::EntityEvent

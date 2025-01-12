@@ -1,9 +1,9 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Event.h"
 #include "mc/world/item/registry/ItemRegistryRef.h"
 
-namespace gmlib::event::registries {
+namespace GMLIB::Event::Registries {
 
 class CreativeItemInitEvent final : public ll::event::Event {
 protected:
@@ -15,4 +15,4 @@ public:
     GMLIB_NDAPI ItemRegistryRef& getItemRegistryRef() const;
 };
 
-} // namespace gmlib::event::registries
+} // namespace GMLIB::Event::Registries

@@ -1,9 +1,9 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Event.h"
 #include "mc/resources/ResourcePackRepository.h"
 
-namespace gmlib::event::registries {
+namespace GMLIB::Event::Registries {
 
 class ResourcePackInitEvent final : public ll::event::Event {
 protected:
@@ -15,4 +15,4 @@ public:
     GMLIB_NDAPI ResourcePackRepository& getResourcePackRepository() const;
 };
 
-} // namespace gmlib::event::registries
+} // namespace GMLIB::Event::Registries

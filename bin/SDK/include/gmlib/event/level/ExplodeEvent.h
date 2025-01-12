@@ -1,9 +1,9 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Cancellable.h"
 #include "ll/api/event/world/LevelEvent.h"
 
-namespace gmlib::event::level {
+namespace GMLIB::Event::LevelEvent {
 
 class ExplodeBeforeEvent final : public ll::event::Cancellable<ll::event::world::LevelEvent> {
 protected:
@@ -91,4 +91,4 @@ public:
     GMLIB_NDAPI bool&               canOverrideUnderwater() const;
 };
 
-} // namespace gmlib::event::level
+} // namespace GMLIB::Event::LevelEvent

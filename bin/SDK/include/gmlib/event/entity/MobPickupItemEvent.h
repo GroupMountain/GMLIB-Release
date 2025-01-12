@@ -1,10 +1,10 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Cancellable.h"
 #include "ll/api/event/entity/MobEvent.h"
 
 
-namespace gmlib::event::entity {
+namespace GMLIB::Event::EntityEvent {
 
 class MobPickupItemBeforeEvent final : public ll::event::Cancellable<ll::event::entity::MobEvent> {
 protected:
@@ -28,4 +28,4 @@ public:
     GMLIB_NDAPI ItemActor& getItemActor() const;
 };
 
-} // namespace gmlib::event::entity
+} // namespace GMLIB::Event::EntityEvent

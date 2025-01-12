@@ -1,11 +1,11 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include <iostream>
 
-namespace gmlib::utils::StringUtils {
+namespace GMLIB::StringUtils {
 
 GMLIB_NDAPI std::string toSnakeCase(std::string_view str, bool withSpace = false);
 
 GMLIB_NDAPI std::string toCamelCase(std::string_view str);
 
-} // namespace gmlib::utils::StringUtils
+}

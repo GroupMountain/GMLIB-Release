@@ -1,10 +1,10 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Cancellable.h"
 #include "ll/api/event/entity/ActorEvent.h"
 #include "mc/world/actor/ActorFactory.h"
 
-namespace gmlib::event::entity {
+namespace GMLIB::Event::EntityEvent {
 
 class SpawnWanderingTraderBeforeEvent final : public ll::event::Cancellable<ll::event::Event> {
 protected:
@@ -34,4 +34,4 @@ public:
     GMLIB_NDAPI BlockSource&    getRegion() const;
 };
 
-} // namespace gmlib::event::entity
+} // namespace GMLIB::Event::EntityEvent

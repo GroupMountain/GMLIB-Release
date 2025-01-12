@@ -1,7 +1,5 @@
 #pragma once
 
-namespace gmlib::world {
-
 enum class FillMode : int {
     Replace = 0, //
     Keep    = 1, //
@@ -9,5 +7,3 @@ enum class FillMode : int {
     Hollow  = 3,
     Destroy = 4
 };
-
-}

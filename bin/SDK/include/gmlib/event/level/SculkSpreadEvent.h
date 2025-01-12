@@ -1,13 +1,13 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Cancellable.h"
 #include "ll/api/event/Event.h"
-#include "mc/common/wrapper/optional_ref.h"
+#include "mc/deps/core/utility/optional_ref.h"
 #include "mc/world/level/BlockPos.h"
 #include "mc/world/level/BlockSource.h"
 
 
-namespace gmlib::event::level {
+namespace GMLIB::Event::LevelEvent {
 
 
 class SculkSpreadBeforeEvent final : public ll::event::Cancellable<ll::event::Event> {
@@ -41,4 +41,4 @@ public:
 };
 
 
-} // namespace gmlib::event::level
+} // namespace GMLIB::Event::LevelEvent

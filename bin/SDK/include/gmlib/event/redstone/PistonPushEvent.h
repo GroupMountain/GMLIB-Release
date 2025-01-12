@@ -1,8 +1,8 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/world/WorldEvent.h"
 
-namespace gmlib::event::redstone {
+namespace GMLIB::Event::RedStoneEvent {
 
 class PistonPushBeforeEvent final : public ll::event::Cancellable<ll::event::WorldEvent> {
 protected:
@@ -58,4 +58,4 @@ public:
     GMLIB_NDAPI bool const&     isRetracting() const;
 };
 
-} // namespace gmlib::event::redstone
+} // namespace GMLIB::Event::RedStoneEvent

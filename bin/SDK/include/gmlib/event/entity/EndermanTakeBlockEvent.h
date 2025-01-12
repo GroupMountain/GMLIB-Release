@@ -1,9 +1,9 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/entity/MobEvent.h"
 #include "mc/world/level/block/Block.h"
 
-namespace gmlib::event::entity {
+namespace GMLIB::Event::EntityEvent {
 
 class EndermanTakeBlockBeforeEvent final : public ll::event::Cancellable<ll::event::entity::MobEvent> {
 public:
@@ -20,4 +20,4 @@ public:
     GMLIB_NDAPI Block const& getBlock() const;
 };
 
-} // namespace gmlib::event::entity
+} // namespace GMLIB::Event::EntityEvent

@@ -1,9 +1,9 @@
 #pragma once
-#include "Macros.h"
+#include "GMLIB/Macros.h"
 #include "ll/api/event/Cancellable.h"
 #include "ll/api/event/player/PlayerEvent.h"
 
-namespace gmlib::event::player {
+namespace GMLIB::Event::PlayerEvent {
 
 class PlayerChangeDimensionBeforeEvent final : public ll::event::Cancellable<ll::event::player::PlayerEvent> {
 protected:
@@ -75,4 +75,4 @@ public:
     GMLIB_NDAPI bool&          isRespawn() const;
 };
 
-} // namespace gmlib::event::player
+} // namespace GMLIB::Event::PlayerEvent
