@@ -1,7 +1,7 @@
 # GMLIB
 ## Group Mountain Library
-![Latest Tag](https://img.shields.io/github/v/tag/GroupMountain/GMLIB?label=LATEST%20TAG&style=for-the-badge)    
-[![Downloads](https://img.shields.io/github/downloads/GroupMountain/GMLIB/total?style=for-the-badge&color=%2300ff00)](https://github.com/GroupMountain/GMLIB/releases)     
+![Latest Tag](https://img.shields.io/github/v/tag/GroupMountain/GMLIB-Release?label=LATEST%20TAG&style=for-the-badge)    
+[![Downloads](https://img.shields.io/github/downloads/GroupMountain/GMLIB-Release/total?style=for-the-badge&color=%2300ff00)](https://github.com/GroupMountain/GMLIB-Release/releases)     
 QQ交流群: 931689535
 
 `GMLIB` 是一个基于 `LeviLamina` 加载器的第三方插件前置库。为基岩版专用服务器 —— `Bedrock Dedicated Server`（以下简称**
@@ -17,6 +17,7 @@ BDS**）的插件开发者提供更多的API，一定程度上弥补了 `LeviLam
 
 从 `v0.13.6` 开始，由于部分人不遵循本库开源协议的恶劣行为，以及mojang删除了pdb，GMLIB不再开源。
 
+新版本正在重构，进度参见 [`这里`](https://github.com/GroupMountain/GMLIB-Release/issues/122) 
 
 ## 📕 编写插件和使用API
 详细的API使用请参考我们的文档站（正在建设）或者参考头文件内注释。
@@ -39,7 +40,7 @@ BDS**）的插件开发者提供更多的API，一定程度上弥补了 `LeviLam
 您可以使用以下方法为 `GMLIB` 项目做出贡献  
 
 1. 帮助我们修改并优化开发文档、使用文档
-2. 在 [`GitHub Issues`](https://github.com/GroupMountain/GMLIB/issues) 中反馈使用过程中遇到的问题，或者提出好的建议
+2. 在 [`GitHub Issues`](https://github.com/GroupMountain/GMLIB-Release/issues) 中反馈使用过程中遇到的问题，或者提出好的建议
 3. 帮助我们推广 `GMLIB`，支持我们的发展
 
 ⭐⭐⭐我们欢迎您的贡献！⭐⭐⭐
