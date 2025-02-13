@@ -1,68 +1,112 @@
+<div align="center">
+
 # GMLIB
+
 ## Group Mountain Library
-![Latest Tag](https://img.shields.io/github/v/tag/GroupMountain/GMLIB-Release?label=LATEST%20TAG&style=for-the-badge)    
-[![Downloads](https://img.shields.io/github/downloads/GroupMountain/GMLIB-Release/total?style=for-the-badge&color=%2300ff00)](https://github.com/GroupMountain/GMLIB-Release/releases)     
-QQ交流群: 931689535
 
-`GMLIB` 是一个基于 `LeviLamina` 加载器的第三方插件前置库。为基岩版专用服务器 —— `Bedrock Dedicated Server`（以下简称**
-BDS**）的插件开发者提供更多的API，一定程度上弥补了 `LeviLamina` 的API缺口。
+![Latest Tag](https://img.shields.io/github/v/tag/GroupMountain/GMLIB-Release?label=LATEST) [![Downloads](https://img.shields.io/github/downloads/GroupMountain/GMLIB-Release/total?color=%2300ff00)](https://github.com/GroupMountain/GMLIB-Release/releases)  [![QQ Group](https://img.shields.io/badge/QQ_Group-931689535-blue)](https://qm.qq.com/cgi-bin/qm/qr?group_code=931689535)   [![Document](https://img.shields.io/badge/Document-Unavailable-red)](https://groupmountain.github.io/Documentation/)
 
-`GMLIB` 封装了大量 `LeviLamina` 未直接提供的API，为插件开发者提供了更多便利。
-插件开发者可以直接调用 `GMLIB` 中的现成API，而非重复造轮子。
+</div>
 
-`GMLIB` 的API支持使用头文件和静态链接库导入，我们提供了模板插件和GMLIB的SDK（xmake-repo）。
-对于调用 `GMLIB API` 的代码来说，如果GMLIB没有API改动，仅需本项目在底层适配更新即可，给插件开发与维护带来了很大的便利。
+## 🧱 警告
 
-`GMLIB` 的全部内容，在 `v0.13.6` 之前均为开源的。  
+ 本项目正在被重构,当前发布的[临时适应版本](https://github.com/GroupMountain/GMLIB-Release/releases/tag/v0.13.10)中的所有问题都不会得到修复.**重构进度请看[`这里喵`](https://github.com/GroupMountain/GMLIB-Release/issues/122)**.
 
-从 `v0.13.6` 开始，由于部分人不遵循本库开源协议的恶劣行为，以及mojang删除了pdb，GMLIB不再开源。
+## 🎇 简介
 
-新版本正在重构，进度参见 [`这里`](https://github.com/GroupMountain/GMLIB-Release/issues/122) 
+ `GMLIB` 是一个基于[`LeviLamina`](https://github.com/LiteLDev/LeviLamina/)加载器的第三方模组前置库,为基于基岩版专用服务器—— `Bedrock Dedicated Server` (以下简称**BDS**)的模组开发者提供更多的API,一定意义上弥补了`LeviLamina`的API缺口.
 
-## 📕 编写插件和使用API
-详细的API使用请参考我们的文档站（正在建设）或者参考头文件内注释。
-如需使用正在测试的API，请加入我们的交流群获取和测试。
-> 注意：  
-> 正在开发的测试版API随时可能进行调整，在正式发布之前不保证API向后兼容性，请谨慎使用
+ `GMLIB` 封装了大量 `LeviLamina` 未直接提供的API,为模组开发者提供了更多便利.模组开发者可以调用 `GMLIB` 提供的API而非重复造轮子.  
 
-#### 原生插件（`C++`）
-1. 正常创建 `LeviLamina` 插件项目。
-2. 添加头文件
-3. 添加动态库
-4. 编写你的代码...
+ 开发者可以通过使用头文件和静态链接导入本前置库,最终用户需要在服务器内安装GMLIB模组以支持其他模组.对于调用 `GMLIB API` 库的项目来说,如果GMLIB没有API改动,仅需本项目在底层适配更新即可，给基于该前置的模组的开发与维护带来了很大的便利.  
+
+ 本项目在 `0.13.6` 版本之前以 `LGPL 3.0` 协议开源,在其之后的版本源代码不再公开.
+
+## 📦 安装
+
+ #### 🔬 使用[`lip`](https://github.com/futrime/lip)
+ 首先请确认你以正确安装最新版的 `lip` 工具  
+ 在服务器根目录执行:
+ ``` 
+ lip install github.com/GroupMountain/GMLIB-Release
+ ```
+ 或者安装特定的版本:
+ ``` 
+ #将0.13.10替换成你想要安装的版本
+ lip install github.com/GroupMountain/GMLIB-Release@0.13.10
+ ```
+
+ #### 🧪 手动安装
+ >1. 前往[Release](https://github.com/GroupMountain/GMLIB-Release/releases) 下载适配你服务器版本的 `GMLIB-windows-x64.zip` 
+ >2. 解压压缩包，将 `GMLIB` 目录移动到你的插件目录.
+
+## 🧵 FQA 
+ **在安装插件到服务器时遇到了问题时请先看我,会更省时!**
+ >Q: 本模组安装后控制台没有模组信息.
+ >
+ >A: 你的服务器内没有模组依赖于本前置,前置会自动卸载.  
+ >>如果你想禁止自动卸载请把模组 `manifest.json` 中的 `passive` 改为false.
+ 
+ >Q: 服务器报错GMLIB无法找到LeviLamina中的函数.  
+ >
+ >A: 请确保你的GMLIB版本与LeviLamina,bds的版本匹配.  
+ >
+
+## 📗 使用API编写插件
+
+ 详细的API使用请参考我们的文档站(正在建设⏳)或者参考头文件内注释.  
+ 如需使用正在测试的API,请加入我们的交流群获取和测试.
+ > 注意：  
+ > 正在开发的测试版API随时可能进行调整,在正式发布之前不保证API向后兼容性,请谨慎使用!
+
+ #### 🎯 原生插件 (`C++`)
+ 我们推荐使用[`GMLIB-Mod-Template`](https://github.com/GroupMountain/GMLIB-Mod-Template)模版创建项目，或者借助GroupMountain的[`xmake-repo`](https://github.com/GroupMountain/xmake-repo)引入SDK。
+
+ >手动添加GMLIB的SDK:
+ >1. 正常创建 `LeviLamina` 模组项目。
+ >2. 前往[`Release`](https://github.com/GroupMountain/GMLIB-Release/releases)下载SDK.zip并解压
+ >3. 在项目中添加GMLIB头文件
+ >4. 静态链接GMLIB.lib
+ >5. 编写你的代码...
+ >6. 在 `manifest.json` 中声明GMLIB的版本依赖关系
+
+ #### 🎨 LSE插件 (`QuickJS` `Lua` `Node.JS` `Python`)
+ 我们提供了[`GMLIB_LegacyRemoteCallApi`](https://github.com/GroupMountain/GMLIB-LegacyRemoteCallApi)模组使LSE插件调用 GMLIB 内部的API,详情请查看该模组的主页.
 
 ## 🔨 构建项目
-从 `v0.13.6` 开始，由于部分人的恶劣行为， `GMLIB` 不再开源，你无法自行构建  
-早期版本可自行克隆仓库并构建
+
+ 很遗憾本项目当前并不开放源代码,你无法在本地构建.  
+ 本项目在0.13.6之前的版本根据 `LGPL3.0` 协议开放源代码,代码位于[main分支](https://github.com/GroupMountain/GMLIB-Release/tree/main),请克隆仓库自行构建.   
+ **温馨提示:如果你修改了 `GMLIB` 开源版本的源代码,或者基于这个 `GMLIB` 编写了一个新的前置,你必须开源它.**
 
 ## 🎬 参与贡献
 
-您可以使用以下方法为 `GMLIB` 项目做出贡献  
-
-1. 帮助我们修改并优化开发文档、使用文档
-2. 在 [`GitHub Issues`](https://github.com/GroupMountain/GMLIB-Release/issues) 中反馈使用过程中遇到的问题，或者提出好的建议
-3. 帮助我们推广 `GMLIB`，支持我们的发展
-
-⭐⭐⭐我们欢迎您的贡献！⭐⭐⭐
+ 您可以使用以下方法为 `GMLIB` 项目做出贡献  
+ 
+ 1. 帮助我们修改并优化开发文档和使用文档
+ 2. 在 [`GitHub Issues`](https://github.com/GroupMountain/GMLIB-Release/issues) 中反馈使用过程中遇到的问题,或者提出好的建议
+ 3. 点亮Star,帮助我们推广 `GMLIB`,支持我们的发展!
+ 
+ ⭐⭐⭐我们欢迎您的贡献!⭐⭐⭐
 
 ## 📍 许可证
-- **开发者不对您负责，开发者没有义务为你编写代码、为你使用造成的任何后果负责**
-1. 本前置插件在 `v0.13.6` 以前全部代码采用 `LGPL 3.0` 开源协议，在 `v0.13.6` 之后，由于部分人的恶劣行为，本库不再开源。
-2. 您可以使用任何开源许可证编写基于 `GMLIB` 作为前置的插件，甚至不发布您的源代码。
-3. 如果你修改了 `GMLIB` 的源代码，或者基于这个 `GMLIB` 编写了一个新的前置，你必须开源它。由于部分人的恶劣行为，你已经无法再获取到最新版GMLIB的源代码。
-4. 如果你想要分发，转载本前置，你必须得到我们的授权！
+ - **开发者不对您负责，开发者没有义务为你编写代码、为你使用造成的任何后果负责**
+ 1. 本前置插件在 `v0.13.6` 以前全部代码采用 `LGPL 3.0` 开源协议，在 `v0.13.6` 之后，由于部分人的恶劣行为，本库不再开源。
+ 2. 您可以使用任何开源许可证编写基于 `GMLIB` 作为前置的插件，甚至不发布您的源代码。
+ 3. 如果你修改了 `GMLIB` 开源版本的源代码，或者基于这个 `GMLIB` 编写了一个新的前置，你必须开源它。
+ 4. 如果你想要分发，转载本前置，你必须得到我们的授权！
 
 ## 🏆 致谢
-- 感谢 `LeviLamina` 的开源代码和底层API，极大的简化了前置插件开发难度。
-- 感谢 `GroupMountain` 开发成员对项目的巨大贡献。
+ - 感谢 `LeviLamina` 的开源代码和底层API,极大的简化了本项目的开发难度.
+ - 感谢 `GroupMountain` 开发成员对项目的巨大贡献.
 
 ## 💎 重要贡献者
-- [@KobeBryant114514](https://github.com/KobeBryant114514)
-- [@killcerr](https://github.com/killcerr)
-- [@EpsilonZunsat](https://github.com/EpsilonZunsat)
-- [@zimuya4153](https://github.com/zimuya4153)
-- [@engsr6982](https://github.com/engsr6982)
-- [@Dofes](https://github.com/Dofes)
-- [@lostDeers](https://github.com/lostDeers)
-- [@ShrBox](https://github.com/ShrBox)
-- [@Zhongzi8972](https://github.com/Zhongzi8972)
+ - [@KobeBryant114514](https://github.com/KobeBryant114514)
+ - [@killcerr](https://github.com/killcerr)
+ - [@EpsilonZunsat](https://github.com/EpsilonZunsat)
+ - [@zimuya4153](https://github.com/zimuya4153)
+ - [@engsr6982](https://github.com/engsr6982)
+ - [@Dofes](https://github.com/Dofes)
+ - [@lostDeers](https://github.com/lostDeers)
+ - [@ShrBox](https://github.com/ShrBox)
+ - [@Zhongzi8972](https://github.com/Zhongzi8972)
