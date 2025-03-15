@@ -1,0 +1,69 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+### Changed
+
+### Fixed
+
+## [1.0.0-rc.1] - 2025-03-16
+
+### Changed
+
+- Completely refactor GMLIB [#122] @Zhongzi8972 @zimuya4153 @EpsilonZunsat @KobeBryant114514 @killcerr @n15421
+- Adapt 1.21.60 levilamina 1.1.0 @Zhongzi8972
+- Reorganized and rename all the files and namespace @Zhongzi8972
+- Changed GMActor::setXXX to Actor::set @Zhongzi8972
+- Changed GMCompoundTag::setXXX to CompoundTag::set @Zhongzi8972
+- Removed WorldStorageAPI @Zhongzi8972
+- Removed mod API @Zhongzi8972
+- Removed Vallina Fix @Zhongzi8972
+- Removed events @Zhongzi8972
+- Removed functions about unloaded actor and player @Zhongzi8972
+- Removed GMActor::getNextActorUniqueID @zimuya4153
+- Removed GMActor::executeCommand @Zhongzi8972
+- Removed GMLevel::getLevel @zimuya4153
+- Removed GMLevel::setFakeSeed @Zhongzi8972
+- Removed GMLevel::requireServerResourcePackAndAllowClientResourcePack @Zhongzi8972
+- Removed GMLevel::trustAllSkins @Zhongzi8972
+- Removed GMLevel::tryEnableEducationEdition @Zhongzi8972
+- Removed GMLevel::setForceAchievementsEnabled @Zhongzi8972
+- Removed GMLevel::tryRegisterAbilityCommand @Zhongzi8972
+- Removed GMLevel::setFakeLevelName @Zhongzi8972
+- Removed GMLevel::getWorldSpawn @Zhongzi8972
+- Removed GMLevel::setWorldSpawn @Zhongzi8972
+- Removed GMLIB::Version @Zhongzi8972
+
+### Added
+
+- Added Actor PAPI [#119] @zimuya4153
+- Added annotationdocs for headers @Zhongzi8972
+- Added UnloadedActor.h @Zhongzi8972
+- Added OfflinePlayer.h @Zhongzi8972
+- Added SystemUtil.h @zimuya4153
+- Added Function.h @KobeBryant114514 @zimuya4153 @killcerr
+- Added GlacieAPI.h @KobeBryant114514
+- Added entries sort for PlayerListAPI @Zhongzi8972
+- Added template for FloatingTextManager @Zhongzi8972
+- Added GMLevel::deleteLevelChunk @KobeBryant114514 @Zhongzi8972
+- Added GMBinaryStream::writeNetworkItemStackDescriptor @KobeBryant114514
+
+### Fixeded
+
+- Fixed GMLevel::getAverageTps @Zhongzi8972 @zimuya4153
+- Fixed GMBinaryStream::writeActorLink @EpsilonZunsat
+- Fixed I18n @Zhongzi8972
+- Fixed GMLevel::fillBlocks @Zhongzi8972
+- Fixed GMLevel::giveItem @Zhongzi8972
+
+[#119]: https://github.com/GroupMountain/GMLIB-Release/issues/119
+[#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.1...HEAD
+[1.0.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v0.3.10...v1.0.0-rc.1

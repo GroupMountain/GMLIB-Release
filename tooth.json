@@ -1,28 +1,41 @@
 {
-    "format_version": 2,
-    "tooth": "github.com/GroupMountain/GMLIB",
-    "version": "0.13.10",
+    "format_version": 3,
+    "format_uuid": "289f771f-2c9a-4d73-9f3f-8492495a924d",
+    "tooth": "github.com/GroupMountain/GMLIB-Release",
+    "version": "1.0.0-rc.1",
     "info": {
         "name": "GMLIB",
         "description": "Group Mountain Library",
-        "author": "GroupMountain",
-        "source": "github.com/GroupMountain/GMLIB-Release",
         "tags": [
-            "levilamina",
+            "platform:levilamina",
+            "type:mod",
             "gmlib",
             "library"
-        ]
+        ],
+        "avatar_url": "https://raw.githubusercontent.com/GroupMountain/GMLIB-Release/refs/heads/release/icon.jpg"
     },
-    "asset_url": "https://github.com/GroupMountain/GMLIB-Release/releases/download/v0.13.10/GMLIB-windows-x64.zip",
-    "prerequisites": {
-        "github.com/LiteLDev/LeviLamina": "1.0.0-rc.3"
-    },
-    "files": {
-        "place": [
-            {
-                "src": "GMLIB/*",
-                "dest": "plugins/GMLIB"
-            }
-        ]
-    }
+    "variants": [
+        {
+            "platform": "win-x64",
+            "dependencies": {
+                "github.com/LiteLDev/LeviLamina": ">=1.1.0"
+            },
+            "assets": [
+                {
+                    "type": "self",
+                    "urls": [],
+                    "placements": [
+                        {
+                            "type": "dir",
+                            "src": "bin/DLL/GMLIB",
+                            "dest": "plugins/GMLIB/"
+                        }
+                    ]
+                }
+            ],
+            "remove_files": [
+                "plugins/GMLIB"
+            ]
+        }
+    ]
 }
