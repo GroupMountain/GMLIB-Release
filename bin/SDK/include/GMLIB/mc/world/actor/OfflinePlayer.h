@@ -17,16 +17,12 @@ protected:
     class Impl;
     std::unique_ptr<Impl> pImpl;
 
-private:
-    OfflinePlayer(mce::UUID const& uuid, std::string serverId);
-
 public:
-    GMLIB_NDAPI OfflinePlayer();
-    GMLIB_NDAPI OfflinePlayer(const OfflinePlayer& other);
-    GMLIB_NDAPI OfflinePlayer(OfflinePlayer&& other);
-    GMLIB_API virtual ~OfflinePlayer();
-    GMLIB_API OfflinePlayer& operator=(const OfflinePlayer& other);
-    GMLIB_API OfflinePlayer& operator=(OfflinePlayer&& other);
+    GMLIB_NDAPI explicit OfflinePlayer(mce::UUID const& uuid, std::string const& serverId);
+
+    GMLIB_API OfflinePlayer(OfflinePlayer&& other);
+
+    GMLIB_API ~OfflinePlayer();
 
 public:
     // It will contain online players.
@@ -35,6 +31,7 @@ public:
     // It maybe can't get a existing player if the UuidDBTag is missing
     // (waiting for verification, it's not a clear aphenomenon)
     GMLIB_NDAPI static std::optional<OfflinePlayer> getOfflinePlayer(mce::UUID const& uuid);
+
     GMLIB_NDAPI static std::optional<OfflinePlayer> getOfflinePlayer(std::string const& serverId);
     // Some static delete ways
     // Waring:
@@ -42,32 +39,40 @@ public:
     // Otherwise, the instance may cause some ub.
     // If using deletePlayer(), the serverId will reset.
     GMLIB_API static bool deletePlayer(mce::UUID const& uuid);
+
     GMLIB_API static bool deletePlayerNbt(mce::UUID const& uuid);
-    GMLIB_API static bool deletePlayerNbt(std::string serverId);
+
+    GMLIB_API static bool deletePlayerNbt(std::string const& serverId);
 
     // Using this to create a new player tag in leveldb
     // If existing, return the existing OfflinePlayer, and the serverId will be existing one
     // If serverId is empty, the serverId will be generated randomly
     // If return nullopt, the player is created faild
     GMLIB_API static std::optional<OfflinePlayer>
-    createNewPlayerNbt(mce::UUID const& uuid, CompoundTag& nbt, bool isOnlineMode = true, std::string serverId = "");
+    createNewPlayerNbt(mce::UUID const& uuid, CompoundTag& nbt, bool isOnlineMode = true, std::string serverId = {});
     // callback: return true to continue
-    GMLIB_API static void
-    foreachOfflinePlayer(std::function<bool(OfflinePlayer const&)> const& func, bool isOnlineMode = true);
+
+    GMLIB_API static void foreachOfflinePlayer(std::function<bool(OfflinePlayer&)>&& func, bool isOnlineMode = true);
 
 public:
-    GMLIB_NDAPI std::string_view getServerId() const;
-    GMLIB_NDAPI const mce::UUID& getUUID() const;
+    GMLIB_NDAPI std::string getServerId() const;
+
+    GMLIB_NDAPI mce::UUID getUUID() const;
 
     // Warning: this maybe a nullptr because some player only has uuid and serverid
     // If nullptr, all the following optional is nullopt, amd auid is ActorUniqueID::INVALID_ID()
     // If nullptr, you are suggested to use setNbt() to create a new nbt(should be a valid player nbt)
-    GMLIB_NDAPI std::unique_ptr<CompoundTag> getNbt() const;
-    GMLIB_NDAPI ActorUniqueID                getActorUniqueID() const;
+    GMLIB_NDAPI ll::Expected<CompoundTag> getNbt() const;
+
+    GMLIB_NDAPI ActorUniqueID getActorUniqueID() const;
+
     GMLIB_NDAPI std::optional<std::pair<Vec3, DimensionType>> getPlayerPosition() const;
+
     GMLIB_NDAPI optional_ref<Player> getPlayer() const;
-    GMLIB_NDAPI bool                 isValid() const;
-    GMLIB_NDAPI bool                 hasNbt() const;
+
+    GMLIB_NDAPI bool isValid() const;
+
+    GMLIB_NDAPI bool hasNbt() const;
 
 public:
     // If doesn't have a nbt, will create a new nbt

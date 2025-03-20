@@ -1,5 +1,7 @@
 #pragma once
 #include "gmlib/gm/i18n/base/LangLanguage.h"
+#include "ll/api/base/FixedString.h"
+#include "ll/api/utils/SystemUtils.h"
 #include <memory>
 
 namespace gmlib::i18n {
@@ -22,6 +24,12 @@ public:
 
     GMLIB_API bool updateOrCreateLanguage(std::string const& languageCode, McLang const& language);
 
+    GMLIB_API bool updateOrCreateLanguage(
+        std::string const&            languageCode,
+        int                           resourceId,
+        ll::utils::sys_utils::HandleT handle = ll::sys_utils::getCurrentModuleHandle()
+    );
+
     GMLIB_API bool loadAllLanguages();
 
     GMLIB_API void reloadAllLanguages();
@@ -32,6 +40,20 @@ public:
 
     GMLIB_NDAPI std::string
     translate(std::string const& key, std::vector<std::string> const& params = {}, std::string const& data = "%0$s");
+
+    template <typename... Args>
+    [[nodiscard]] std::string tr(std::string const& key, Args&&... args) {
+        std::vector<std::string> params;
+        (params.push_back(fmt::format("{}", std::forward<Args>(args))), ...);
+        return get(key, params);
+    }
+
+    template <typename... Args>
+    [[nodiscard]] std::string trl(std::string const& key, std::string const& languageCode, Args&&... args) {
+        std::vector<std::string> params;
+        (params.push_back(fmt::format("{}", std::forward<Args>(args))), ...);
+        return get(key, languageCode, params);
+    }
 
     GMLIB_NDAPI std::string translate(
         std::string const&              key,
@@ -53,5 +75,16 @@ private:
     bool loadOrCreateLanguage(std::string const& languageCode, std::shared_ptr<LangLanguage> language);
 };
 
-
 } // namespace gmlib::i18n
+
+#define LANGI18N_LITERALS(i18nInstance)                                                                                \
+    template <::ll::FixedString Fmt>                                                                                   \
+    [[nodiscard]] constexpr auto operator""_tr() {                                                                     \
+        return [=]<class... Args>(Args&&... args) { return i18nInstance.tr(Fmt.str(), args...); };                     \
+    }                                                                                                                  \
+    template <::ll::FixedString Fmt>                                                                                   \
+    [[nodiscard]] constexpr auto operator""_trl() {                                                                    \
+        return [=]<class... Args>(std::string const& languageCode, Args&&... args) {                                   \
+            return i18nInstance.trl(Fmt.str(), languageCode, args...);                                                 \
+        };                                                                                                             \
+    }

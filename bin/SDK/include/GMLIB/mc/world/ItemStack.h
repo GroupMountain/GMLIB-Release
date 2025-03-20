@@ -17,12 +17,7 @@ public:
     GMLIB_NDAPI
     GMItemStack(::Item const& item, int count = 1, int auxValue = 0, GMCompoundTag const* _userData = nullptr);
     GMLIB_NDAPI
-    GMItemStack(
-        std::string_view const& name,
-        int                     count     = 1,
-        int                     auxValue  = 0,
-        GMCompoundTag const*    _userData = nullptr
-    );
+    GMItemStack(std::string_view name, int count = 1, int auxValue = 0, GMCompoundTag const* _userData = nullptr);
 
 public:
     GMLIB_NDAPI std::unique_ptr<GMCompoundTag> getNbt() const;

@@ -92,42 +92,37 @@ public:
 
     GMLIB_API void writeNetworkItemStackDescriptor(::NetworkItemStackDescriptor const& nItem);
 
-    // For adapt
-    GMLIB_API void writeBool(bool value);
+#define GMBinaryStream_Write_Macro(TYPE, WRITE_TYPE)                                                                   \
+    template <typename T>                                                                                              \
+        requires(std::is_enum_v<T> || std::is_integral_v<T> || std::is_floating_point_v<T>)                            \
+    inline constexpr void write##TYPE(T value) {                                                                       \
+        BinaryStream::write##TYPE(static_cast<WRITE_TYPE>(value), nullptr, nullptr);                                   \
+    }
 
-    GMLIB_API void writeByte(uchar value);
+    GMBinaryStream_Write_Macro(Bool, bool);
+    GMBinaryStream_Write_Macro(Byte, uchar);
+    GMBinaryStream_Write_Macro(UnsignedShort, ushort);
+    GMBinaryStream_Write_Macro(SignedShort, short);
+    GMBinaryStream_Write_Macro(UnsignedInt, uint);
+    GMBinaryStream_Write_Macro(SignedBigEndianInt, int);
+    GMBinaryStream_Write_Macro(SignedInt, int);
+    GMBinaryStream_Write_Macro(UnsignedInt64, uint64);
+    GMBinaryStream_Write_Macro(SignedInt64, int64);
+    GMBinaryStream_Write_Macro(UnsignedVarInt, uint);
+    GMBinaryStream_Write_Macro(UnsignedVarInt64, uint64);
+    GMBinaryStream_Write_Macro(VarInt, int);
+    GMBinaryStream_Write_Macro(VarInt64, int64);
+    GMBinaryStream_Write_Macro(Double, double);
+    GMBinaryStream_Write_Macro(Float, float);
+    GMBinaryStream_Write_Macro(NormalizedFloat, float);
+    GMBinaryStream_Write_Macro(UnsignedChar, uchar);
 
-    GMLIB_API void writeUnsignedShort(ushort value);
+    template <ll::concepts::IsString T>
+    inline void writeString(T value) {
+        BinaryStream::writeString(std::string_view{value}, nullptr, nullptr);
+    }
 
-    GMLIB_API void writeSignedShort(short value);
-
-    GMLIB_API void writeUnsignedInt(uint value);
-
-    GMLIB_API void writeSignedBigEndianInt(int value);
-
-    GMLIB_API void writeSignedInt(int value);
-
-    GMLIB_API void writeUnsignedInt64(uint64 value);
-
-    GMLIB_API void writeSignedInt64(int64 value);
-
-    GMLIB_API void writeUnsignedVarInt(uint uvalue);
-
-    GMLIB_API void writeUnsignedVarInt64(uint64 uvalue);
-
-    GMLIB_API void writeVarInt(int value);
-
-    GMLIB_API void writeVarInt64(int64 value);
-
-    GMLIB_API void writeDouble(double value);
-
-    GMLIB_API void writeFloat(float value);
-
-    GMLIB_API void writeNormalizedFloat(float value);
-
-    GMLIB_API void writeString(::std::string_view value);
-
-    GMLIB_API void writeUnsignedChar(uchar value);
+#undef GMBinaryStream_Write_Macro
 };
 
 } // namespace gmlib::network

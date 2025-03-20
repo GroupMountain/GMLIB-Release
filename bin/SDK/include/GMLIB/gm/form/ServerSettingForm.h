@@ -2,6 +2,7 @@
 #include "gmlib/Macros.h"
 #include "gmlib/gm/enum/FormEnums.h"
 #include <mc/_HeaderOutputPredefine.h>
+#include <unordered_map>
 
 
 namespace gmlib::world::actor {
@@ -10,80 +11,92 @@ class GMPlayer;
 
 namespace gmlib::form {
 
-class ServerSettingForm {
+class ServerSettingFormManager {
 public:
-    using GMPlayer = world::actor::GMPlayer;
+    class Impl;
+    std::unique_ptr<Impl> pImpl;
+    ServerSettingFormManager();
+    using GMPlayer                  = world::actor::GMPlayer;
+    using ServerSettingFormCallback = std::function<
+        void(GMPlayer& player, std::unordered_map<uint, std::variant<std::string, int64, double, bool>> const&)>;
 
 public:
-    GMLIB_NDAPI static int getDefaultPriority();
+    GMLIB_NDAPI static ServerSettingFormManager& getInstance();
 
-    GMLIB_NDAPI static bool hasTitle();
+public:
+    GMLIB_NDAPI uint getDefaultPriority();
 
-    GMLIB_NDAPI static std::string getTitle();
+    GMLIB_NDAPI bool hasTitle();
 
-    GMLIB_API static bool setTitle(std::string const& title, bool forceModify = false);
+    GMLIB_NDAPI std::string getTitle();
 
-    GMLIB_NDAPI static bool hasIcon();
+    GMLIB_API bool setTitle(std::string const& title, bool forceModify = false);
 
-    GMLIB_NDAPI static std::optional<std::string> getIconData();
+    GMLIB_NDAPI bool hasIcon();
 
-    GMLIB_NDAPI static std::optional<IconType> getIconType();
+    GMLIB_NDAPI std::optional<std::string> getIconData();
 
-    GMLIB_API static bool setIcon(std::string const& data, IconType type = IconType::Texture, bool forceModify = false);
+    GMLIB_NDAPI std::optional<IconType> getIconType();
 
-    GMLIB_API static uint addLabel(
-        std::string const&                    text,
-        std::function<bool(GMPlayer& player)> playerDetector = [](GMPlayer&) -> bool { return true; },
-        uint                                  priority       = getDefaultPriority()
+    GMLIB_API bool setIcon(std::string const& data, IconType type = IconType::Texture, bool forceModify = false);
+
+    GMLIB_API uint addLabel(
+        std::function<std::string(GMPlayer& player)>&& text,
+        std::function<bool(GMPlayer& player)>&&        playerDetector = [](GMPlayer&) -> bool { return true; },
+        uint priority = ServerSettingFormManager::getInstance().getDefaultPriority()
     );
 
-    GMLIB_API static uint addInput(
-        std::string const&                                             text,
-        std::string const&                                             placeholder = {},
-        std::string const&                                             defaultVal  = {},
-        std::function<void(GMPlayer& player, std::string const& data)> callback    = nullptr,
-        std::function<bool(GMPlayer& player)> playerDetector = [](GMPlayer&) -> bool { return true; },
-        uint                                  priority       = getDefaultPriority()
+    GMLIB_API uint addInput(
+        std::function<std::string(GMPlayer& player)>&& text,
+        std::function<std::string(GMPlayer& player)>&& placeholder = [](GMPlayer&) -> std::string { return {}; },
+        std::function<std::string(GMPlayer& player)>&& defaultVal  = [](GMPlayer&) -> std::string { return {}; },
+        std::function<void(GMPlayer& player, std::string const& data)>&& callback = {},
+        std::function<bool(GMPlayer& player)>&& playerDetector = [](GMPlayer&) -> bool { return true; },
+        uint                                    priority = ServerSettingFormManager::getInstance().getDefaultPriority()
     );
 
-    GMLIB_API static uint addToggle(
-        std::string const&                               text,
-        bool                                             defaultVal     = false,
-        std::function<void(GMPlayer& player, bool data)> callback       = nullptr,
-        std::function<bool(GMPlayer& player)>            playerDetector = [](GMPlayer&) -> bool { return true; },
-        uint                                             priority       = getDefaultPriority()
+    GMLIB_API uint addToggle(
+        std::function<std::string(GMPlayer& player)>&&     text,
+        std::function<bool(GMPlayer& player)>&&            defaultVal     = [](GMPlayer&) -> bool { return false; },
+        std::function<void(GMPlayer& player, bool data)>&& callback       = {},
+        std::function<bool(GMPlayer& player)>&&            playerDetector = [](GMPlayer&) -> bool { return true; },
+        uint priority = ServerSettingFormManager::getInstance().getDefaultPriority()
     );
 
-    GMLIB_API static uint addDropdown(
-        std::string const&                                text,
-        std::vector<std::string> const&                   options,
-        size_t                                            defaultVal     = 0,
-        std::function<void(GMPlayer& player, int64 data)> callback       = nullptr,
-        std::function<bool(GMPlayer& player)>             playerDetector = [](GMPlayer&) -> bool { return true; },
-        uint                                              priority       = getDefaultPriority()
+    GMLIB_API uint addDropdown(
+        std::function<std::string(GMPlayer& player)>&&              text,
+        std::function<std::vector<std::string>(GMPlayer& player)>&& options,
+        std::function<size_t(GMPlayer& player)>&&                   defaultVal = [](GMPlayer&) -> size_t { return 0; },
+        std::function<void(GMPlayer& player, int64 data)>&&         callback   = {},
+        std::function<bool(GMPlayer& player)>&& playerDetector                 = [](GMPlayer&) -> bool { return true; },
+        uint                                    priority = ServerSettingFormManager::getInstance().getDefaultPriority()
     );
 
-    GMLIB_API static uint addSlider(
-        std::string const&                                 text,
-        double                                             min,
-        double                                             max,
-        double                                             step           = 0.0,
-        double                                             defaultVal     = 0.0,
-        std::function<void(GMPlayer& player, double data)> callback       = nullptr,
-        std::function<bool(GMPlayer& player)>              playerDetector = [](GMPlayer&) -> bool { return true; },
-        uint                                               priority       = getDefaultPriority()
+    GMLIB_API uint addSlider(
+        std::function<std::string(GMPlayer& player)>&&       text,
+        std::function<double(GMPlayer& player)>&&            min,
+        std::function<double(GMPlayer& player)>&&            max,
+        std::function<double(GMPlayer& player)>&&            step           = [](GMPlayer&) -> double { return 0.0; },
+        std::function<double(GMPlayer& player)>&&            defaultVal     = [](GMPlayer&) -> double { return 0.0; },
+        std::function<void(GMPlayer& player, double data)>&& callback       = {},
+        std::function<bool(GMPlayer& player)>&&              playerDetector = [](GMPlayer&) -> bool { return true; },
+        uint priority = ServerSettingFormManager::getInstance().getDefaultPriority()
     );
 
-    GMLIB_API static uint addStepSlider(
-        std::string const&                                text,
-        std::vector<std::string> const&                   steps,
-        size_t                                            defaultVal     = 0,
-        std::function<void(GMPlayer& player, int64 data)> callback       = nullptr,
-        std::function<bool(GMPlayer& player)>             playerDetector = [](GMPlayer&) -> bool { return true; },
-        uint                                              priority       = getDefaultPriority()
+    GMLIB_API uint addStepSlider(
+        std::function<std::string(GMPlayer& player)>&&              text,
+        std::function<std::vector<std::string>(GMPlayer& player)>&& steps,
+        std::function<size_t(GMPlayer& player)>&&                   defaultVal = [](GMPlayer&) -> size_t { return 0; },
+        std::function<void(GMPlayer& player, int64 data)>&&         callback   = {},
+        std::function<bool(GMPlayer& player)>&& playerDetector                 = [](GMPlayer&) -> bool { return true; },
+        uint                                    priority = ServerSettingFormManager::getInstance().getDefaultPriority()
     );
 
-    GMLIB_API static bool removeElement(uint id);
+    GMLIB_API bool removeElement(uint id);
+
+    GMLIB_API uint registerCallback(ServerSettingFormCallback&& callback);
+
+    GMLIB_API bool unregisterCallback(uint callbackId);
 };
 
 } // namespace gmlib::form

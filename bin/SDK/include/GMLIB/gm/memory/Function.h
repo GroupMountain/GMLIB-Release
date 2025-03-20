@@ -4,14 +4,12 @@
 
 namespace gmlib::memory {
 
-#if defined(WIN32) || defined(_WIN32)
-
 template <typename RetType = void, typename... Args>
 using FunctionPtr = RetType (*)(Args...);
 
 GMLIB_NDAPI ll::memory::FuncPtr getFunctionAddress(std::string const& funcName);
 
-GMLIB_NDAPI ll::memory::FuncPtr getFunctionAddress(std::wstring const& dllName, std::string const& funcName);
+GMLIB_NDAPI ll::memory::FuncPtr getFunctionAddress(std::wstring const& modName, std::string const& funcName);
 
 template <typename RetType = void, typename... Args>
 [[nodiscard]] inline ll::Expected<FunctionPtr<RetType, Args...>> getFunctionPtr(std::string const& funcName) {
@@ -23,8 +21,8 @@ template <typename RetType = void, typename... Args>
 
 template <typename RetType = void, typename... Args>
 [[nodiscard]] inline ll::Expected<FunctionPtr<RetType, Args...>>
-getFunctionPtr(std::wstring const& dllName, std::string const& funcName) {
-    if (auto* funcPtr = getFunctionAddress(dllName, funcName)) {
+getFunctionPtr(std::wstring const& modName, std::string const& funcName) {
+    if (auto* funcPtr = getFunctionAddress(modName, funcName)) {
         return reinterpret_cast<FunctionPtr<RetType, Args...>>(funcPtr);
     }
     return ll::makeStringError(fmt::format("Couldn't find function: {}", funcName));
@@ -49,8 +47,8 @@ inline ll::Expected<RetType> callFunction(std::string const& funcName, Args... a
 }
 
 template <typename RetType = void, typename... Args>
-inline ll::Expected<RetType> callFunction(std::wstring const& dllName, std::string const& funcName, Args... args) {
-    if (auto funcPtr = getFunctionPtr<RetType, Args...>(dllName, funcName); funcPtr) {
+inline ll::Expected<RetType> callFunction(std::wstring const& modName, std::string const& funcName, Args... args) {
+    if (auto funcPtr = getFunctionPtr<RetType, Args...>(modName, funcName); funcPtr) {
         try {
             auto& func = *funcPtr;
             if constexpr (std::is_void<RetType>::value) {
@@ -65,9 +63,5 @@ inline ll::Expected<RetType> callFunction(std::wstring const& dllName, std::stri
     }
     return ll::makeStringError(fmt::format("Couldn't find function: {}", funcName));
 }
-
-#else
-// TODO: Linux
-#endif
 
 } // namespace gmlib::memory

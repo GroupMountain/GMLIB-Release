@@ -1,5 +1,7 @@
 #pragma once
 #include "gmlib/Macros.h"
+#include "ll/api/base/FixedString.h"
+#include "ll/api/utils/SystemUtils.h"
 #include <mc/deps/core/utility/optional_ref.h>
 #include <nlohmann/json.hpp>
 
@@ -32,7 +34,7 @@ public:
 
     GMLIB_API static void chooseLanguage(::Localization const& localization);
 
-    GMLIB_NDAPI static optional_ref<::Localization const> getCurrentLanguage();
+    GMLIB_NDAPI static std::weak_ptr<Localization> getCurrentLanguage();
 
     GMLIB_NDAPI static std::string getCurrentLanguageCode();
 
@@ -58,6 +60,20 @@ public:
     GMLIB_NDAPI static std::string
     get(std::string const& key, std::vector<std::string> const& params, std::shared_ptr<::Localization> localization);
 
+    template <typename... Args>
+    [[nodiscard]] static std::string tr(std::string const& key, Args&&... args) {
+        std::vector<std::string> params;
+        (params.push_back(fmt::format("{}", std::forward<Args>(args))), ...);
+        return get(key, params);
+    }
+
+    template <typename... Args>
+    [[nodiscard]] static std::string trl(std::string const& key, std::string const& languageCode, Args&&... args) {
+        std::vector<std::string> params;
+        (params.push_back(fmt::format("{}", std::forward<Args>(args))), ...);
+        return get(key, params, languageCode);
+    }
+
 public:
     GMLIB_API static void
     loadLanguage(std::string const& languageCode, std::unordered_map<std::string, std::string> const& language);
@@ -67,6 +83,12 @@ public:
     GMLIB_API static void loadLanguage(std::string const& languageCode, nlohmann::json const& language);
 
     GMLIB_API static void loadLanguageFromFile(std::string const& languageCode, std::filesystem::path const& path);
+
+    GMLIB_API static void loadLanguageFromResource(
+        std::string const&            languageCode,
+        int                           resourceId,
+        ll::utils::sys_utils::HandleT handle = ll::sys_utils::getCurrentModuleHandle()
+    );
 
     GMLIB_API static void updateOrCreateLanguageFile(
         std::filesystem::path const& path,
@@ -94,5 +116,21 @@ public:
 
     GMLIB_API static void loadLanguagesFromDirectory(std::filesystem::path const& path);
 };
+
+namespace literals {
+
+template <::ll::FixedString Fmt>
+[[nodiscard]] constexpr auto operator""_trans() {
+    return [=]<class... Args>(Args&&... args) { return I18nAPI::tr(Fmt.str(), args...); };
+}
+
+template <::ll::FixedString Fmt>
+[[nodiscard]] constexpr auto operator""_transl() {
+    return [=]<class... Args>(std::string const& languageCode, Args&&... args) {
+        return I18nAPI::tr(Fmt.str(), args..., languageCode);
+    };
+}
+
+} // namespace literals
 
 } // namespace gmlib::locale

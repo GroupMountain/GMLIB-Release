@@ -1,18 +1,16 @@
 #pragma once
 #include "gmlib/Macros.h"
 #include "gmlib/gm/enum/WeatherType.h"
-#include "mc/deps/core/utility/MCRESULT.h"
-#include "mc/deps/core/utility/optional_ref.h"
-#include "mc/network/packet/SetTitlePacket.h"
+
 #include "mc/server/ServerPlayer.h"
+#include "mc/world/scores/ObjectiveSortOrder.h"
 #include "mc/world/actor/ai/util/BossBarColor.h"
 #include "mc/world/actor/ai/util/BossBarOverlay.h"
-#include "mc/world/actor/player/FullPlayerInventoryWrapper.h"
-#include "mc/world/actor/player/Player.h"
+#include "mc/network/packet/SetTitlePacket.h"
 #include "mc/world/level/chunk/SubChunk.h"
-#include "mc/world/level/levelgen/structure/StructureFeature.h"
-#include "mc/world/scores/ObjectiveSortOrder.h"
 
+struct MCRESULT;
+class FullPlayerInventoryWrapper;
 
 namespace gmlib::world::actor {
 class GMPlayer : public ServerPlayer {

@@ -1,8 +1,9 @@
 #pragma once
-#include "BaseFloatingText.h"
+#include "FloatingText.h"
 
 namespace gmlib::tools {
-class StaticFloatingText : public BaseFloatingText {
+
+class StaticFloatingText : public FloatingText {
 public:
     GMLIB_API
     StaticFloatingText(
@@ -11,6 +12,9 @@ public:
         DimensionType      dimensionId,
         bool               translatePlaceholderApi = false
     );
+
+public:
+    GMLIB_NDAPI bool isDynamic() const override;
 
 public:
     GMLIB_API void setText(std::string const& newText) override;

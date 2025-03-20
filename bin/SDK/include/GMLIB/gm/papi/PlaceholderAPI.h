@@ -1,6 +1,5 @@
 #pragma once
 #include "gmlib/Macros.h"
-#include "gmlib/mc/locale/I18nAPI.h"
 #include <ll/api/mod/NativeMod.h>
 #include <mc/deps/core/utility/optional_ref.h>
 #include <optional>
@@ -22,7 +21,6 @@ public:
 
 public:
     using GMActor = world::actor::GMActor;
-    using I18nAPI = locale::I18nAPI;
     struct PlaceholderData {
         std::weak_ptr<ll::mod::Mod> mod;
         std::function<std::optional<std::string>(
@@ -34,17 +32,11 @@ public:
     };
 
 public:
-    GMLIB_API static std::string& translate(
-        std::string&          value,
-        optional_ref<GMActor> actor,
-        std::string           language = I18nAPI::getCurrentLanguageCode()
-    );
+    GMLIB_API static std::string&
+    translate(std::string& value, optional_ref<GMActor> actor = std::nullopt, std::string language = "");
 
-    GMLIB_API static std::string translate(
-        std::string const&    value,
-        optional_ref<GMActor> actor,
-        std::string           language = I18nAPI::getCurrentLanguageCode()
-    );
+    GMLIB_API static std::string
+    translate(std::string const& value, optional_ref<GMActor> actor = std::nullopt, std::string language = "");
 
     GMLIB_API static bool registerPlaceholder(
         std::string const&          placeholder,
@@ -74,7 +66,7 @@ public:
         std::string const&                                  placeholder,
         optional_ref<GMActor>                               actor    = std::nullopt,
         std::unordered_map<std::string, std::string> const& params   = {},
-        std::string const&                                  language = I18nAPI::getCurrentLanguageCode()
+        std::string const&                                  language = ""
     );
 
     GMLIB_NDAPI static std::optional<PlaceholderData> getPlaceholderData(std::string const& placeholder);
