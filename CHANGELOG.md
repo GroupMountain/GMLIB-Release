@@ -13,6 +13,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.0.0-rc.2] - 2025-03-20
+
+### Changed
+
+- Refactored FloatingText @KobeBryant114514
+- Reorganized Actor.h and Player.h @Zhongzi8972
+- Reorganized serveral headers @KobeBryant114514
+### Added
+
+- Added some language template @Kobebryant114514
+- Added RemoteCallAPI @zimuya4153
+- Added more separators for Placeholder @zimuya4153
+- Added placeholders for player_llmoney and operation @zimuya4153
+- Added Resouce Util @KobeBryant114514
+- Added GlobalUsing.h @zimuya4153
+### Fixeded
+
+- Fixed serveral errors for PAPI @zimuya4153
+- Fixed DynamicFloatingText @KobeBryant114514
+- Fixed FloatingTextManager template compile error @Zhongzi8972
+- Fixed ChestUI @Zhongzi8972
+- Fixed Player::talk as method @zimuya4153
+- Fixed file typo @zimuya4153
+
 ## [1.0.0-rc.1] - 2025-03-16
 
 ### Changed
@@ -65,5 +89,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#119]: https://github.com/GroupMountain/GMLIB-Release/issues/119
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.1...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.2...HEAD
 [1.0.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v0.3.10...v1.0.0-rc.1
+[1.0.0-rc.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.1...v1.0.0-rc.2

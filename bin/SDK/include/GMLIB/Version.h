@@ -5,7 +5,7 @@
 #define GMLIB_VERSION_MINOR         0
 #define GMLIB_VERSION_PATCH         0
 #define GMLIB_VERSION_PRERELEASE "rc.2"
-#define GMLIB_VERSION_COMMIT_SHA    0e55ff4
+#define GMLIB_VERSION_COMMIT_SHA    8cf9ea5
 // clang-format on
 
 #define GMLIB_WORKSPACE_FOLDER R"(D:\a\GMLIB\GMLIB\)"
