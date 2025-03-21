@@ -13,6 +13,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.0.0-rc.3] - 2025-03-22
+
+### Changed
+
+- Added more detailed version information for manifest.json file @zimuya4153
+
+### Added
+
+- Added logo printing when enabling @zimuya4153
+- Added gradientText API and gradient output @zimuya4153
+
+### Fixeded
+
+- Fixed ChestUI big chest showing error @Zhongzi8972
+- Fixed MCI18n @Zhongzi8972
+- Fixed GMCompoundTag::getDataLoadHelper and GMActor::setNbt @Zhongzi8972
+- Fixed include_all.h @zimuya4153
+
 ## [1.0.0-rc.2] - 2025-03-20
 
 ### Changed
@@ -20,14 +38,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactored FloatingText @KobeBryant114514
 - Reorganized Actor.h and Player.h @Zhongzi8972
 - Reorganized serveral headers @KobeBryant114514
+
 ### Added
 
 - Added some language template @Kobebryant114514
-- Added RemoteCallAPI @zimuya4153
+- Added RemoteCallAPI and LegacyMoneyAPI @zimuya4153
 - Added more separators for Placeholder @zimuya4153
 - Added placeholders for player_llmoney and operation @zimuya4153
 - Added Resouce Util @KobeBryant114514
 - Added GlobalUsing.h @zimuya4153
+
 ### Fixeded
 
 - Fixed serveral errors for PAPI @zimuya4153
@@ -89,6 +109,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#119]: https://github.com/GroupMountain/GMLIB-Release/issues/119
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.2...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.3...HEAD
 [1.0.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v0.3.10...v1.0.0-rc.1
 [1.0.0-rc.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.1...v1.0.0-rc.2
+[1.0.0-rc.3]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.2...v1.0.0-rc.3
