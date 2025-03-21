@@ -5,7 +5,6 @@
 
 #pragma once
 
-#include "gmlib/GlobalUsing.h"
 #include "gmlib/gm/enum/ChestType.h"
 #include "gmlib/gm/enum/DimensionNameFormat.h"
 #include "gmlib/gm/enum/FillMode.h"
