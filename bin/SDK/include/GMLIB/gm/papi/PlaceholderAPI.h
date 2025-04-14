@@ -5,12 +5,9 @@
 #include <optional>
 #include <string>
 
-
-namespace gmlib::world::actor {
+namespace gmlib {
 class GMActor;
-}
 
-namespace gmlib::papi {
 class PlaceholderAPI {
 public:
     PlaceholderAPI()                                 = delete;
@@ -20,7 +17,6 @@ public:
     PlaceholderAPI& operator=(PlaceholderAPI&&)      = delete;
 
 public:
-    using GMActor = world::actor::GMActor;
     struct PlaceholderData {
         std::weak_ptr<ll::mod::Mod> mod;
         std::function<std::optional<std::string>(
@@ -44,7 +40,7 @@ public:
             optional_ref<GMActor>                               actor,
             std::unordered_map<std::string, std::string> const& params,
             std::string const&                                  language
-        )>                          callback,
+        )>&&                        callback,
         std::weak_ptr<ll::mod::Mod> mod = ll::mod::NativeMod::current()
     );
 
@@ -77,4 +73,4 @@ public:
     getAllPlaceholderData(std::weak_ptr<ll::mod::Mod> mod);
 };
 
-} // namespace gmlib::papi
+} // namespace gmlib

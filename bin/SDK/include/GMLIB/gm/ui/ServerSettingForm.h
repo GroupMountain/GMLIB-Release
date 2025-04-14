@@ -1,22 +1,26 @@
 #pragma once
 #include "gmlib/Macros.h"
-#include "gmlib/gm/enum/FormEnums.h"
 #include <mc/_HeaderOutputPredefine.h>
 #include <unordered_map>
 
 
-namespace gmlib::world::actor {
+namespace gmlib {
 class GMPlayer;
 }
 
-namespace gmlib::form {
+namespace gmlib::ui {
 
 class ServerSettingFormManager {
+public:
+    enum class IconType : unsigned char {
+        Texture = 0,
+        Url     = 1,
+    };
+
 public:
     class Impl;
     std::unique_ptr<Impl> pImpl;
     ServerSettingFormManager();
-    using GMPlayer                  = world::actor::GMPlayer;
     using ServerSettingFormCallback = std::function<
         void(GMPlayer& player, std::unordered_map<uint, std::variant<std::string, int64, double, bool>> const&)>;
 
@@ -99,4 +103,4 @@ public:
     GMLIB_API bool unregisterCallback(uint callbackId);
 };
 
-} // namespace gmlib::form
+} // namespace gmlib::ui

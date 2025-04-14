@@ -2,17 +2,17 @@
 #include "gmlib/Macros.h"
 #include "gmlib/gm/enum/WeatherType.h"
 
+#include "mc/network/packet/SetTitlePacket.h"
 #include "mc/server/ServerPlayer.h"
-#include "mc/world/scores/ObjectiveSortOrder.h"
 #include "mc/world/actor/ai/util/BossBarColor.h"
 #include "mc/world/actor/ai/util/BossBarOverlay.h"
-#include "mc/network/packet/SetTitlePacket.h"
 #include "mc/world/level/chunk/SubChunk.h"
+#include "mc/world/scores/ObjectiveSortOrder.h"
 
 struct MCRESULT;
 class FullPlayerInventoryWrapper;
 
-namespace gmlib::world::actor {
+namespace gmlib {
 class GMPlayer : public ServerPlayer {
 public:
     GMLIB_NDAPI std::unique_ptr<CompoundTag> getNbt() const;
@@ -165,4 +165,4 @@ public:
 public:
     GMLIB_NDAPI static optional_ref<GMPlayer> getServerPlayer(NetworkIdentifier const& source, ::SubClientId subId);
 };
-} // namespace gmlib::world::actor
+} // namespace gmlib

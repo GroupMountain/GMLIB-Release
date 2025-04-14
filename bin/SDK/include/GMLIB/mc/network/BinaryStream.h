@@ -14,20 +14,13 @@ struct ActorLink;
 namespace mce {
 class UUID;
 }
-namespace gmlib::world::actor {
-class GMPlayer;
-}
-namespace gmlib::world {
-class GMCompoundTag;
-}
 
-namespace gmlib::network {
+namespace gmlib {
+
+class GMPlayer;
+class GMCompoundTag;
 
 class GMBinaryStream : public BinaryStream {
-public:
-    using GMPlayer      = world::actor::GMPlayer;
-    using GMCompoundTag = world::GMCompoundTag;
-
 public:
     GMLIB_API void writePacketHeader(MinecraftPacketIds packetId, SubClientId subId = SubClientId::PrimaryClient);
 
@@ -92,6 +85,11 @@ public:
 
     GMLIB_API void writeNetworkItemStackDescriptor(::NetworkItemStackDescriptor const& nItem);
 
+    // Using GMBinaryStream::write##TYPE(value) to call the following functions
+    // Example: GMBinaryStream::writeBool(true);
+    // Example: GMBinaryStream::writeByte(0);
+    // Example: GMBinaryStream::writeUnsignedShort(0);
+
 #define GMBinaryStream_Write_Macro(TYPE, WRITE_TYPE)                                                                   \
     template <typename T>                                                                                              \
         requires(std::is_enum_v<T> || std::is_integral_v<T> || std::is_floating_point_v<T>)                            \
@@ -125,4 +123,4 @@ public:
 #undef GMBinaryStream_Write_Macro
 };
 
-} // namespace gmlib::network
+} // namespace gmlib

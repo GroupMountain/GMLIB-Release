@@ -1,6 +1,6 @@
 #pragma once
 
-namespace gmlib::world {
+namespace gmlib {
 
 enum class WeatherType : int {
     Clear   = 0, // Sunny

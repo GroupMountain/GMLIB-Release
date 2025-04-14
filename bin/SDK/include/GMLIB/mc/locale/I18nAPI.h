@@ -18,7 +18,7 @@ class McLang;
 */
 
 
-namespace gmlib::locale {
+namespace gmlib {
 
 class I18nAPI {
 private:
@@ -133,4 +133,4 @@ template <::ll::FixedString Fmt>
 
 } // namespace literals
 
-} // namespace gmlib::locale
+} // namespace gmlib

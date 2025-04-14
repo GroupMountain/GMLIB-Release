@@ -1,6 +1,6 @@
 #pragma once
 
-namespace gmlib::world {
+namespace gmlib {
 
 enum class DimensionNameFormat : short {
     CamelCase          = 0,
@@ -8,4 +8,4 @@ enum class DimensionNameFormat : short {
     SnakeCaseWithSpace = 2,
 };
 
-} // namespace gmlib::world
+} // namespace gmlib

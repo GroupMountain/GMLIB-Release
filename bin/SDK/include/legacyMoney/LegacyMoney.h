@@ -16,16 +16,23 @@ enum class LLMoneyEvent {
 
 typedef bool (*LLMoneyCallback)(LLMoneyEvent type, std::string from, std::string to, llong value);
 
-GMLIB_API ll::Expected<llong> LLMoney_Get(std::string xuid);
-GMLIB_API ll::Expected<bool> LLMoney_Set(std::string xuid, llong money);
-GMLIB_API ll::Expected<bool> LLMoney_Trans(std::string from, std::string to, llong val, std::string const& note = "");
-GMLIB_API ll::Expected<bool> LLMoney_Add(std::string xuid, llong money);
-GMLIB_API ll::Expected<bool> LLMoney_Reduce(std::string xuid, llong money);
+GMLIB_API ll::Expected<llong> LLMoney_Get(std::string const& xuid);
 
-GMLIB_API ll::Expected<std::string> LLMoney_GetHist(std::string xuid, int timediff = 24 * 60 * 60);
+GMLIB_API ll::Expected<bool> LLMoney_Set(std::string const& xuid, llong money);
+
+GMLIB_API ll::Expected<bool>
+          LLMoney_Trans(std::string const& from, std::string const& to, llong val, std::string const& note = "");
+
+GMLIB_API ll::Expected<bool> LLMoney_Add(std::string const& xuid, llong money);
+
+GMLIB_API ll::Expected<bool> LLMoney_Reduce(std::string const& xuid, llong money);
+
+GMLIB_API ll::Expected<std::string> LLMoney_GetHist(std::string const& xuid, int timediff = 24 * 60 * 60);
+
 GMLIB_API ll::Expected<void> LLMoney_ClearHist(int difftime = 0);
 
 GMLIB_API ll::Expected<void> LLMoney_ListenBeforeEvent(LLMoneyCallback callback);
+
 GMLIB_API ll::Expected<void> LLMoney_ListenAfterEvent(LLMoneyCallback callback);
 
 GMLIB_API ll::Expected<std::vector<std::pair<std::string, llong>>> LLMoney_Ranking(ushort num = 5);

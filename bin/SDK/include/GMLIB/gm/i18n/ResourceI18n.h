@@ -23,6 +23,8 @@ public:
 
     ResourceI18n() = delete;
 
+    GMLIB_API ~ResourceI18n();
+
 public:
     GMLIB_API void addLanguage(std::string const& identifier, std::string const& language);
 

@@ -1,10 +1,10 @@
 #pragma once
-
 #include "gmlib/Macros.h"
 #include "mc/deps/core/utility/optional_ref.h"
 #include "mc/world/actor/Actor.h"
 
-namespace gmlib::world {
+namespace gmlib {
+
 class GMSpawner {
 public:
     GMLIB_API static optional_ref<Actor>
@@ -34,6 +34,6 @@ public:
 
     GMLIB_API static optional_ref<Actor>
     spawnProjectile(Actor& owner, std::string_view name, float speed = 2, float offset = 3);
-
 };
-} // namespace gmlib::world
+
+} // namespace gmlib

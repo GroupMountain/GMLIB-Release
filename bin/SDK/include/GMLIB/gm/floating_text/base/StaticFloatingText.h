@@ -1,7 +1,7 @@
 #pragma once
 #include "FloatingText.h"
 
-namespace gmlib::tools {
+namespace gmlib {
 
 class StaticFloatingText : public FloatingText {
 public:
@@ -24,4 +24,4 @@ public:
     GMLIB_API void setDimensionId(DimensionType dimId) override;
 };
 
-} // namespace gmlib::tools
+} // namespace gmlib

@@ -12,29 +12,16 @@ struct MCRESULT;
 struct GameRuleId;
 class DBStorage;
 class Packet;
-namespace gmlib::world {
+
+namespace gmlib {
+
 class GMCompoundTag;
-}
-namespace gmlib::world::actor {
 class GMActor;
 class GMPlayer;
-}
-namespace gmlib::network {
 class GMBinaryStream;
-}
-namespace gmlib::locale {
 class I18nAPI;
-}
-
-namespace gmlib::world {
 
 class GMLevel : public Level {
-public:
-    using GMActor        = actor::GMActor;
-    using GMPlayer       = actor::GMPlayer;
-    using GMBinaryStream = gmlib::network::GMBinaryStream;
-    using I18nAPI        = locale::I18nAPI;
-
 public:
     GMLIB_NDAPI static optional_ref<GMLevel> getInstance();
 
@@ -105,7 +92,7 @@ public:
     GMLIB_API bool setGamerule(::GameRuleId id, int value);
 
     GMLIB_API void createExplosion(
-        ::Vec3 const&           pos,
+        ::Vec3 const&         pos,
         DimensionType         dimensionId,
         float                 power,
         optional_ref<GMActor> source          = std::nullopt,
@@ -117,16 +104,16 @@ public:
 
     GMLIB_NDAPI std::shared_ptr<LevelChunk> getOrLoadChunk(
         ::BlockPos const& blockPos,
-        DimensionType   dimId,
-        bool            readOnly                          = true,
-        bool            forceImmediateReplacementDataLoad = false
+        DimensionType     dimId,
+        bool              readOnly                          = true,
+        bool              forceImmediateReplacementDataLoad = false
     );
 
     GMLIB_NDAPI std::shared_ptr<LevelChunk> getOrLoadChunk(
         ::ChunkPos const& chunkPos,
-        DimensionType   dimId,
-        bool            readOnly                          = true,
-        bool            forceImmediateReplacementDataLoad = false
+        DimensionType     dimId,
+        bool              readOnly                          = true,
+        bool              forceImmediateReplacementDataLoad = false
     );
 
     GMLIB_NDAPI ::Block const& loadAndGetBlock(::BlockPos const& pos, DimensionType dimId);
@@ -139,17 +126,17 @@ public:
     // return the number of blocks changed
     // If startpos and endpos
     GMLIB_API int fillBlocks(
-        ::BlockPos const&       startpos,
-        ::BlockPos const&       endpos,
+        ::BlockPos const&     startpos,
+        ::BlockPos const&     endpos,
         DimensionType         dimId,
-        ::Block const&          block,
+        ::Block const&        block,
         FillMode              mode              = FillMode::Replace,
         optional_ref<GMActor> blockChangeSource = std::nullopt
     );
 
     GMLIB_API int fillBlocks(
-        ::BlockPos const&         startpos,
-        ::BlockPos const&         endpos,
+        ::BlockPos const&       startpos,
+        ::BlockPos const&       endpos,
         DimensionType           dimId,
         std::string_view const& name,
         ushort                  tileData          = 0,
@@ -158,17 +145,17 @@ public:
     );
 
     GMLIB_API int fillBlocks(
-        ::BlockPos const&       startpos,
-        ::BlockPos const&       endpos,
+        ::BlockPos const&     startpos,
+        ::BlockPos const&     endpos,
         DimensionType         dimId,
-        ::Block const&          oldBlock,
-        ::Block const&          newBlock,
+        ::Block const&        oldBlock,
+        ::Block const&        newBlock,
         optional_ref<GMActor> blockChangeSource = std::nullopt
     );
 
     GMLIB_API int fillBlocks(
-        ::BlockPos const&         startpos,
-        ::BlockPos const&         endpos,
+        ::BlockPos const&       startpos,
+        ::BlockPos const&       endpos,
         DimensionType           dimId,
         std::string_view const& oldName,
         ushort                  oldTileData,
@@ -198,8 +185,8 @@ public:
     GMLIB_NDAPI std::optional<::BlockPos> locateNearestStructureFeature(
         ::HashedString const& structure,
         ::BlockPos const&     pos,
-        DimensionType       dimId,
-        bool                useNewChunksOnly = false
+        DimensionType         dimId,
+        bool                  useNewChunksOnly = false
     );
 
     GMLIB_NDAPI ::DBStorage& getDBStorage();
@@ -231,10 +218,10 @@ public:
 
     GMLIB_NDAPI int getMaxPlayerCount() const;
 
-    GMLIB_API int setMaxPlayerCount(int count);
+    GMLIB_API int setMaxPlayerCount(int count, bool ignoreVanillaLimit = false);
 
     GMLIB_API void setServerMotd(std::string_view const& motd);
 
     GMLIB_API bool deleteLevelChunk(::ChunkPos const& cp, DimensionType dimId);
 };
-} // namespace gmlib::world
+} // namespace gmlib

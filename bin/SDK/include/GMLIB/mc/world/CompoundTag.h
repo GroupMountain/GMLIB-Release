@@ -10,7 +10,7 @@ class BlockActor;
 class ItemStack;
 class Block;
 
-namespace gmlib::world {
+namespace gmlib {
 
 class GMCompoundTag : public CompoundTag {
 public:
@@ -63,4 +63,4 @@ public:
     GMLIB_NDAPI std::unique_ptr<GMCompoundTag> clone() const;
 };
 
-} // namespace gmlib::world
+} // namespace gmlib

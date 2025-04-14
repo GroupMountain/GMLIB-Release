@@ -1,16 +1,10 @@
 #pragma once
-
 #include "gmlib/Macros.h"
 #include <mc/world/actor/Actor.h>
 
-
-namespace gmlib::world::actor {
+namespace gmlib {
 
 class GMActor : public Actor {
-public:
-    using Actor::addEffect;
-    using ::Actor::removeEffect;
-
 public:
     GMLIB_NDAPI std::unique_ptr<CompoundTag> getNbt();
 
@@ -31,4 +25,4 @@ public:
 };
 
 
-} // namespace gmlib::world::actor
+} // namespace gmlib

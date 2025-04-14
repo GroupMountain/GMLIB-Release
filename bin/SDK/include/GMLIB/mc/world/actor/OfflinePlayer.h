@@ -9,7 +9,7 @@
 #include "mc/world/level/dimension/Dimension.h"
 
 
-namespace gmlib::world::actor {
+namespace gmlib {
 
 class OfflinePlayer {
 
@@ -85,4 +85,4 @@ public:
     GMLIB_API bool removeNbt();
 };
 
-} // namespace gmlib::world::actor
+} // namespace gmlib

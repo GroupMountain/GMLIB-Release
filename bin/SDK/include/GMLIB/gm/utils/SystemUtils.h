@@ -2,7 +2,7 @@
 #include "gmlib/Macros.h"
 #include <ll/api/base/StdInt.h>
 
-namespace gmlib::utils::SystemUtils {
+namespace gmlib::system_utils {
 
 struct RamData {
     ullong all;
@@ -14,4 +14,4 @@ struct RamData {
 
 GMLIB_NDAPI RamData getRam();
 
-} // namespace gmlib::utils::StringUtils
+} // namespace gmlib::system_utils

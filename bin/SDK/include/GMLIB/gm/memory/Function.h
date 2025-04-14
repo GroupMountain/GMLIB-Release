@@ -16,7 +16,7 @@ template <typename RetType = void, typename... Args>
     if (auto* funcPtr = getFunctionAddress(funcName)) {
         return reinterpret_cast<FunctionPtr<RetType, Args...>>(funcPtr);
     }
-    return ll::makeStringError(fmt::format("Couldn't find function: {}", funcName));
+    return ll::makeStringError(fmt::format("Couldn't find function: {} in memory.", funcName));
 }
 
 template <typename RetType = void, typename... Args>
@@ -25,7 +25,7 @@ getFunctionPtr(std::wstring const& modName, std::string const& funcName) {
     if (auto* funcPtr = getFunctionAddress(modName, funcName)) {
         return reinterpret_cast<FunctionPtr<RetType, Args...>>(funcPtr);
     }
-    return ll::makeStringError(fmt::format("Couldn't find function: {}", funcName));
+    return ll::makeStringError(fmt::format("Couldn't find function: {} in memory.", funcName));
 }
 
 template <typename RetType = void, typename... Args>
@@ -43,7 +43,7 @@ inline ll::Expected<RetType> callFunction(std::string const& funcName, Args... a
             return ll::makeExceptionError();
         }
     }
-    return ll::makeStringError(fmt::format("Couldn't find function: {}", funcName));
+    return ll::makeStringError(fmt::format("Couldn't find function: {} in memory.", funcName));
 }
 
 template <typename RetType = void, typename... Args>
@@ -61,7 +61,7 @@ inline ll::Expected<RetType> callFunction(std::wstring const& modName, std::stri
             return ll::makeExceptionError();
         }
     }
-    return ll::makeStringError(fmt::format("Couldn't find function: {}", funcName));
+    return ll::makeStringError(fmt::format("Couldn't find function: {} in memory.", funcName));
 }
 
 } // namespace gmlib::memory

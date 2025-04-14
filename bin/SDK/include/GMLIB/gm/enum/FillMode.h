@@ -1,6 +1,6 @@
 #pragma once
 
-namespace gmlib::world {
+namespace gmlib {
 
 enum class FillMode : int {
     Replace = 0,

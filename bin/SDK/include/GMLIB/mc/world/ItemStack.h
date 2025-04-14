@@ -3,11 +3,9 @@
 #include <mc/world/item/ItemLockMode.h>
 #include <mc/world/item/ItemStack.h>
 
-namespace gmlib::world {
+namespace gmlib {
 class GMCompoundTag;
-}
 
-namespace gmlib::world {
 class GMItemStack : public ItemStack {
 public:
     GMLIB_NDAPI GMItemStack();
@@ -34,4 +32,4 @@ public:
     GMLIB_API void           setItemLockMode(ItemLockMode mode);
     GMLIB_NDAPI ItemLockMode getItemLockMode() const;
 };
-} // namespace gmlib::world
+} // namespace gmlib

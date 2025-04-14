@@ -5,21 +5,18 @@
 #include <mc/deps/core/utility/optional_ref.h>
 #include <memory>
 
-namespace gmlib::world {
+namespace gmlib {
 class GMItemStack;
 class GMCompoundTag;
-} // namespace gmlib::world
-
-namespace gmlib::world::actor {
 class GMPlayer;
-}
+} // namespace gmlib
 
-namespace gmlib::tools {
+namespace gmlib::ui {
 
 /*
     This class provide a way to create a chest ui without a real chest block.
     It's just a certain kind of ui, not a form.
-    If you want to use a chest form, please use form::ChestForm.
+    If you want to use a chest form, please use ui::ChestForm.
 */
 class ChestUI {
 public:
@@ -31,9 +28,6 @@ public:
     // src is the slot where player pick the item.
     // dst is the slot where player place the item.
     // amount is the amount of item changes.
-    using GMCompoundTag = world::GMCompoundTag;
-    using GMItemStack   = world::GMItemStack;
-    using GMPlayer      = world::actor::GMPlayer;
     using ChestUICallback =
         std::function<void(GMPlayer&, ChangingSlot const& src, ChangingSlot const& dst, int amount)>;
 
@@ -43,13 +37,13 @@ public:
 
 public:
     GMLIB_NDAPI explicit ChestUI(
-        std::string const& name     = "GMLIB ChestUI",
+        std::string const& name,
         ChestType          formType = ChestType::BigChest,
-        ChestUICallback    callback = {}
+        ChestUICallback&&  callback = {}
     );
 
-    GMLIB_NDAPI          ChestUI(const ChestUI&);
-    GMLIB_NDAPI          ChestUI(ChestUI&&) noexcept;
+    GMLIB_NDAPI        ChestUI(const ChestUI&);
+    GMLIB_NDAPI        ChestUI(ChestUI&&) noexcept;
     GMLIB_API ChestUI& operator=(const ChestUI&);
     GMLIB_API ChestUI& operator=(ChestUI&&) noexcept;
 
@@ -69,10 +63,9 @@ public:
      * slot index is from 0 to 35. If the slot param is out of the index, it won't take effect.
      */
     GMLIB_API ChestUI& registerSlot(int slot, GMItemStack const& item, ChestSlotType type = ChestSlotType::Chest);
-    GMLIB_API ChestUI&
-    registerSlot(int slot, world::GMCompoundTag const& nbt, ChestSlotType type = ChestSlotType::Chest);
+    GMLIB_API ChestUI& registerSlot(int slot, GMCompoundTag const& nbt, ChestSlotType type = ChestSlotType::Chest);
 
-    GMLIB_API ChestUI& registerCallback(ChestUICallback callback);
+    GMLIB_API ChestUI& registerCallback(ChestUICallback&& callback);
 
     // overideInventory: If true, the player's inventory in cliend will be overide by the form. (Will not affect the
     // player's inventory in server)
@@ -91,4 +84,4 @@ public:
     setSlot(int slot, GMCompoundTag const& nbt, GMPlayer& pl, ChestSlotType type = ChestSlotType::Chest);
 };
 
-} // namespace gmlib::tools
+} // namespace gmlib::ui

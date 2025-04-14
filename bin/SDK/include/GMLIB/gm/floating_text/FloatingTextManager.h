@@ -5,7 +5,7 @@
 #include <mc/deps/core/utility/AutomaticID.h>
 #include <memory>
 
-namespace gmlib::tools {
+namespace gmlib {
 
 class FloatingTextManager {
 public:
@@ -65,4 +65,4 @@ public:
     GMLIB_API void removeAll(DimensionType dimId, std::weak_ptr<ll::mod::Mod> mod = ll::mod::NativeMod::current());
 };
 
-} // namespace gmlib::tools
+} // namespace gmlib

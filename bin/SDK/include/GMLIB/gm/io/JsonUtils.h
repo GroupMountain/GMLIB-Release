@@ -2,7 +2,7 @@
 #include "gmlib/Macros.h"
 #include <nlohmann/json.hpp>
 
-namespace gmlib::utils::JsonUtils {
+namespace gmlib::json_utils {
 
 GMLIB_API nlohmann::ordered_json
           initOrderedJson(std::filesystem::path const& path, nlohmann::ordered_json const& defaultFile);
@@ -34,7 +34,8 @@ GMLIB_API bool writeOrderedFile(std::filesystem::path const& path, nlohmann::ord
 GMLIB_API bool writeFile(std::filesystem::path const& path, nlohmann::json const& json);
 
 template <typename T>
-[[nodiscard]] inline std::optional<T> getValue(nlohmann::ordered_json& json, std::vector<std::string> const& keyPath) try {
+[[nodiscard]] inline std::optional<T>
+getValue(nlohmann::ordered_json& json, std::vector<std::string> const& keyPath) try {
     if (keyPath.empty()) return std::nullopt;
     auto value = json;
     for (auto& key : keyPath) {
@@ -60,7 +61,8 @@ template <typename T>
 }
 
 template <typename T>
-[[nodiscard]] inline T getValue(nlohmann::ordered_json& json, std::vector<std::string> const& keyPath, T defaultValue) try {
+[[nodiscard]] inline T
+getValue(nlohmann::ordered_json& json, std::vector<std::string> const& keyPath, T defaultValue) try {
     std::optional<T> result = getValue<T>(json, keyPath);
     if (result.has_value()) return result.value();
     setValue<T>(json, keyPath, defaultValue);
@@ -144,4 +146,4 @@ GMLIB_API bool deleteOrderedKeyAndSave(
 GMLIB_API bool
 deleteKeyAndSave(nlohmann::json& json, std::string const& filePath, std::vector<std::string> const& keyPath);
 
-} // namespace gmlib::utils::JsonUtils
+} // namespace gmlib::json_utils

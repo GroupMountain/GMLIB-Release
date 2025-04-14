@@ -5,28 +5,23 @@
 #include <mc/world/scores/ScoreboardId.h>
 
 class ServerScoreboard;
+struct ActorUniqueID;
+
 namespace mce {
 class UUID;
 }
-struct ActorUniqueID;
-namespace gmlib::world::actor {
+
+namespace gmlib {
+
 class OfflinePlayer;
-}
-namespace gmlib::world::actor {
 class GMActor;
 class GMPlayer;
-} // namespace gmlib::world::actor
 
-namespace gmlib::world {
 class GMScoreboard : public Scoreboard {
 public:
     using Scoreboard::addObjective;
     using Scoreboard::removeObjective;
     using Scoreboard::resetPlayerScore;
-
-    using GMActor       = actor::GMActor;
-    using GMPlayer      = actor::GMPlayer;
-    using OfflinePlayer = gmlib::world::actor::OfflinePlayer;
 
 public:
     GMLIB_NDAPI static optional_ref<GMScoreboard> getInstance();
@@ -198,6 +193,14 @@ public:
 
     GMLIB_API bool setObjectiveDisplayName(std::string const& objective, std::string const& newName);
 
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(::ActorUniqueID const& uniqueId);
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(GMActor const& entity);
+
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(std::string const& name);
+
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(GMPlayer const& player);
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(::PlayerScoreboardId const& id);
+
 public:
     // missing func in 1.21.60
     GMLIB_NDAPI ::ScoreboardId const& getScoreboardId(::ActorUniqueID const& uniqueId) const;
@@ -208,13 +211,9 @@ public:
     GMLIB_NDAPI ::ScoreboardId const& getScoreboardId(GMPlayer const& player) const;
     GMLIB_NDAPI ::ScoreboardId const& getScoreboardId(::PlayerScoreboardId const& id) const;
 };
-} // namespace gmlib::world
+} // namespace gmlib
 
-bool operator==(ScoreboardId const& lhs, ScoreboardId const& rhs);
-bool operator==(IdentityDefinition const& lhs, IdentityDefinition const& rhs);
-bool operator==(::Objective const& lhs, ::Objective const& rhs);
-bool operator==(::ObjectiveCriteria const& lhs, ::ObjectiveCriteria const& rhs);
-
+GMLIB_NDAPI bool operator==(ScoreboardId const& lhs, ScoreboardId const& rhs);
 namespace std {
 template <>
 struct hash<::ScoreboardId> {

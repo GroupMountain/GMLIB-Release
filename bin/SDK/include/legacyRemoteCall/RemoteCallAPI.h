@@ -12,7 +12,7 @@
 #include <mc/world/level/block/Block.h>
 #include <mc/world/level/block/actor/BlockActor.h>
 
-namespace RemoteCall {
+namespace LegacyRemoteCall {
 struct NbtType {
     CompoundTag const* ptr = nullptr;
     bool               own = false;
@@ -347,36 +347,31 @@ GMLIB_API ll::Expected<bool> hasFunc(std::string const& nameSpace, std::string c
 GMLIB_API ll::Expected<bool> removeFunc(std::string const& nameSpace, std::string const& funcName);
 GMLIB_API ll::Expected<int> removeNameSpace(std::string const& nameSpace);
 GMLIB_API ll::Expected<int> removeFuncs(std::vector<std::pair<std::string, std::string>>& funcs);
-GMLIB_API                   ll::Expected<void>
-_onCallError(std::string const& msg, void* handle = ll::sys_utils::getCurrentModuleHandle());
+
+GMLIB_API void _onCallError(
+    std::string const& nameSpace,
+    std::string const& funcName,
+    void*              handle = ll::sys_utils::getCurrentModuleHandle()
+);
 
 template <typename RTN, typename... Args>
-inline bool _importAs(
-    std::string const&           nameSpace,
-    std::string const&           funcName,
-    std::function<RTN(Args...)>& func,
-    bool                         disableError = false
-) {
-    func = [nameSpace, funcName, disableError](Args... args) -> RTN {
+inline void _importAs(std::string const& nameSpace, std::string const& funcName, std::function<RTN(Args...)>& func) {
+    func = [nameSpace, funcName](Args... args) -> RTN {
         auto& rawFunc = importFunc(nameSpace, funcName);
         if (!rawFunc) {
-            if (!disableError) {
-                _onCallError(fmt::format("Fail to import! Function [{}::{}] has not been exported", nameSpace, funcName)
-                );
-            }
+            _onCallError(nameSpace, funcName);
             return RTN();
         }
         std::vector<ValueType> params = {pack(std::forward<Args>(args))...};
         ValueType&&            res    = rawFunc(std::move(params));
         return extract<RTN>(std::move(res));
     };
-    return true;
 }
 
 template <typename CB, typename Func = std::conditional_t<std::is_function_v<CB>, std::function<CB>, CB>>
-inline Func importAs(std::string const& nameSpace, std::string const& funcName, bool disableError = false) {
+inline Func importAs(std::string const& nameSpace, std::string const& funcName) {
     Func callback{};
-    _importAs(nameSpace, funcName, callback, disableError);
+    _importAs(nameSpace, funcName, callback);
     return std::move(callback);
 }
 
@@ -385,4 +380,4 @@ inline ll::Expected<bool> exportAs(std::string const& nameSpace, std::string con
     return _exportAs(nameSpace, funcName, std::function(std::move(callback)));
 }
 
-} // namespace RemoteCall
+} // namespace LegacyRemoteCall

@@ -1,11 +1,10 @@
 #pragma once
-#include <iterator> // IWYU pragma: keep
-
 #include "gmlib/Macros.h"
 #include "ll/api/coro/Generator.h"
 #include "mc/platform/UUID.h"
 
-namespace gmlib::tools::UserCache {
+namespace gmlib::UserCache {
+
 struct UserCacheEntry {
     mce::UUID   mUuid;
     std::string mName;
@@ -39,4 +38,5 @@ GMLIB_API void add(mce::UUID uuid, std::string name, std::string xuid);
 GMLIB_API void remove(mce::UUID uuid);
 
 GMLIB_API void remove(std::string const& nameOrXuid);
-} // namespace gmlib::tools::UserCache
+
+} // namespace gmlib::UserCache

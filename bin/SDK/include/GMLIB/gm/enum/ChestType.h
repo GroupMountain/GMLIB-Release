@@ -1,6 +1,7 @@
 #pragma once
 
-namespace gmlib::tools {
+namespace gmlib::ui {
+
 enum class ChestSlotType : int {
     Chest,
     Inventory,
@@ -18,4 +19,5 @@ enum class ChestType : int {
     BigChest,
     Anvil,
 };
-} // namespace gmlib::tools
+
+} // namespace gmlib::ui

@@ -2,7 +2,6 @@
 // This header file is automatically generated. Do not modify it manually
 // This header file is automatically generated. Do not modify it manually
 
-
 #pragma once
 
 #include "mc/certificates/Certificate.h"

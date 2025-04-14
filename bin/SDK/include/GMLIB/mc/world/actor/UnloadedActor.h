@@ -10,7 +10,7 @@
 #include <unordered_map>
 
 
-namespace gmlib::world::actor {
+namespace gmlib {
 
 // This is the actor that is stored in the world database
 // It can be a loaded actor or an unloaded actor
@@ -68,4 +68,4 @@ public:
     GMLIB_API bool setNbt(CompoundTag const& nbt);
 };
 
-} // namespace gmlib::world::actor
+} // namespace gmlib

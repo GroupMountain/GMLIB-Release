@@ -5,16 +5,10 @@
 
 class Vec3;
 
-namespace gmlib::world::actor {
+namespace gmlib {
 class GMPlayer;
-}
-
-namespace gmlib::tools {
 
 class FloatingText {
-public:
-    using GMPlayer = world::actor::GMPlayer;
-
 protected:
     struct Impl;
     std::unique_ptr<Impl> pImpl;
@@ -64,4 +58,4 @@ public:
 
     GMLIB_NDAPI DimensionType getDimensionId() const;
 };
-} // namespace gmlib::tools
+} // namespace gmlib::

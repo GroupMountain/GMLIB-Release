@@ -1,7 +1,7 @@
 #pragma once
 #include "StaticFloatingText.h"
 
-namespace gmlib::tools {
+namespace gmlib {
 
 class DynamicFloatingText : public StaticFloatingText {
 private:
@@ -34,4 +34,4 @@ public:
 };
 
 
-} // namespace gmlib::tools
+} // namespace gmlib
