@@ -1,0 +1,14 @@
+{
+    "name": "GMLIB",
+    "entry": "GMLIB.dll",
+    "version": "1.0.1",
+    "author": "GroupMountain",
+    "description": "Group Mountain Library",
+    "passive": true,
+    "type": "native",
+    "optionalDependencies": [
+        {
+            "name": "Glacie"
+        }
+    ]
+}

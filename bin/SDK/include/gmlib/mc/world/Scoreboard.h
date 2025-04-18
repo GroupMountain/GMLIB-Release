@@ -1,0 +1,222 @@
+#pragma once
+#include "gmlib/Macros.h"
+#include <mc/world/scores/IdentityDefinition.h>
+#include <mc/world/scores/Scoreboard.h>
+#include <mc/world/scores/ScoreboardId.h>
+
+class ServerScoreboard;
+struct ActorUniqueID;
+
+namespace mce {
+class UUID;
+}
+
+namespace gmlib {
+
+class OfflinePlayer;
+class GMActor;
+class GMPlayer;
+
+class GMScoreboard : public Scoreboard {
+public:
+    using Scoreboard::addObjective;
+    using Scoreboard::removeObjective;
+    using Scoreboard::resetPlayerScore;
+
+public:
+    GMLIB_NDAPI static optional_ref<GMScoreboard> getInstance();
+
+public:
+    GMLIB_NDAPI optional_ref<ServerScoreboard> getServerScoreboard();
+
+    GMLIB_NDAPI optional_ref<::Objective> addObjective(std::string const& name);
+
+    GMLIB_NDAPI optional_ref<::Objective> addObjective(std::string const& name, std::string const& displayName);
+
+    GMLIB_API bool removeObjective(std::string const& objective);
+
+    GMLIB_NDAPI ::ScoreboardId getPlayerScoreboardId(std::string const& serverId);
+
+    GMLIB_NDAPI ::ScoreboardId getPlayerScoreboardId(::mce::UUID const& uuid);
+
+    GMLIB_NDAPI std::optional<int> getScore(::Objective& objective, ::ScoreboardId const& scoreboardId);
+
+    GMLIB_NDAPI std::optional<int> getScore(std::string const& objective, std::string const& name);
+
+    GMLIB_NDAPI std::optional<int> getScore(std::string const& objective, GMPlayer& player);
+
+    GMLIB_NDAPI std::optional<int> getScore(std::string const& objective, GMActor& actor);
+
+    GMLIB_NDAPI std::optional<int>
+                getScore(std::string const& objective, ::ActorUniqueID const& uniqueId, bool isPlayer = false);
+
+    GMLIB_NDAPI std::optional<int> getPlayerScore(std::string const& objective, std::string const& serverId);
+
+    GMLIB_NDAPI std::optional<int> getPlayerScore(std::string const& objective, ::mce::UUID const& uuid);
+
+    GMLIB_NDAPI std::optional<int> getPlayerScore(std::string const& objective, ::ActorUniqueID const& uniqueId);
+
+    GMLIB_NDAPI std::optional<int> getPlayerScore(std::string const& objective, GMPlayer& player);
+
+    GMLIB_API std::optional<int> setScore(
+        ::Objective&           objective,
+        ::ScoreboardId const&  scoreboardId,
+        int                    value,
+        PlayerScoreSetFunction action = PlayerScoreSetFunction::Set
+    );
+
+    GMLIB_API std::optional<int> setScore(
+        std::string const&     objective,
+        std::string const&     name,
+        int                    value,
+        PlayerScoreSetFunction action = PlayerScoreSetFunction::Set
+    );
+
+    GMLIB_API std::optional<int> setScore(
+        std::string const&     objective,
+        GMPlayer&              player,
+        int                    value,
+        PlayerScoreSetFunction action = PlayerScoreSetFunction::Set
+    );
+
+    GMLIB_API std::optional<int> setScore(
+        std::string const&     objective,
+        GMActor&               acotr,
+        int                    value,
+        PlayerScoreSetFunction action = PlayerScoreSetFunction::Set
+    );
+
+    GMLIB_API std::optional<int> setScore(
+        std::string const&     objective,
+        ::ActorUniqueID const& uniqueId,
+        int                    value,
+        PlayerScoreSetFunction action   = PlayerScoreSetFunction::Set,
+        bool                   isPlayer = false
+    );
+
+    GMLIB_API std::optional<int> setPlayerScore(
+        std::string const&     objective,
+        std::string const&     serverId,
+        int                    value,
+        PlayerScoreSetFunction action = PlayerScoreSetFunction::Set
+    );
+
+    GMLIB_API std::optional<int> setPlayerScore(
+        std::string const&     objective,
+        ::mce::UUID const&     uuid,
+        int                    value,
+        PlayerScoreSetFunction action = PlayerScoreSetFunction::Set
+    );
+
+    GMLIB_API std::optional<int> setPlayerScore(
+        std::string const&     objective,
+        ::ActorUniqueID const& uniqueId,
+        int                    value,
+        PlayerScoreSetFunction action = PlayerScoreSetFunction::Set
+    );
+
+    GMLIB_API std::optional<int> setPlayerScore(
+        std::string const&     objective,
+        GMPlayer&              player,
+        int                    value,
+        PlayerScoreSetFunction action = PlayerScoreSetFunction::Set
+    );
+
+    GMLIB_API bool resetScore(::Objective& objective, ::ScoreboardId const& scoreboardId);
+
+    GMLIB_API bool resetScore(std::string const& objective, std::string const& name);
+
+    GMLIB_API bool resetScore(std::string const& objective, GMPlayer& player);
+
+    GMLIB_API bool resetScore(std::string const& objective, GMActor& acotr);
+
+    GMLIB_API bool resetScore(std::string const& objective, ::ActorUniqueID const& uniqueId, bool isPlayer = false);
+
+    GMLIB_API bool resetPlayerScore(std::string const& objective, std::string const& serverId);
+
+    GMLIB_API bool resetPlayerScore(std::string const& objective, ::mce::UUID const& uuid);
+
+    GMLIB_API bool resetPlayerScore(std::string const& objective, ::ActorUniqueID const& uniqueId);
+
+    GMLIB_API bool resetPlayerScore(std::string const& objective, GMPlayer& player);
+
+    GMLIB_API bool resetScore(::ScoreboardId const& scoreboardId);
+
+    GMLIB_API bool resetScore(std::string const& name);
+
+    GMLIB_API bool resetScore(GMPlayer& player);
+
+    GMLIB_API bool resetScore(GMActor& acotr);
+
+    GMLIB_API bool resetScore(::ActorUniqueID const& uniqueId, bool isPlayer = false);
+
+    GMLIB_API bool resetPlayerScore(std::string const& serverId);
+
+    GMLIB_API bool resetPlayerScore(::mce::UUID const& uuid);
+
+    GMLIB_API bool resetPlayerScore(GMPlayer& player);
+
+    GMLIB_API bool resetPlayerScore(::ActorUniqueID const& uniqueId);
+
+    GMLIB_NDAPI std::vector<::ScoreboardId> getAllScoreboardIds();
+
+    GMLIB_NDAPI std::vector<::ScoreboardId> getObjectiveTrackedScoreboardIds(::Objective& objective);
+
+    GMLIB_NDAPI std::vector<::ScoreboardId> getAllScoreboardIds(IdentityDefinition::Type type);
+
+    GMLIB_NDAPI std::vector<::ScoreboardId>
+                getObjectiveTrackedScoreboardIds(::Objective& objective, IdentityDefinition::Type type);
+
+    GMLIB_NDAPI std::vector<::ActorUniqueID> getAllPlayersActorUniqueID();
+
+    GMLIB_NDAPI std::vector<OfflinePlayer> getAllPlayers();
+
+    GMLIB_NDAPI std::vector<::ActorUniqueID> getAllEntities();
+
+    GMLIB_NDAPI std::vector<std::string> getAllFakePlayers();
+
+    GMLIB_API void setObjectiveDisplay(
+        ::Objective&       objective,
+        std::string const& displaySlot = "sidebar",
+        ObjectiveSortOrder order       = ObjectiveSortOrder::Ascending
+    );
+
+    GMLIB_API void setObjectiveDisplay(
+        std::string const& objective,
+        std::string const& displaySlot = "sidebar",
+        ObjectiveSortOrder order       = ObjectiveSortOrder::Ascending
+    );
+
+    GMLIB_API void clearObjectiveDisplay(std::string const& displaySlot);
+
+    GMLIB_NDAPI std::optional<std::string> getObjectiveDisplayName(std::string const& objective);
+
+    GMLIB_API bool setObjectiveDisplayName(std::string const& objective, std::string const& newName);
+
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(::ActorUniqueID const& uniqueId);
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(GMActor const& entity);
+
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(std::string const& name);
+
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(GMPlayer const& player);
+    GMLIB_NDAPI ::ScoreboardId const& getOrCreateScoreboardId(::PlayerScoreboardId const& id);
+
+public:
+    // missing func in 1.21.60
+    GMLIB_NDAPI ::ScoreboardId const& getScoreboardId(::ActorUniqueID const& uniqueId) const;
+    GMLIB_NDAPI ::ScoreboardId const& getScoreboardId(GMActor const& entity) const;
+
+    GMLIB_NDAPI ::ScoreboardId const& getScoreboardId(std::string const& name) const;
+
+    GMLIB_NDAPI ::ScoreboardId const& getScoreboardId(GMPlayer const& player) const;
+    GMLIB_NDAPI ::ScoreboardId const& getScoreboardId(::PlayerScoreboardId const& id) const;
+};
+} // namespace gmlib
+
+GMLIB_NDAPI bool operator==(ScoreboardId const& lhs, ScoreboardId const& rhs);
+namespace std {
+template <>
+struct hash<::ScoreboardId> {
+    size_t operator()(ScoreboardId const& id) const { return id.mRawID; }
+};
+} // namespace std
