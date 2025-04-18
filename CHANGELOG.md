@@ -16,6 +16,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [1.0.1]
+
+### Added
+- Added CustomItemRegistry @KobeBryant114514
+- Added CustomCreativeItemRegistry @KobeBryant114514
+
+### Changed
+
+
+### Fixed
+- Fixed CustomRecipeRegistry @KobeBryant114514
 
 ## [1.0.0]
 
@@ -25,8 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added CompressionFile @KobeBryant114514
 - Added function cache @KobeBryant114514
 - Added Memory Compression @KobeBryant114514
-- Added CustomRecipeRegistry @KobeBrysnt114514
-- Added CustomFeature @killcer
+- Added CustomRecipeRegistry @KobeBryant114514
+- Added CustomFeature @killcerr
 - Added config file @zimuya4153
 - Added slice placeholder @zimuya4153
 - Added preRelease and build parameters for placeholder @zimuya4153
@@ -37,7 +48,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optimize optional LegacyRemoteCall and LegacyMoney @KobeBryant114514
 - Optimize PlaceholderAPI @zimuya4153
 - Optimize ChestUI @Zhongzi8972
-- 
 - Optimize registerDefaultPlaceholders code @zimuya4153
 
 ### Fixed
@@ -149,7 +159,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#128]: https://github.com/GroupMountain/GMLIB-Release/issues/128
 [#119]: https://github.com/GroupMountain/GMLIB-Release/issues/119
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0...1.0.1
 [1.0.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.3...1.0.0
 [1.0.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v0.3.10...v1.0.0-rc.1
 [1.0.0-rc.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.1...v1.0.0-rc.2
