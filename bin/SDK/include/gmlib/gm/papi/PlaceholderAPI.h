@@ -1,26 +1,22 @@
 #pragma once
 #include "gmlib/Macros.h"
-#include <MC/world/actor/Actor.h>
-#include <functional>
+#include "gmlib/mc/world/actor/Actor.h"
+#include "gmlib/mc/world/actor/Player.h"
 #include <ll/api/mod/NativeMod.h>
 #include <mc/deps/core/utility/optional_ref.h>
-#include <optional>
-#include <string>
-#include <utility>
-
-class Actor;
+#include <mc/world/actor/ActorType.h>
 
 namespace gmlib {
-namespace details {
+namespace papi::details {
 template <std::derived_from<Actor> T>
 inline bool tryCast(optional_ref<T>& res, optional_ref<Actor> actor) {
     if (!actor) return true;
-    if constexpr (std::is_same_v<T, Actor>) {
+    if constexpr (std::is_same_v<T, Actor> || std::is_same_v<T, GMActor>) {
         res = actor;
         return true;
-    } else if constexpr (std::same_as<T, Player>) {
+    } else if constexpr (std::same_as<T, Player> || std::same_as<T, GMPlayer>) {
         if (actor && actor->isPlayer()) {
-            res = *reinterpret_cast<Player*>(actor.as_ptr());
+            res = *reinterpret_cast<T*>(actor.as_ptr());
             return true;
         }
         return false;
@@ -45,8 +41,7 @@ struct AutoCast {
     }
 };
 
-} // namespace details
-class GMActor;
+} // namespace papi::details
 
 class PlaceholderAPI {
 public:
@@ -60,9 +55,9 @@ public:
     struct PlaceholderData {
         std::weak_ptr<ll::mod::Mod> mod;
         std::function<std::optional<std::string>(
-            optional_ref<Actor>                                 actor,
-            std::unordered_map<std::string, std::string> const& params,
-            std::string const&                                  language
+            optional_ref<Actor>               actor,
+            ll::StringMap<std::string> const& params,
+            std::string const&                language
         )>
             callback;
     };
@@ -75,61 +70,60 @@ public:
     translate(std::string const& value, optional_ref<Actor> actor = std::nullopt, std::string language = "");
 
     GMLIB_API static bool registerPlaceholder(
-        std::string const&          placeholder,
+        std::string const&                 placeholder,
         std::function<std::optional<std::string>(
-            optional_ref<Actor>                                 actor,
-            std::unordered_map<std::string, std::string> const& params,
-            std::string const&                                  language
-        )>&&                        callback,
-        std::weak_ptr<ll::mod::Mod> mod = ll::mod::NativeMod::current()
+            optional_ref<Actor>               actor,
+            ll::StringMap<std::string> const& params,
+            std::string const&                language
+        )>&&                               callback,
+        std::weak_ptr<ll::mod::Mod> const& mod = ll::mod::NativeMod::current()
     );
     template <typename T>
     static inline bool registerPlaceholder(
         std::string const&                 placeholder,
         T&&                                callback,
-        const std::weak_ptr<ll::mod::Mod>& mod = ll::mod::NativeMod::current()
+        std::weak_ptr<ll::mod::Mod> const& mod = ll::mod::NativeMod::current()
     ) {
+        // clang-format off
         return registerPlaceholder(
             placeholder,
-            std::function<std::optional<std::string>(
+            std::function<
+                std::optional<std::string>(optional_ref<Actor>, ll::StringMap<std::string> const&, std::string const&)
+            >{[cb = std::forward<T>(callback)](
                 optional_ref<Actor>                                 actor,
-                std::unordered_map<std::string, std::string> const& params,
+                ll::StringMap<std::string> const& params,
                 std::string const&                                  language
-            )>{[cb = std::forward<T>(callback)](
-                   optional_ref<Actor>                                 actor,
-                   std::unordered_map<std::string, std::string> const& params,
-                   std::string const&                                  language
-               ) -> std::optional<std::string> {
-                if constexpr (requires { cb(details::AutoCast{actor}); }) {
-                    return cb(details::AutoCast{actor});
-                } else if constexpr (requires { cb(details::AutoCast{actor}, language); }) {
-                    return cb(details::AutoCast{actor}, language);
-                } else if constexpr (requires { cb(details::AutoCast{actor}, language, params); }) {
-                    return cb(details::AutoCast{actor}, language, params);
-                } else if constexpr (requires { cb(details::AutoCast{actor}, params); }) {
-                    return cb(details::AutoCast{actor}, params);
-                } else if constexpr (requires { cb(details::AutoCast{actor}, params, language); }) {
-                    return cb(details::AutoCast{actor}, params, language);
+            ) -> std::optional<std::string> {
+                if constexpr (requires { cb(papi::details::AutoCast{actor}); }) {
+                    return cb(papi::details::AutoCast{actor});
+                } else if constexpr (requires { cb(papi::details::AutoCast{actor}, language); }) {
+                    return cb(papi::details::AutoCast{actor}, language);
+                } else if constexpr (requires { cb(papi::details::AutoCast{actor}, language, params); }) {
+                    return cb(papi::details::AutoCast{actor}, language, params);
+                } else if constexpr (requires { cb(papi::details::AutoCast{actor}, params); }) {
+                    return cb(papi::details::AutoCast{actor}, params);
+                } else if constexpr (requires { cb(papi::details::AutoCast{actor}, params, language); }) {
+                    return cb(papi::details::AutoCast{actor}, params, language);
                 } else if constexpr (requires { cb(language); }) {
                     return cb(language);
-                } else if constexpr (requires { cb(language, details::AutoCast{actor}); }) {
-                    return cb(language, details::AutoCast{actor});
-                } else if constexpr (requires { cb(language, details::AutoCast{actor}, params); }) {
-                    return cb(language, details::AutoCast{actor}, params);
+                } else if constexpr (requires { cb(language, papi::details::AutoCast{actor}); }) {
+                    return cb(language, papi::details::AutoCast{actor});
+                } else if constexpr (requires { cb(language, papi::details::AutoCast{actor}, params); }) {
+                    return cb(language, papi::details::AutoCast{actor}, params);
                 } else if constexpr (requires { cb(language, params); }) {
                     return cb(language, params);
-                } else if constexpr (requires { cb(language, params, details::AutoCast{actor}); }) {
-                    return cb(language, params, details::AutoCast{actor});
+                } else if constexpr (requires { cb(language, params, papi::details::AutoCast{actor}); }) {
+                    return cb(language, params, papi::details::AutoCast{actor});
                 } else if constexpr (requires { cb(params); }) {
                     return cb(params);
-                } else if constexpr (requires { cb(params, details::AutoCast{actor}); }) {
-                    return cb(params, details::AutoCast{actor});
-                } else if constexpr (requires { cb(params, details::AutoCast{actor}, language); }) {
-                    return cb(params, details::AutoCast{actor}, language);
+                } else if constexpr (requires { cb(params, papi::details::AutoCast{actor}); }) {
+                    return cb(params, papi::details::AutoCast{actor});
+                } else if constexpr (requires { cb(params, papi::details::AutoCast{actor}, language); }) {
+                    return cb(params, papi::details::AutoCast{actor}, language);
                 } else if constexpr (requires { cb(params, language); }) {
                     return cb(params, language);
-                } else if constexpr (requires { cb(params, language, details::AutoCast{actor}); }) {
-                    return cb(params, language, details::AutoCast{actor});
+                } else if constexpr (requires { cb(params, language, papi::details::AutoCast{actor}); }) {
+                    return cb(params, language, papi::details::AutoCast{actor});
                 } else if constexpr (requires { cb(); }) {
                     return cb();
                 } else {
@@ -138,6 +132,7 @@ public:
             }},
             mod
         );
+        // clang-format on
     }
 
     GMLIB_API static bool unregisterPlaceholder(std::string const& placeholder);
@@ -145,18 +140,18 @@ public:
     GMLIB_API static bool unregisterPlaceholder(std::weak_ptr<ll::mod::Mod> mod);
 
     GMLIB_NDAPI static std::optional<std::string> getValue(
-        std::string const&                                  placeholder,
-        optional_ref<Actor>                                 actor    = std::nullopt,
-        std::unordered_map<std::string, std::string> const& params   = {},
-        std::string const&                                  language = ""
+        std::string const&                placeholder,
+        optional_ref<Actor>               actor    = std::nullopt,
+        ll::StringMap<std::string> const& params   = {},
+        std::string const&                language = ""
     );
 
     GMLIB_NDAPI static std::optional<PlaceholderData> getPlaceholderData(std::string const& placeholder);
 
-    GMLIB_NDAPI static std::unordered_map<std::string, PlaceholderData> getAllPlaceholderData();
+    GMLIB_NDAPI static ll::DenseMap<std::string, PlaceholderData> getAllPlaceholderData();
 
-    GMLIB_NDAPI static std::unordered_map<std::string, PlaceholderData>
-    getAllPlaceholderData(std::weak_ptr<ll::mod::Mod> mod);
+    GMLIB_NDAPI static ll::DenseMap<std::string, PlaceholderData> getAllPlaceholderData(std::weak_ptr<ll::mod::Mod> mod
+    );
 };
 
 } // namespace gmlib

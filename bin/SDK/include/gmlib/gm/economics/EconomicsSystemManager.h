@@ -5,6 +5,9 @@
 
 namespace gmlib::economics {
 
+// 请注意，由于时间紧迫，我们并没有提供默认的经济系统，我们将会在后续的版本中添加。
+// Please note that due to the tight schedule, we have not provided a default economic system. We will add it in subsequent versions.
+
 class EconomicsSystemManager {
 private:
     struct Impl;
