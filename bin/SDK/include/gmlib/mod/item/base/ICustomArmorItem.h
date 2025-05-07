@@ -17,15 +17,13 @@ public:
     std::unique_ptr<Impl> pImpl;
 
 public:
-    GMLIB_NDAPI ICustomArmorItem(std::string const& identifier);
+    GMLIB_NDAPI ICustomArmorItem(std::string const& identifier, HumanoidArmorItem::Tier armorTier);
 
     GMLIB_API ~ICustomArmorItem();
 
     virtual ItemIcon getIcon() const = 0;
 
     virtual ::SharedTypes::Legacy::ArmorSlot getArmorSlot() const = 0;
-
-    GMLIB_API virtual HumanoidArmorItem::Tier getArmorTier() const;
 
     GMLIB_API virtual int getModelIndex() const;
 
@@ -121,6 +119,8 @@ public:
     GMLIB_API std::unique_ptr<CompoundTag> buildNetworkTag() const override;
 
     GMLIB_API std::string getInteractText(::Player const& player) const override;
+
+    GMLIB_API ::ItemStack& use(::ItemStack& item, ::Player& player) const override;
 
     GMLIB_API virtual void _init();
 };

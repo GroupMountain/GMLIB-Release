@@ -32,9 +32,11 @@ public:
 
     GMLIB_NDAPI bool hasTitle();
 
-    GMLIB_NDAPI std::string getTitle();
+    GMLIB_NDAPI std::string getTitle(GMPlayer& player);
 
     GMLIB_API bool setTitle(std::string const& title, bool forceModify = false);
+
+    GMLIB_API bool setTitle(std::function<std::string(GMPlayer& player)>&& title, bool forceModify = false);
 
     GMLIB_NDAPI bool hasIcon();
 

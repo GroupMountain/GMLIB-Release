@@ -20,7 +20,7 @@ public:
 
     class Iterator {
     public:
-        struct Impl;
+        class Impl;
         std::unique_ptr<Impl> pImpl;
 
     public:
@@ -42,7 +42,7 @@ public:
 public:
     GMLIB_NDAPI explicit MemoryArchive(std::string_view memoryStream, std::string_view password = {});
 
-    GMLIB_NDAPI ~MemoryArchive();
+    GMLIB_API ~MemoryArchive();
 
     GMLIB_NDAPI bool isOpen() const;
 

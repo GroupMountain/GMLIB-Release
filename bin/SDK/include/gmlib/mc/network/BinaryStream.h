@@ -24,8 +24,6 @@ class GMBinaryStream : public BinaryStream {
 public:
     GMLIB_API void writePacketHeader(MinecraftPacketIds packetId, SubClientId subId = SubClientId::PrimaryClient);
 
-    // Notice:
-    // These sendTo func will translate the packet automatically by using the Glacie if Glacie is existed
     GMLIB_API void sendTo(
         GMPlayer&                player,
         NetworkPeer::Reliability reliability  = NetworkPeer::Reliability::ReliableOrdered,
@@ -48,9 +46,6 @@ public:
         NetworkPeer::Reliability reliability  = NetworkPeer::Reliability::ReliableOrdered,
         Compressibility          compressible = Compressibility::Compressible
     );
-
-    // translate the stream to the given version by using Glacie
-    [[deprecated("will be deleted at bds 1.21.7x version")]] GMLIB_API void translate(int toVersion);
 
 public:
     template <typename T>

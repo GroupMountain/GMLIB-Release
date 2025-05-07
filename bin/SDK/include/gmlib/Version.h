@@ -5,10 +5,10 @@
 #define GMLIB_VERSION_MINOR         0
 #define GMLIB_VERSION_PATCH         1
 /* #undef GMLIB_VERSION_PRERELEASE */
-#define GMLIB_VERSION_COMMIT_SHA    5c62c4e
+#define GMLIB_VERSION_COMMIT_SHA    cf49803
 // clang-format on
 
-#define GMLIB_WORKSPACE_FOLDER R"(D:\a\GMLIB\GMLIB\)"
+#define GMLIB_WORKSPACE_FOLDER R"(D:\Files\LeviLamina\Mod Develop\GMLIB\)"
 
 #define GMLIB_VERSION_TO_STRING_INNER(ver) #ver
 #define GMLIB_VERSION_TO_STRING(ver)       GMLIB_VERSION_TO_STRING_INNER(ver)

@@ -127,7 +127,7 @@ template <::ll::FixedString Fmt>
 template <::ll::FixedString Fmt>
 [[nodiscard]] constexpr auto operator""_transl() {
     return [=]<class... Args>(std::string const& languageCode, Args&&... args) {
-        return I18nAPI::tr(Fmt.str(), args..., languageCode);
+        return I18nAPI::trl(Fmt.str(), languageCode, args...);
     };
 }
 

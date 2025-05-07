@@ -4,6 +4,7 @@
 
 #pragma once
 
+// IWYU pragma: begin_exports
 #include "mc/certificates/Certificate.h"
 #include "mc/certificates/CertificateSNIType.h"
 #include "mc/certificates/identity/AccessTokenInfo.h"
@@ -10076,7 +10077,6 @@
 #include "mc/world/item/HatchetItem.h"
 #include "mc/world/item/HoeItem.h"
 #include "mc/world/item/HorseArmorItem.h"
-#include "mc/world/item/HumanoidArmorItem.h"
 #include "mc/world/item/IceBombItem.h"
 #include "mc/world/item/ILegacyItemTriggerHandler.h"
 #include "mc/world/item/InHandUpdateType.h"
@@ -12364,3 +12364,4 @@
 #include "mc/world/WorldTransferResult.h"
 #include "mc/world/WorldTransferResultType.h"
 #include "mc/_HeaderOutputPredefine.h"
+// IWYU pragma: end_exports

@@ -1,8 +1,8 @@
 #pragma once
-#include "gmlib/Macros.h"
-#include "ll/api/Expected.h"
-#include "mc/deps/core/utility/BinaryStream.h"
-#include "mc/world/actor/player/Player.h"
+#include <gmlib/Macros.h>
+#include <ll/api/Expected.h>
+#include <ll/api/data/Version.h>
+#include <mc/world/actor/player/Player.h>
 
 namespace glacie {
 
@@ -10,6 +10,14 @@ GMLIB_NDAPI ll::Expected<int> getClientProtocolVersion(NetworkIdentifier const& 
 
 GMLIB_NDAPI ll::Expected<std::vector<int>> getSupportedProtocolList();
 
-[[deprecated("will be deleted at bds 1.21.7x version")]] GMLIB_API ll::Expected<void> translateBinaryStream(BinaryStream& stream, int toVersion);
+GMLIB_NDAPI ll::Expected<std::vector<int>> getAllowIncomingProtocolList();
+
+GMLIB_NDAPI ll::Expected<bool> isSupportedProtocol(int protocol);
+
+GMLIB_NDAPI ll::Expected<bool> isAllowIncomingProtocol(int protocol);
+
+GMLIB_NDAPI ll::Expected<bool> setProtocolAllowIncoming(int protocol, bool status);
+
+GMLIB_NDAPI ll::Expected<ll::data::Version> getGlacieVersion();
 
 } // namespace glacie

@@ -4,6 +4,7 @@
 
 #pragma once
 
+// IWYU pragma: begin_exports
 #include "ll/api/base/Alias.h"
 #include "ll/api/base/CompilerPredefine.h"
 #include "ll/api/base/Concepts.h"
@@ -161,3 +162,4 @@
 #include "ll/api/utils/StringUtils.h"
 #include "ll/api/utils/SystemUtils.h"
 #include "ll/api/Versions.h"
+// IWYU pragma: end_exports

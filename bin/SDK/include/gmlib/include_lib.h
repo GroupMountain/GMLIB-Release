@@ -4,7 +4,10 @@
 
 #pragma once
 
+// IWYU pragma: begin_exports
 #include "gmlib/gm/data/UserCache.h"
+#include "gmlib/gm/economics/EconomicsSystem.h"
+#include "gmlib/gm/economics/EconomicsSystemManager.h"
 #include "gmlib/gm/enum/ChestType.h"
 #include "gmlib/gm/enum/CompressionLevel.h"
 #include "gmlib/gm/enum/DimensionNameFormat.h"
@@ -52,6 +55,14 @@
 #include "gmlib/mc/world/Scoreboard.h"
 #include "gmlib/mc/world/Spawner.h"
 #include "gmlib/mod/addons/AddonsLoader.h"
+#include "gmlib/mod/block/base/ICustomBlock.h"
+#include "gmlib/mod/block/CustomBlockRegistry.h"
+#include "gmlib/mod/enchantment/base/ICustomEnchantment.h"
+#include "gmlib/mod/enchantment/CustomEnchantmentRegistry.h"
+#include "gmlib/mod/entity/base/ICustomEntity.h"
+#include "gmlib/mod/entity/CustomEntityRegistry.h"
+#include "gmlib/mod/gamerule/base/ICustomGameRule.h"
+#include "gmlib/mod/gamerule/CustomGameRuleRegistry.h"
 #include "gmlib/mod/item/base/ICustomArmorItem.h"
 #include "gmlib/mod/item/base/ICustomFoodItem.h"
 #include "gmlib/mod/item/base/ICustomItem.h"
@@ -61,6 +72,8 @@
 #include "gmlib/mod/item/types/ItemIcon.h"
 #include "gmlib/mod/item/types/mc/HumanoidArmorItem.h"
 #include "gmlib/mod/item/types/RepairItems.h"
+#include "gmlib/mod/loot_table/base/ICustomLootTable.h"
+#include "gmlib/mod/loot_table/CustomLootTableRegistry.h"
 #include "gmlib/mod/recipe/base/ICustomBrewingRecipe.h"
 #include "gmlib/mod/recipe/base/ICustomFurnaceRecipe.h"
 #include "gmlib/mod/recipe/base/ICustomRecipe.h"
@@ -72,4 +85,7 @@
 #include "gmlib/mod/recipe/base/ICustomSmithingTrimRecipe.h"
 #include "gmlib/mod/recipe/base/ICustomStoneCutterRecipe.h"
 #include "gmlib/mod/recipe/CustomRecipeRegistry.h"
+#include "gmlib/mod/worldgen/FeatureRegistry.h"
+#include "gmlib/mod/worldgen/ICustomFeature.h"
 #include "gmlib/Version.h"
+// IWYU pragma: end_exports

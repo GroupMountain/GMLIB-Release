@@ -120,7 +120,13 @@ protected:
 } // namespace gmlib::mod
 
 #define GMLIB_REGISTER_RECIPE(RECIPE_CLASS, ...)                                                                       \
-    auto GMLIB_CUSTOM_RECIPE_##RECIPE_CLASS = [] {                                                                     \
-        CustomRecipeRegistry::getInstance().registerRecipe<RECIPE_CLASS>(__VA_ARGS__);                                 \
+    inline static auto GMLIB_CUSTOM_RECIPE_##RECIPE_CLASS = [] {                                                       \
+        ::gmlib::mod::CustomRecipeRegistry::getInstance().registerRecipe<RECIPE_CLASS>(__VA_ARGS__);                   \
+        return 0;                                                                                                      \
+    }();
+
+#define GMLIB_REGISTER_RECIPES(IDENTIFIER, RECIPE_CLASS, ...)                                                          \
+    inline static auto GMLIB_CUSTOM_RECIPE_##IDENTIFIER = [] {                                                         \
+        ::gmlib::mod::CustomRecipeRegistry::getInstance().registerRecipe<RECIPE_CLASS>(__VA_ARGS__);                   \
         return 0;                                                                                                      \
     }();

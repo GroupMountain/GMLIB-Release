@@ -53,14 +53,14 @@ public:
     };
 
 public:
-    ::SharedTypes::Legacy::ArmorSlot    mSlot;
-    int                                 mDefense;
-    int                                 mModelIndex;
-    ::HumanoidArmorItem::ArmorMaterial& mArmorType;
-    bool                                mCurrentVersionAllowsTrim;
+    ::SharedTypes::Legacy::ArmorSlot          mSlot;
+    int                                       mDefense;
+    int                                       mModelIndex;
+    ::HumanoidArmorItem::ArmorMaterial const& mArmorType;
+    bool                                      mCurrentVersionAllowsTrim;
 
 public:
-    GMLIB_NDAPI HumanoidArmorItem(std::string const& name);
+    GMLIB_NDAPI HumanoidArmorItem(std::string const& name, HumanoidArmorItem::Tier armorTier);
 
     virtual bool isHumanoidArmor() const;
 

@@ -29,6 +29,21 @@ public:
 
     GMLIB_API void forEachItemInRegistry(std::function<bool(Item& item)>&& func);
 
+    GMLIB_NDAPI ::WeakPtr<::Item> getItem(std::string_view name);
+
+public:
+    GMLIB_API bool setFireResistant(std::string_view itemName, bool value = true);
+
+    GMLIB_API bool addTag(std::string_view itemName, std::string_view tag);
+
+    GMLIB_API bool setIcon(std::string_view itemName, std::string_view icon);
+
+    GMLIB_API bool setDisplayName(std::string_view itemName, std::string_view displayName);
+
+    GMLIB_API bool setFixItem(std::string_view itemName, std::string_view fixItem);
+
+    GMLIB_NDAPI ::CompoundTag& getAndModifyVanillaNetworkTagInfo(std::string_view itemName);
+
 protected:
     GMLIB_NDAPI CustomItemRegistry& _registerItem(std::function<std::unique_ptr<Item>()>&&);
 };
@@ -36,7 +51,13 @@ protected:
 } // namespace gmlib::mod
 
 #define GMLIB_REGISTER_ITEM(ITEM_CLASS, ...)                                                                           \
-    auto GMLIB_CUSTOM_ITEM_##ITEM_CLASS = [] {                                                                         \
-        CustomItemRegistry::getInstance().registerItem<ITEM_CLASS>(__VA_ARGS__);                                       \
+    inline static auto GMLIB_CUSTOM_ITEM_##ITEM_CLASS = [] {                                                           \
+        ::gmlib::mod::CustomItemRegistry::getInstance().registerItem<ITEM_CLASS>(__VA_ARGS__);                         \
+        return 0;                                                                                                      \
+    }();
+
+#define GMLIB_REGISTER_ITEMS(IDENTIFIER, ITEM_CLASS, ...)                                                              \
+    inline static auto GMLIB_CUSTOM_ITEM_##IDENTIFIER = [] {                                                           \
+        ::gmlib::mod::CustomItemRegistry::getInstance().registerItem<ITEM_CLASS>(__VA_ARGS__);                         \
         return 0;                                                                                                      \
     }();

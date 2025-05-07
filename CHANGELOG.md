@@ -8,13 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
+- Added Custom Game Rules @KobeBryant114514
+- Added Custom Feature Rules @killcerr
+- Added new Glacie API @KobeBryant114514
+- Added economy system @zimuya4153
+- Added change vanilla items in CustomItemRegistry @KobeBryant114514
 
 ### Changed
-
+- Optimized PlaceholderAPI @zimuya4153 @killcerr
 
 ### Fixed
-
+- Fixed ServerSettingForm Callback @KobeBryant114514
+- Fixed Chest UI bugs @Zhongzi8972
+- Fixed include_all @KobeBryant114514
+- Fixed OfflinePlayer @Zhongzi8972
+- Fixed ModAPI macros @KobeBryant114514
+- Fixed custom armor bugs @KobeBryant114514
+- Fixed recipe bugs @KobeBryant114514
+- Fixed GMPlayer::talkAs @KobeBryant114514
+- Fixed I18n literals @KobeBryant114514
 
 ## [1.0.1]
 
@@ -159,7 +171,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#128]: https://github.com/GroupMountain/GMLIB-Release/issues/128
 [#119]: https://github.com/GroupMountain/GMLIB-Release/issues/119
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.1...1.0.2
 [1.0.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0...1.0.1
 [1.0.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.3...1.0.0
 [1.0.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v0.3.10...v1.0.0-rc.1
