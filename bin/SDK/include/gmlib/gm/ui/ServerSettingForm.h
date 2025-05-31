@@ -106,3 +106,15 @@ public:
 };
 
 } // namespace gmlib::ui
+
+#define GMLIB_REGISTER_SERVER_SETTING_FORM(REGISTER_FROM_FUNC)                                                         \
+    inline static auto GMLIB_SERVER_SETTING_FORM_##REGISTER_FROM_FUNC = [] {                                           \
+        REGISTER_FROM_FUNC(::gmlib::ui::ServerSettingFormManager::getInstance());                                      \
+        return 0;                                                                                                      \
+    }();
+
+#define GMLIB_REGISTER_SERVER_SETTING_FORMS(IDENTIFIER, REGISTER_FROM_FUNC)                                            \
+    inline static auto GMLIB_SERVER_SETTING_FORM_##IDENTIFIER = [] {                                                   \
+        REGISTER_FROM_FUNC(::gmlib::ui::ServerSettingFormManager::getInstance());                                      \
+        return 0;                                                                                                      \
+    }();

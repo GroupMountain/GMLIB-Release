@@ -66,6 +66,7 @@
 #include "gmlib/mod/item/base/ICustomArmorItem.h"
 #include "gmlib/mod/item/base/ICustomFoodItem.h"
 #include "gmlib/mod/item/base/ICustomItem.h"
+#include "gmlib/mod/item/base/ICustomToolItem.h"
 #include "gmlib/mod/item/CustomCreativeItemRegistry.h"
 #include "gmlib/mod/item/CustomItemRegistry.h"
 #include "gmlib/mod/item/types/DamageChance.h"

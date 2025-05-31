@@ -61,7 +61,7 @@ public:
     GMLIB_API std::string getLevelName();
 
     GMLIB_API void setLevelName(std::string const& newName);
-
+    
     GMLIB_API bool getExperimentEnabled(AllExperiments experiment) const;
 
     GMLIB_API void setExperimentEnabled(AllExperiments experiment, bool enabled = true);

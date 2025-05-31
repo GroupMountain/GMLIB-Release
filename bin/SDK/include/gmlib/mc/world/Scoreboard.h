@@ -213,10 +213,13 @@ public:
 };
 } // namespace gmlib
 
-GMLIB_NDAPI bool operator==(ScoreboardId const& lhs, ScoreboardId const& rhs);
+GMLIB_NDAPI bool operator==(ScoreboardId const&, ScoreboardId const&);
+
 namespace std {
+
 template <>
 struct hash<::ScoreboardId> {
-    size_t operator()(ScoreboardId const& id) const { return id.mRawID; }
+    size_t operator()(ScoreboardId const&) const;
 };
+
 } // namespace std

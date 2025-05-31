@@ -40,11 +40,13 @@ public:
 
     GMLIB_API bool setDisplayName(std::string_view itemName, std::string_view displayName);
 
-    GMLIB_API bool setFixItem(std::string_view itemName, std::string_view fixItem);
+    GMLIB_API bool setRepairItem(std::string_view itemName, std::string_view fixItem);
 
     GMLIB_NDAPI ::CompoundTag& getAndModifyVanillaNetworkTagInfo(std::string_view itemName);
 
-protected:
+public:
+    GMLIB_NDAPI CustomItemRegistry& _modifyItem(std::function<void(CustomItemRegistry&)>&&);
+
     GMLIB_NDAPI CustomItemRegistry& _registerItem(std::function<std::unique_ptr<Item>()>&&);
 };
 

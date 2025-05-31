@@ -37,6 +37,8 @@ public:
 
     GMLIB_API virtual bool isFoil() const;
 
+    GMLIB_API virtual uint8_t getCompostChance() const;
+
     GMLIB_API virtual DamageChance getItemDamageChance() const;
 
     GMLIB_API virtual short getItemDurability() const;

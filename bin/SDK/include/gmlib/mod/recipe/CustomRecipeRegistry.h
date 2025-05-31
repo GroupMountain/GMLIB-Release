@@ -111,9 +111,9 @@ public:
 
     GMLIB_API CustomRecipeRegistry& registerRecipeFromMemoryJson(std::string const& rawJson);
 
+public:
     GMLIB_API CustomRecipeRegistry& registerRecipeFromJsonFile(std::filesystem::path const& jsonPath);
 
-protected:
     GMLIB_NDAPI CustomRecipeRegistry& _registerRecipe(std::function<std::unique_ptr<ICustomRecipe>()>&&);
 };
 

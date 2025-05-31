@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0-rc.1]
+
+### Added
+- Added CompostChance @KobeBryant114514
+- Added ICustomToolItem @KobeBryant114514
+- Added some macros for registing ServerSettingForm @KobeBryant114514
+- Added static check in build script @killcerr
+- Added ServerId and ActorUniqueId to UserCache @killcerr
+- Added constructor for UserCache @killcerr
+
+### Changed
+- Adapt to 1.21.70 levilamina 1.2.0 @zimuya4153 @KobeBryant114514 @killcerr #n15421
+- Renamed some methods in `CustomItemRegistr` @KobeBryant114514
+- Refactor UserCache @killcerr
+- Use QueryType in user cache @killcerr
+
+### Fixed
+- Fixed ABI broken in `CustomItemRegistry` @KobeBryant114514
+- Removed useless macros @KobeBryant114514
+- Removed GMScoreboard::getAllPlayers() @Zhongzi8972
+- Fixed OfflinePlayer::forEachOfflinePlayer() @Zhongzi8972
+- Fixed GMLevel::readLevelDat() and GMLevel::saveLevelDat() @zimuya4153
+
+## [1.0.2]
+
 ### Added
 - Added Custom Game Rules @KobeBryant114514
 - Added Custom Feature Rules @killcerr
@@ -171,10 +196,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#128]: https://github.com/GroupMountain/GMLIB-Release/issues/128
 [#119]: https://github.com/GroupMountain/GMLIB-Release/issues/119
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.2...HEAD
-[1.0.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.1...1.0.2
-[1.0.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0...1.0.1
-[1.0.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.3...1.0.0
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0-rc.1...HEAD
+[1.2.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.2...v1.2.0-rc.1
+[1.0.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.3...v1.0.0
 [1.0.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v0.3.10...v1.0.0-rc.1
 [1.0.0-rc.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.1...v1.0.0-rc.2
 [1.0.0-rc.3]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.2...v1.0.0-rc.3

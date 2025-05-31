@@ -28,11 +28,13 @@ public:
     // It will contain online players.
     // isOffline: Whether the server.properties chioce "online-mode" is true
     GMLIB_NDAPI static std::vector<OfflinePlayer> getAllOfflinePlayers(bool isOnlineMode = true);
+
     // It maybe can't get a existing player if the UuidDBTag is missing
     // (waiting for verification, it's not a clear aphenomenon)
-    GMLIB_NDAPI static std::optional<OfflinePlayer> getOfflinePlayer(mce::UUID const& uuid);
+    GMLIB_NDAPI static std::optional<OfflinePlayer> fromUuid(mce::UUID const& uuid);
+    GMLIB_NDAPI static std::optional<OfflinePlayer> fromServerId(std::string const& serverId);
+    GMLIB_NDAPI static std::optional<OfflinePlayer> fromActorUniqueId(ActorUniqueID const& uniqueId);
 
-    GMLIB_NDAPI static std::optional<OfflinePlayer> getOfflinePlayer(std::string const& serverId);
     // Some static delete ways
     // Waring:
     // If having a instance of OfflinePlayer, please always prefer using OfflinePlayer::remove().
@@ -52,7 +54,7 @@ public:
     createNewPlayerNbt(mce::UUID const& uuid, CompoundTag& nbt, bool isOnlineMode = true, std::string serverId = {});
     // callback: return true to continue
 
-    GMLIB_API static void foreachOfflinePlayer(std::function<bool(OfflinePlayer&)>&& func, bool isOnlineMode = true);
+    GMLIB_API static void forEachOfflinePlayer(std::function<bool(OfflinePlayer&&)>&& func, bool isOnlineMode = true);
 
 public:
     GMLIB_NDAPI std::string getServerId() const;
