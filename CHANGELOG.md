@@ -7,7 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.2.0-rc.1]
+### Added
+
+### Changed
+
+### Fixed
+
+
+## [1.2.0] - 2025-06-11
+
+### Changed
+
+- Enhanced Placeholder API with Temporary Variable Support @zimuya4153
+- Enhance server_time placeholder with timezone support @zimuya4153
+- Updated glacie api @KobeBryant114514
+- Optimized function cache @KobeBryant114514
+
+### Fixed
+- Fixed `setClientSidebar` @n15421
+- Fixed the data race of BinaryStream::send @KobeBryant114514
+
+## [1.2.0-rc.1] - 2025-05-31
 
 ### Added
 - Added CompostChance @KobeBryant114514
@@ -30,7 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed OfflinePlayer::forEachOfflinePlayer() @Zhongzi8972
 - Fixed GMLevel::readLevelDat() and GMLevel::saveLevelDat() @zimuya4153
 
-## [1.0.2]
+## [1.0.2] - 2025-05-07
 
 ### Added
 - Added Custom Game Rules @KobeBryant114514
@@ -53,7 +73,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed GMPlayer::talkAs @KobeBryant114514
 - Fixed I18n literals @KobeBryant114514
 
-## [1.0.1]
+## [1.0.1] - 2025-04-18
 
 ### Added
 - Added CustomItemRegistry @KobeBryant114514
@@ -65,7 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed CustomRecipeRegistry @KobeBryant114514
 
-## [1.0.0]
+## [1.0.0] - 2025-04-14
 
 ### Added
 
@@ -196,7 +216,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#128]: https://github.com/GroupMountain/GMLIB-Release/issues/128
 [#119]: https://github.com/GroupMountain/GMLIB-Release/issues/119
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0-rc.1...HEAD
+
+
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0-rc.1...v1.2.0
 [1.2.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.2...v1.2.0-rc.1
 [1.0.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0...v1.0.1

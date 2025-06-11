@@ -5,6 +5,7 @@
 #include <ll/api/mod/NativeMod.h>
 #include <mc/deps/core/utility/optional_ref.h>
 #include <mc/world/actor/ActorType.h>
+#include <variant>
 
 namespace gmlib {
 namespace papi::details {
@@ -63,11 +64,41 @@ public:
     };
 
 public:
-    GMLIB_API static std::string&
-    translate(std::string& value, optional_ref<Actor> actor = std::nullopt, std::string language = "");
+    // clang-format off
+    GMLIB_API static std::string& translate(
+        std::string&        value,
+        optional_ref<Actor> actor    = std::nullopt,
+        std::string const&  language = "",
+        ll::DenseMap<
+            std::string,
+            std::variant<
+                std::string,
+                std::function<std::optional<std::string>(
+                    optional_ref<Actor>               actor,
+                    ll::StringMap<std::string> const& params,
+                    std::string const&                language
+                )>
+            >
+        > const& variables = {}
+    );
 
-    GMLIB_API static std::string
-    translate(std::string const& value, optional_ref<Actor> actor = std::nullopt, std::string language = "");
+    GMLIB_API static std::string translate(
+        std::string const&  value,
+        optional_ref<Actor> actor    = std::nullopt,
+        std::string const&  language = "",
+        ll::DenseMap<
+            std::string,
+            std::variant<
+                std::string,
+                std::function<std::optional<std::string>(
+                    optional_ref<Actor>               actor,
+                    ll::StringMap<std::string> const& params,
+                    std::string const&                language
+                )>
+            >
+        > const& variables = {}
+    );
+    // clang-format off
 
     GMLIB_API static bool registerPlaceholder(
         std::string const&                 placeholder,

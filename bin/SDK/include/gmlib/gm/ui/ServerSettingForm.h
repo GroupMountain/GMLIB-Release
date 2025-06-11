@@ -98,6 +98,18 @@ public:
         uint                                    priority = ServerSettingFormManager::getInstance().getDefaultPriority()
     );
 
+    GMLIB_API uint addHeader(
+        std::function<std::string(GMPlayer& player)>&& text,
+        std::function<bool(GMPlayer& player)>&&        playerDetector = [](GMPlayer&) -> bool { return true; },
+        uint priority = ServerSettingFormManager::getInstance().getDefaultPriority()
+    );
+
+    GMLIB_API uint addDivider(
+        std::function<std::string(GMPlayer& player)>&& /*no effect*/ text = [](GMPlayer&) { return ""; },
+        std::function<bool(GMPlayer& player)>&& playerDetector            = [](GMPlayer&) -> bool { return true; },
+        uint                                    priority = ServerSettingFormManager::getInstance().getDefaultPriority()
+    );
+
     GMLIB_API bool removeElement(uint id);
 
     GMLIB_API uint registerCallback(ServerSettingFormCallback&& callback);

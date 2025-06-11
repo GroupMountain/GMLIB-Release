@@ -219,7 +219,7 @@ namespace std {
 
 template <>
 struct hash<::ScoreboardId> {
-    size_t operator()(ScoreboardId const&) const;
+    GMLIB_NDAPI size_t operator()(ScoreboardId const&) const;
 };
 
 } // namespace std

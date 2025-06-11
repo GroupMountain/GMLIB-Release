@@ -36,4 +36,5 @@ GMLIB_API ll::Expected<void> LLMoney_ListenBeforeEvent(LLMoneyCallback callback)
 GMLIB_API ll::Expected<void> LLMoney_ListenAfterEvent(LLMoneyCallback callback);
 
 GMLIB_API ll::Expected<std::vector<std::pair<std::string, llong>>> LLMoney_Ranking(ushort num = 5);
+
 } // namespace LegacyMoney

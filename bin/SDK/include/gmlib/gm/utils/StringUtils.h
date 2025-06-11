@@ -32,4 +32,6 @@ gradientText(fmt::format_string<Args...> fmt, mce::Color const& start, mce::Colo
     return gradientText(fmt::vformat(fmt.get(), fmt::make_format_args(args...)), start, end);
 }
 
+std::string toCamelCase(std::string const& str);
+
 } // namespace gmlib::string_utils

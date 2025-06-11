@@ -10,10 +10,9 @@ namespace gmlib {
 class UserCache {
     struct Impl;
     std::unique_ptr<Impl> pimpl;
-    explicit UserCache(std::unique_ptr<Impl>&&);
+    UserCache();
 
 public:
-    UserCache()                 = delete;
     UserCache(UserCache&&)      = delete;
     UserCache(const UserCache&) = delete;
 
@@ -56,6 +55,9 @@ public:
     GMLIB_API
     ll::Expected<void> remove(std::string const& key, QueryType type = {QueryType::Default});
 
+    /***
+    @details if you want use UserCache, please call it before first player enters server.
+     */
     GMLIB_NDAPI static optional_ref<UserCache> getInstance();
 };
 } // namespace gmlib

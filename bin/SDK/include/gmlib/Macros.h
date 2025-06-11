@@ -6,6 +6,7 @@
 #define GMLIB_API [[maybe_unused]] __declspec(dllimport)
 #endif
 
-#ifndef GMLIB_NDAPI
 #define GMLIB_NDAPI [[nodiscard]] GMLIB_API
-#endif
+
+#define GMLIB_CAPI   extern "C" GMLIB_API
+#define GMLIB_NDCAPI [[nodiscard]] GMLIB_CAPI

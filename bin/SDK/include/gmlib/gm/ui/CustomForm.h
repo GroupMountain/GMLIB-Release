@@ -17,6 +17,8 @@ public:
 
     GMLIB_NDAPI CustomForm();
 
+    GMLIB_API ~CustomForm();
+
 public:
     GMLIB_API void setTitle(std::string const& title);
 
@@ -56,6 +58,11 @@ public:
         size_t                                defaultVal = 0,
         std::function<void(Player&, int64)>&& callback   = {}
     );
+
+    GMLIB_API uint appendHeader(std::string const& text);
+
+    GMLIB_API uint appendDivder(std::string const& /*no effect*/ text = "");
+
 
     GMLIB_API void sendTo(Player& player);
 
