@@ -114,11 +114,7 @@ public:
     GMBinaryStream_Write_Macro(Double, double);
     GMBinaryStream_Write_Macro(Float, float);
     GMBinaryStream_Write_Macro(NormalizedFloat, float);
-    template <typename T>
-        requires(std ::is_enum_v<T> || std ::is_integral_v<T> || std ::is_floating_point_v<T>)
-    inline constexpr void writeUnsignedChar(T value) {
-        BinaryStream::writeByte(static_cast<uchar>(value), nullptr, nullptr);
-    }
+    GMBinaryStream_Write_Macro(UnsignedChar, uchar);
 
     template <ll::concepts::IsString T>
     inline void writeString(T value) {

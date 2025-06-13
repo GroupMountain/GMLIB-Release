@@ -1,7 +1,7 @@
 {
     "name": "GMLIB",
     "entry": "GMLIB.dll",
-    "version": "1.3.0-rc.1+72b794f",
+    "version": "1.2.1+07cb11d",
     "author": "GroupMountain",
     "description": "Group Mountain Library",
     "passive": true,

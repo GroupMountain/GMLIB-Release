@@ -1,4 +1,5 @@
 #pragma once
+#include <filesystem>
 #include <gmlib/Macros.h>
 #include <ll/api/Expected.h>
 #include <ll/api/data/Version.h>
@@ -25,5 +26,11 @@ GMLIB_NDAPI ll::Expected<std::vector<int>> getAllowIncomingProtocolList();
 GMLIB_NDAPI ll::Expected<ll::data::Version> getGlacieVersion();
 
 GMLIB_NDAPI ll::Expected<ll::data::Version> getProtocolLibVersion();
+
+GMLIB_NDAPI ll::Expected<std::filesystem::path> getProtocolLibPath();
+
+GMLIB_NDAPI ll::Expected<bool> enable();
+
+GMLIB_NDAPI ll::Expected<bool> disable();
 
 } // namespace glacie
