@@ -14,6 +14,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+### [1.3.0] - 2025-06-14
+
+### Added
+
+- Added some new placeholders @zimuya4153
+
+### Fixed
+
+- Fixed GlacieAPI @KobeBryant114514
+- Fixed Form API @zimuya4153
+
+## [1.3.0-rc.1] - 2025-06-12
+
+### Changed
+
+- Adapt to LeviLamina 1.3.0 and bds 1.21.80.03 @zimuya4153
+
 ## [1.2.1] - 2025-06-14
 
 ### Fixed
@@ -224,8 +241,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
 
 
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.1...HEAD
-[1.2.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0...v1.2.1
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.1...1.3.0
+[1.2.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.0-rc.1...v1.2.1
+[1.3.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0...v1.3.0-rc.1
 [1.2.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0-rc.1...v1.2.0
 [1.2.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.2...v1.2.0-rc.1
 [1.0.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.1...v1.0.2
