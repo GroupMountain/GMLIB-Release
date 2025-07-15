@@ -6,6 +6,7 @@
 
 // IWYU pragma: begin_exports
 #include "gmlib/gm/data/UserCache.h"
+#include "gmlib/gm/economics/EconomicsEvents.h"
 #include "gmlib/gm/economics/EconomicsSystem.h"
 #include "gmlib/gm/economics/EconomicsSystemManager.h"
 #include "gmlib/gm/enum/ChestType.h"

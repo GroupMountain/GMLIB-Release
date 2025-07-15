@@ -14,6 +14,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [1.3.1] - 2025-07-16
+
+### Added
+
+- Added get player version api for Player @KobeBryant114514
+- Added timezone support and improve server time placeholders @zimuya4153
+- Added new placeholders and deprecate player_ping @zimuya4153
+- Added player_client_version placeholder @KobeBryant114514
+- Added papi to i18n literals @KobeBryant114514
+- Added some apis for EconomicsSystem @killcerr
+
+### Changed
+
+- Enhance BinaryStream @zimuya4153
+
+### Fixed
+
+- Fixed UserCache @killcerr
+- Fixed refresh in Player::setNBT @Zhongzi8972
+
+
 ### [1.3.0] - 2025-06-14
 
 ### Added
@@ -241,7 +262,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
 
 
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.0...1.3.1
 [1.3.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.1...1.3.0
 [1.2.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.0-rc.1...v1.2.1
 [1.3.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0...v1.3.0-rc.1

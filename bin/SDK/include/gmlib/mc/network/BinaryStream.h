@@ -1,7 +1,11 @@
 #pragma once
 #include "gmlib/Macros.h"
+#include <mc/common/SubClientId.h>
 #include <mc/deps/core/utility/BinaryStream.h>
-#include <mc/network/MinecraftPackets.h>
+#include <mc/network/Compressibility.h>
+#include <mc/network/NetworkIdentifier.h>
+#include <mc/network/MinecraftPacketIds.h>
+#include <mc/network/NetworkPeer.h>
 
 class CompoundTag;
 class DataItem;
@@ -10,6 +14,7 @@ class Vec2;
 class SerializedAbilitiesData;
 class SerializedSkin;
 class NetworkItemStackDescriptor;
+class Packet;
 struct ActorLink;
 namespace mce {
 class UUID;
@@ -21,6 +26,22 @@ class GMPlayer;
 class GMCompoundTag;
 
 class GMBinaryStream : public BinaryStream {
+public:
+    using BinaryStream::BinaryStream;
+    GMLIB_NDAPI GMBinaryStream(GMBinaryStream const&);
+    GMLIB_NDAPI explicit GMBinaryStream(Packet const& packet);
+    // When allowModify is false, it will copy itself and then execute toPacket
+    GMLIB_NDAPI std::shared_ptr<Packet> toPacket(bool allowModify = true);
+    GMLIB_NDAPI std::shared_ptr<Packet> toPacket() const;
+    template <std::derived_from<Packet> T>
+    [[nodiscard]] constexpr inline std::shared_ptr<T> toPacket(bool allowModify = true) {
+        return std::static_pointer_cast<T>(toPacket(allowModify));
+    }
+    template <std::derived_from<Packet> T>
+    [[nodiscard]] constexpr inline std::shared_ptr<T> toPacket() const {
+        return std::static_pointer_cast<T>(toPacket());
+    }
+
 public:
     GMLIB_API void writePacketHeader(MinecraftPacketIds packetId, SubClientId subId = SubClientId::PrimaryClient);
     GMLIB_API void sendTo(

@@ -2,23 +2,21 @@
 #include "gmlib/Macros.h"
 #include <ll/api/base/StdInt.h>
 #include <mc/platform/UUID.h>
-#include <optional>
-#include <string>
 
 namespace gmlib::economics {
 
 class EconomicsSystem {
 public:
-    GMLIB_NDAPI EconomicsSystem();
-    virtual ~EconomicsSystem();
+    GMLIB_API EconomicsSystem();
+    GMLIB_API virtual ~EconomicsSystem();
     EconomicsSystem(EconomicsSystem&&)                 = delete;
     EconomicsSystem& operator=(EconomicsSystem&&)      = delete;
     EconomicsSystem(EconomicsSystem const&)            = delete;
     EconomicsSystem& operator=(EconomicsSystem const&) = delete;
 
-    virtual std::string getName() const = 0; // Name of the economics system (Immutable)
-    virtual std::string getSymbol() const;
-    virtual uint8       getDecimals() const;
+    virtual std::string_view getName() const = 0; // Name of the economics system (Immutable)
+    virtual std::string_view getSymbol() const;
+    virtual uint8            getDecimals() const;
 
     virtual uint64 totalSupply() const                                                  = 0;
     virtual uint64 balanceOf(mce::UUID const& owner) const                              = 0;

@@ -1,7 +1,8 @@
 #pragma once
-#include "gmlib/Macros.h"
-#include "ll/api/base/FixedString.h"
-#include "ll/api/utils/SystemUtils.h"
+#include <gmlib/Macros.h>
+#include <gmlib/gm/papi/PlaceholderAPI.h>
+#include <ll/api/base/FixedString.h>
+#include <ll/api/utils/SystemUtils.h>
 #include <mc/deps/core/utility/optional_ref.h>
 #include <nlohmann/json.hpp>
 
@@ -128,6 +129,20 @@ template <::ll::FixedString Fmt>
 [[nodiscard]] constexpr auto operator""_transl() {
     return [=]<class... Args>(std::string const& languageCode, Args&&... args) {
         return I18nAPI::trl(Fmt.str(), languageCode, args...);
+    };
+}
+
+template <::ll::FixedString Fmt>
+[[nodiscard]] constexpr auto operator""_transp() {
+    return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {
+        return gmlib::PlaceholderAPI::translate(I18nAPI::tr(Fmt.str(), args...), actor);
+    };
+}
+
+template <::ll::FixedString Fmt>
+[[nodiscard]] constexpr auto operator""_translp() {
+    return [=]<class... Args>(std::string const& languageCode, optional_ref<Actor> actor, Args&&... args) {
+        return gmlib::PlaceholderAPI::translate(I18nAPI::trl(Fmt.str(), languageCode, args...), actor);
     };
 }
 

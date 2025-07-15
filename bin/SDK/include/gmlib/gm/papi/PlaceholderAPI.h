@@ -181,8 +181,8 @@ public:
 
     GMLIB_NDAPI static ll::DenseMap<std::string, PlaceholderData> getAllPlaceholderData();
 
-    GMLIB_NDAPI static ll::DenseMap<std::string, PlaceholderData> getAllPlaceholderData(std::weak_ptr<ll::mod::Mod> mod
-    );
+    GMLIB_NDAPI static ll::DenseMap<std::string, PlaceholderData>
+    getAllPlaceholderData(std::weak_ptr<ll::mod::Mod> mod);
 };
 
 } // namespace gmlib

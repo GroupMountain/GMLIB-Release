@@ -3,12 +3,12 @@
 // clang-format off
 #define GMLIB_VERSION_MAJOR         1
 #define GMLIB_VERSION_MINOR         3
-#define GMLIB_VERSION_PATCH         0
+#define GMLIB_VERSION_PATCH         1
 /* #undef GMLIB_VERSION_PRERELEASE */
-#define GMLIB_VERSION_COMMIT_SHA    1d04fac
+#define GMLIB_VERSION_COMMIT_SHA    7c1ac7b
 // clang-format on
 
-#define GMLIB_WORKSPACE_FOLDER R"(C:\a\GMLIB\GMLIB\)"
+#define GMLIB_WORKSPACE_FOLDER R"(D:\a\GMLIB\GMLIB\)"
 
 #define GMLIB_VERSION_TO_STRING_INNER(ver) #ver
 #define GMLIB_VERSION_TO_STRING(ver)       GMLIB_VERSION_TO_STRING_INNER(ver)

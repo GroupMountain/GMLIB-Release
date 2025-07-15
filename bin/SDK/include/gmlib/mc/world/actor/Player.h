@@ -2,6 +2,7 @@
 #include "gmlib/Macros.h"
 #include "gmlib/gm/enum/WeatherType.h"
 
+#include "ll/api/data/Version.h"
 #include "mc/network/packet/SetTitlePacket.h"
 #include "mc/server/ServerPlayer.h"
 #include "mc/world/actor/ai/util/BossBarColor.h"
@@ -161,6 +162,10 @@ public:
     GMLIB_API void talkAs(std::string_view message);
 
     GMLIB_NDAPI int getNetworkProtocolVersion();
+
+    GMLIB_NDAPI ll::data::Version getClientVersion();
+
+    GMLIB_NDAPI bool isPreviewClient();
 
 public:
     GMLIB_NDAPI static optional_ref<GMPlayer> getServerPlayer(NetworkIdentifier const& source, ::SubClientId subId);

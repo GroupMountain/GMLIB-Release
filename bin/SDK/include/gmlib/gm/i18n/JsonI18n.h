@@ -1,7 +1,8 @@
 #pragma once
-#include "gmlib/gm/i18n/base/JsonLanguage.h"
-#include "ll/api/base/FixedString.h"
-#include "ll/api/utils/SystemUtils.h"
+#include <gmlib/gm/i18n/base/JsonLanguage.h>
+#include <gmlib/gm/papi/PlaceholderAPI.h>
+#include <ll/api/base/FixedString.h>
+#include <ll/api/utils/SystemUtils.h>
 #include <memory>
 
 namespace gmlib::i18n {
@@ -77,7 +78,7 @@ private:
 
 } // namespace gmlib::i18n
 
-#define JSONI18N_LITERALS(i18nInstance)                                                                                \
+#define GMLIB_JSONI18N_LITERALS(i18nInstance)                                                                          \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_tr() {                                                                     \
         return [=]<class... Args>(Args&&... args) { return i18nInstance.tr(Fmt.str(), args...); };                     \
@@ -86,5 +87,17 @@ private:
     [[nodiscard]] constexpr auto operator""_trl() {                                                                    \
         return [=]<class... Args>(std::string const& languageCode, Args&&... args) {                                   \
             return i18nInstance.trl(Fmt.str(), languageCode, args...);                                                 \
+        };                                                                                                             \
+    }                                                                                                                  \
+    template <::ll::FixedString Fmt>                                                                                   \
+    [[nodiscard]] constexpr auto operator""_trp() {                                                                    \
+        return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {                                         \
+            return gmlib::PlaceholderAPI::translate(i18nInstance.tr(Fmt.str(), args...), actor);                       \
+        };                                                                                                             \
+    }                                                                                                                  \
+    template <::ll::FixedString Fmt>                                                                                   \
+    [[nodiscard]] constexpr auto operator""_trlp() {                                                                   \
+        return [=]<class... Args>(std::string const& languageCode, optional_ref<Actor> actor, Args&&... args) {        \
+            return gmlib::PlaceholderAPI::translate(i18nInstance.trl(Fmt.str(), languageCode, args...), actor);        \
         };                                                                                                             \
     }
