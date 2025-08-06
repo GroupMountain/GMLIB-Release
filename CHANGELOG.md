@@ -13,6 +13,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.4.2] - 2025-08-06
+
+### Added
+
+- Added hot deletion of deteLevelChunck chunks @zimuya4153
+- Added BlockHelper @killcerr
+- Added ChestUI::getSlot https://github.com/GroupMountain/GMLIB-Release/issues/142 @Zhongzi8972
+- Added support for pregeneration_pass @killcerr
+
+### Changed
+
+- Refactor CustomFeature @killcerr
+- Optimized GMBinaryStream @zimuya4153
+
+### Fixed
+
+- Fixed crash when add invalid user cache @killcerr
+- Fixed GMPlayer::setNbt didn't refresh player inventory @Zhongzi8972
+- Fixed ChestUI::sendTo couldn't open another UI when there is a UI opened @Zhongzi8972
+- Fixed https://github.com/GroupMountain/GMLIB-LegacyRemoteCallApi/issues/58 @Zhongzi8972
+- Fixed https://github.com/GroupMountain/GMLIB-LegacyRemoteCallApi/issues/56 @Zhongzi8972
+- Fixed https://github.com/GroupMountain/GMLIB-Release/issues/141 @Zhongzi8972
+- Fixed OfflinePlayer::getAllOfflinePlayers bug in some exceptional case @Zhongzi8972
+
+
 
 ## [1.4.0] - 2025-07-16
 
