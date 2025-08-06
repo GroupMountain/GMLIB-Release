@@ -222,6 +222,6 @@ public:
 
     GMLIB_API void setServerMotd(std::string_view const& motd);
 
-    GMLIB_API bool deleteLevelChunk(::ChunkPos const& cp, DimensionType dimId);
+    GMLIB_API void deleteLevelChunk(::ChunkPos const& cp, DimensionType dimId, bool refresh = true);
 };
 } // namespace gmlib

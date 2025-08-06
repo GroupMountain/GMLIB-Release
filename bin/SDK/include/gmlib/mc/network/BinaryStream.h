@@ -12,9 +12,13 @@ class DataItem;
 class Vec3;
 class Vec2;
 class SerializedAbilitiesData;
+class NetworkConnection;
 class SerializedSkin;
+class NetworkPeer;
 class NetworkItemStackDescriptor;
+class EntityContext;
 class Packet;
+class Player;
 struct ActorLink;
 namespace mce {
 class UUID;
@@ -45,7 +49,7 @@ public:
 public:
     GMLIB_API void writePacketHeader(MinecraftPacketIds packetId, SubClientId subId = SubClientId::PrimaryClient);
     GMLIB_API void sendTo(
-        GMPlayer&                player,
+        ::Player&                player,
         NetworkPeer::Reliability reliability  = NetworkPeer::Reliability::ReliableOrdered,
         Compressibility          compressible = Compressibility::Compressible
     );
@@ -54,9 +58,20 @@ public:
         NetworkPeer::Reliability   reliability  = NetworkPeer::Reliability::ReliableOrdered,
         Compressibility            compressible = Compressibility::Compressible
     );
-    GMLIB_API void sendToClients(
+    GMLIB_API void sendTo(
+        ::NetworkConnection&     connection,
         NetworkPeer::Reliability reliability  = NetworkPeer::Reliability::ReliableOrdered,
         Compressibility          compressible = Compressibility::Compressible
+    );
+    GMLIB_API void sendTo(
+        ::NetworkPeer&           peer,
+        NetworkPeer::Reliability reliability  = NetworkPeer::Reliability::ReliableOrdered,
+        Compressibility          compressible = Compressibility::Compressible
+    );
+    GMLIB_API void sendToClients(
+        std::function<bool(GMPlayer&)> filter       = {},
+        NetworkPeer::Reliability       reliability  = NetworkPeer::Reliability::ReliableOrdered,
+        Compressibility                compressible = Compressibility::Compressible
     );
     GMLIB_API void sendToDimension(
         DimensionType            dimId,

@@ -10,10 +10,10 @@
 namespace gmlib::mod {
 GMLIB_API void registerFeature(const std::string& identifier, std::unique_ptr<IFeature> feature);
 GMLIB_API void registerFeatureRule(
-    const std::string&                                                                   identifier,
-    const std::vector<std::string>&                                                      passes,
-    const std::string&                                                                   placeFeature,
-    std::function<ll::coro::Generator<BlockPos>(BlockSource&, const BlockPos&, Random&)> rule
+    const std::string&                                                                         identifier,
+    const std::vector<std::string>&                                                            passes,
+    const std::string&                                                                         placeFeature,
+    std::function<ll::coro::Generator<BlockPos>(const BlockHelper&, const BlockPos&, Random&)> rule
 );
 // register data driven feature and feature rule
 GMLIB_API void registerFeature(const nlohmann::json& json);

@@ -87,6 +87,7 @@
 #include "gmlib/mod/recipe/base/ICustomSmithingTrimRecipe.h"
 #include "gmlib/mod/recipe/base/ICustomStoneCutterRecipe.h"
 #include "gmlib/mod/recipe/CustomRecipeRegistry.h"
+#include "gmlib/mod/worldgen/BlockHelper.h"
 #include "gmlib/mod/worldgen/FeatureRegistry.h"
 #include "gmlib/mod/worldgen/ICustomFeature.h"
 #include "gmlib/Version.h"

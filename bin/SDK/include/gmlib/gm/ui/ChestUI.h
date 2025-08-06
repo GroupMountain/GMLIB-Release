@@ -65,6 +65,9 @@ public:
     GMLIB_API ChestUI& registerSlot(int slot, GMItemStack const& item, ChestSlotType type = ChestSlotType::Chest);
     GMLIB_API ChestUI& registerSlot(int slot, GMCompoundTag const& nbt, ChestSlotType type = ChestSlotType::Chest);
 
+    //Return what the slot contains.
+    GMLIB_API optional_ref<GMCompoundTag> getSlot(int slot, ChestSlotType type = ChestSlotType::Chest) const;
+
     GMLIB_API ChestUI& registerCallback(ChestUICallback&& callback);
 
     // overideInventory: If true, the player's inventory in cliend will be overide by the form. (Will not affect the
