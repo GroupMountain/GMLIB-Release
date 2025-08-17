@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [1.4.3] - 2025-08-17
+
+### Fixed
+
+- Fixed https://github.com/GroupMountain/GMLIB-Release/issues/148 @Zhongzi8972
+- Fixed https://github.com/GroupMountain/GMLIB-Release/issues/149 @Zhongzi8972
+- Fixed Glacie API @KobeBryant114514
+
 ## [1.4.2] - 2025-08-06
 
 ### Added
