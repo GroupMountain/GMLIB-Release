@@ -7,27 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2025-09-26
+
 ### Added
+
+- Added TpsStatus feature @zimuya4153
 
 ### Changed
 
+- Adapted to levilamina 1.5.1 and bds 1.21.102 @zimuya4153
+- Enhance network stream functionality with improved sending methods @zimuya4153
+- Split the repo into dynamic libraries and static libraries @zimuya4153
+
 ### Fixed
+
+- Fixed GlacieApi function ptr @KobeBryant114514
+- Fixed BlockHelper header @Zhongzi8972
+- Fixed wrong call for DynamicFloatingText::startUpdate @Zhongzi8972
+- Fixed swapEndian in GMBinaryStream @killcerr
 
 ## [1.4.3] - 2025-08-17
 
 ### Fixed
 
-- Fixed https://github.com/GroupMountain/GMLIB-Release/issues/148 @Zhongzi8972
-- Fixed https://github.com/GroupMountain/GMLIB-Release/issues/149 @Zhongzi8972
+- Fixed [#148] @Zhongzi8972
+- Fixed [#149] @Zhongzi8972
 - Fixed Glacie API @KobeBryant114514
 
-## [1.4.2] - 2025-08-06
+## [1.4.1] - 2025-08-06
 
 ### Added
 
 - Added hot deletion of deteLevelChunck chunks @zimuya4153
 - Added BlockHelper @killcerr
-- Added ChestUI::getSlot https://github.com/GroupMountain/GMLIB-Release/issues/142 @Zhongzi8972
+- Added ChestUI::getSlot [#142] @Zhongzi8972
 - Added support for pregeneration_pass @killcerr
 
 ### Changed
@@ -40,19 +53,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed crash when add invalid user cache @killcerr
 - Fixed GMPlayer::setNbt didn't refresh player inventory @Zhongzi8972
 - Fixed ChestUI::sendTo couldn't open another UI when there is a UI opened @Zhongzi8972
-- Fixed https://github.com/GroupMountain/GMLIB-LegacyRemoteCallApi/issues/58 @Zhongzi8972
-- Fixed https://github.com/GroupMountain/GMLIB-LegacyRemoteCallApi/issues/56 @Zhongzi8972
-- Fixed https://github.com/GroupMountain/GMLIB-Release/issues/141 @Zhongzi8972
+- Fixed (GMLIB-LegacyRemoteCallApi#issue-58)[https://github.com/GroupMountain/GMLIB-LegacyRemoteCallApi/issues/58] @Zhongzi8972
+- Fixed (GMLIB-LegacyRemoteCallApi#issue-56)[https://github.com/GroupMountain/GMLIB-LegacyRemoteCallApi/issues/56] @Zhongzi8972
+- Fixed [#141] @Zhongzi8972
 - Fixed OfflinePlayer::getAllOfflinePlayers bug in some exceptional case @Zhongzi8972
-
-
 
 ## [1.4.0] - 2025-07-16
 
 ### Changed
 
 - Adapted to LeviLamina 1.4.0 and bds 1.21.93.1 @zimuya4153
-
 
 ## [1.3.1] - 2025-07-16
 
@@ -64,6 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added player_client_version placeholder @KobeBryant114514
 - Added papi to i18n literals @KobeBryant114514
 - Added some apis for EconomicsSystem @killcerr
+- Added some new placeholders @zimuya4153
 
 ### Changed
 
@@ -73,16 +84,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed UserCache @killcerr
 - Fixed refresh in Player::setNBT @Zhongzi8972
-
-
-### [1.3.0] - 2025-06-14
-
-### Added
-
-- Added some new placeholders @zimuya4153
-
-### Fixed
-
 - Fixed GlacieAPI @KobeBryant114514
 - Fixed Form API @zimuya4153
 
@@ -108,12 +109,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optimized function cache @KobeBryant114514
 
 ### Fixed
+
 - Fixed `setClientSidebar` @n15421
 - Fixed the data race of BinaryStream::send @KobeBryant114514
 
 ## [1.2.0-rc.1] - 2025-05-31
 
 ### Added
+
 - Added CompostChance @KobeBryant114514
 - Added ICustomToolItem @KobeBryant114514
 - Added some macros for registing ServerSettingForm @KobeBryant114514
@@ -122,12 +125,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added constructor for UserCache @killcerr
 
 ### Changed
+
 - Adapt to 1.21.70 levilamina 1.2.0 @zimuya4153 @KobeBryant114514 @killcerr #n15421
 - Renamed some methods in `CustomItemRegistr` @KobeBryant114514
 - Refactor UserCache @killcerr
 - Use QueryType in user cache @killcerr
 
 ### Fixed
+
 - Fixed ABI broken in `CustomItemRegistry` @KobeBryant114514
 - Removed useless macros @KobeBryant114514
 - Removed GMScoreboard::getAllPlayers() @Zhongzi8972
@@ -137,6 +142,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.2] - 2025-05-07
 
 ### Added
+
 - Added Custom Game Rules @KobeBryant114514
 - Added Custom Feature Rules @killcerr
 - Added new Glacie API @KobeBryant114514
@@ -144,9 +150,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added change vanilla items in CustomItemRegistry @KobeBryant114514
 
 ### Changed
+
 - Optimized PlaceholderAPI @zimuya4153 @killcerr
 
 ### Fixed
+
 - Fixed ServerSettingForm Callback @KobeBryant114514
 - Fixed Chest UI bugs @Zhongzi8972
 - Fixed include_all @KobeBryant114514
@@ -160,13 +168,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2025-04-18
 
 ### Added
+
 - Added CustomItemRegistry @KobeBryant114514
 - Added CustomCreativeItemRegistry @KobeBryant114514
 
-### Changed
-
-
 ### Fixed
+
 - Fixed CustomRecipeRegistry @KobeBryant114514
 
 ## [1.0.0] - 2025-04-14
@@ -205,16 +212,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0-rc.3] - 2025-03-22
 
-### Changed
-
-- Added more detailed version information for manifest.json file @zimuya4153
-
 ### Added
 
 - Added logo printing when enabling @zimuya4153
 - Added gradientText API and gradient output @zimuya4153
 
-### Fixeded
+### Changed
+
+- Added more detailed version information for manifest.json file @zimuya4153
+
+### Fixed
 
 - Fixed ChestUI big chest showing error @Zhongzi8972
 - Fixed MCI18n @Zhongzi8972
@@ -222,12 +229,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed include_all.h @zimuya4153
 
 ## [1.0.0-rc.2] - 2025-03-20
-
-### Changed
-
-- Refactored FloatingText @KobeBryant114514
-- Reorganized Actor.h and Player.h @Zhongzi8972
-- Reorganized serveral headers @KobeBryant114514
 
 ### Added
 
@@ -238,7 +239,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Resouce Util @KobeBryant114514
 - Added GlobalUsing.h @zimuya4153
 
-### Fixeded
+### Changed
+
+- Refactored FloatingText @KobeBryant114514
+- Reorganized Actor.h and Player.h @Zhongzi8972
+- Reorganized serveral headers @KobeBryant114514
+
+### Fixed
 
 - Fixed serveral errors for PAPI @zimuya4153
 - Fixed DynamicFloatingText @KobeBryant114514
@@ -248,6 +255,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed file typo @zimuya4153
 
 ## [1.0.0-rc.1] - 2025-03-16
+
+### Added
+
+- Added Actor PAPI [#119] @zimuya4153
+- Added annotationdocs for headers @Zhongzi8972
+- Added UnloadedActor.h @Zhongzi8972
+- Added OfflinePlayer.h @Zhongzi8972
+- Added SystemUtil.h @zimuya4153
+- Added Function.h @KobeBryant114514 @zimuya4153 @killcerr
+- Added GlacieAPI.h @KobeBryant114514
+- Added entries sort for PlayerListAPI @Zhongzi8972
+- Added template for FloatingTextManager @Zhongzi8972
+- Added GMLevel::deleteLevelChunk @KobeBryant114514 @Zhongzi8972
+- Added GMBinaryStream::writeNetworkItemStackDescriptor @KobeBryant114514
 
 ### Changed
 
@@ -275,21 +296,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed GMLevel::setWorldSpawn @Zhongzi8972
 - Removed GMLIB::Version @Zhongzi8972
 
-### Added
-
-- Added Actor PAPI [#119] @zimuya4153
-- Added annotationdocs for headers @Zhongzi8972
-- Added UnloadedActor.h @Zhongzi8972
-- Added OfflinePlayer.h @Zhongzi8972
-- Added SystemUtil.h @zimuya4153
-- Added Function.h @KobeBryant114514 @zimuya4153 @killcerr
-- Added GlacieAPI.h @KobeBryant114514
-- Added entries sort for PlayerListAPI @Zhongzi8972
-- Added template for FloatingTextManager @Zhongzi8972
-- Added GMLevel::deleteLevelChunk @KobeBryant114514 @Zhongzi8972
-- Added GMBinaryStream::writeNetworkItemStackDescriptor @KobeBryant114514
-
-### Fixeded
+### Fixed
 
 - Fixed GMLevel::getAverageTps @Zhongzi8972 @zimuya4153
 - Fixed GMBinaryStream::writeActorLink @EpsilonZunsat
@@ -297,21 +304,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed GMLevel::fillBlocks @Zhongzi8972
 - Fixed GMLevel::giveItem @Zhongzi8972
 
-[#128]: https://github.com/GroupMountain/GMLIB-Release/issues/128
 [#119]: https://github.com/GroupMountain/GMLIB-Release/issues/119
 [#122]: https://github.com/GroupMountain/GMLIB-Release/issues/122
+[#128]: https://github.com/GroupMountain/GMLIB-Release/issues/128
+[#141]: https://github.com/GroupMountain/GMLIB-Release/issues/141
+[#142]: https://github.com/GroupMountain/GMLIB-Release/issues/142
+[#148]: https://github.com/GroupMountain/GMLIB-Release/issues/148
+[#149]: https://github.com/GroupMountain/GMLIB-Release/issues/149
 
-
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.1...HEAD
-[1.3.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.0...1.3.1
-[1.3.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.1...1.3.0
-[1.2.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.0-rc.1...v1.2.1
-[1.3.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0...v1.3.0-rc.1
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.4.3...v1.5.0
+[1.4.3]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.4.1...v1.4.3
+[1.4.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.4.0...v1.4.1
+[1.4.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.1...v1.4.0
+[1.3.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.3.0-rc.1...v1.3.1
+[1.3.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.1...v1.3.0-rc.1
+[1.2.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.2.0-rc.1...v1.2.0
 [1.2.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.2...v1.2.0-rc.1
 [1.0.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.3...v1.0.0
-[1.0.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v0.3.10...v1.0.0-rc.1
-[1.0.0-rc.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.1...v1.0.0-rc.2
 [1.0.0-rc.3]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.2...v1.0.0-rc.3
+[1.0.0-rc.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.0.0-rc.1...v1.0.0-rc.2
+[1.0.0-rc.1]: https://github.com/GroupMountain/GMLIB-Release/releases/tag/v1.0.0-rc.1
