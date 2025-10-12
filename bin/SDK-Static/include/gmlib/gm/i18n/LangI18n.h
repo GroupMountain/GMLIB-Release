@@ -15,33 +15,33 @@ private:
     std::unique_ptr<Impl> pImpl;
 
 public:
-     LangI18n(std::filesystem::path const& languageDirectory, std::string const& languageCode = "en_US");
+    LangI18n(std::filesystem::path const& languageDirectory, std::string const& languageCode = "en_US");
 
     LangI18n() = delete;
 
 public:
-     virtual ~LangI18n();
+    virtual ~LangI18n();
 
 public:
-     bool updateOrCreateLanguage(std::string const& languageCode, std::string const& language);
+    bool updateOrCreateLanguage(std::string const& languageCode, std::string const& language);
 
-     bool updateOrCreateLanguage(std::string const& languageCode, McLang const& language);
+    bool updateOrCreateLanguage(std::string const& languageCode, McLang const& language);
 
-     bool updateOrCreateLanguage(
+    bool updateOrCreateLanguage(
         std::string const&            languageCode,
         int                           resourceId,
         ll::utils::sys_utils::HandleT handle = ll::sys_utils::getCurrentModuleHandle()
     );
 
-     bool loadAllLanguages();
+    bool loadAllLanguages();
 
-     void reloadAllLanguages();
+    void reloadAllLanguages();
 
-     bool chooseLanguage(std::string const& languageCode = "en_US");
+    bool chooseLanguage(std::string const& languageCode = "en_US");
 
-     void setDefaultLanguage(std::string const& languageCode = "en_US");
+    void setDefaultLanguage(std::string const& languageCode = "en_US");
 
-     std::string
+    std::string
     translate(std::string const& key, std::vector<std::string> const& params = {}, std::string const& data = "%0$s");
 
     template <typename... Args>
@@ -58,21 +58,21 @@ public:
         return get(key, languageCode, params);
     }
 
-     std::string translate(
+    std::string translate(
         std::string const&              key,
         std::string const&              localLanguage,
         std::vector<std::string> const& params = {},
         std::string const&              data   = "%0$s"
     );
 
-     std::string
+    std::string
     get(std::string const& key, std::vector<std::string> const& params = {}, std::string const& data = "%0$s");
 
-     std::string
-                get(std::string const&              key,
-                    std::string const&              localLanguage,
-                    std::vector<std::string> const& params = {},
-                    std::string const&              data   = "%0$s");
+    std::string
+    get(std::string const&              key,
+        std::string const&              localLanguage,
+        std::vector<std::string> const& params = {},
+        std::string const&              data   = "%0$s");
 
 private:
     bool loadOrCreateLanguage(std::string const& languageCode, std::shared_ptr<LangLanguage> language);
@@ -81,7 +81,7 @@ private:
 } // namespace gmlib::i18n
 
 #if __has_include(<gmlib/gm/papi/PlaceholderAPI.h>)
-#define GMLIB_LANGI18N_LITERALS_PAPI                                                                                   \
+#define GMLIB_LANGI18N_LITERALS_PAPI(i18nInstance)                                                                     \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trp() {                                                                    \
         return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {                                         \
@@ -95,18 +95,18 @@ private:
         };                                                                                                             \
     }
 #else
-#define GMLIB_LANGI18N_LITERALS_PAPI
+#define GMLIB_LANGI18N_LITERALS_PAPI(i18nInstance)
 #endif
 
 #define GMLIB_LANGI18N_LITERALS(i18nInstance)                                                                          \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_tr() {                                                                     \
-        return [=]<class... Args>(Args&&... args) { return i18nInstance.tr(Fmt.str(), args...); };                     \
+        return [=]<class... Args>(Args&&... args) { return (i18nInstance).tr(Fmt.str(), args...); };                   \
     }                                                                                                                  \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trl() {                                                                    \
         return [=]<class... Args>(std::string const& languageCode, Args&&... args) {                                   \
-            return i18nInstance.trl(Fmt.str(), languageCode, args...);                                                 \
+            return (i18nInstance).trl(Fmt.str(), languageCode, args...);                                               \
         };                                                                                                             \
     }                                                                                                                  \
-    GMLIB_LANGI18N_LITERALS_PAPI
+    GMLIB_LANGI18N_LITERALS_PAPI(i18nInstance)

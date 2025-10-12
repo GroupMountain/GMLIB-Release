@@ -80,19 +80,19 @@ private:
 
 #if __has_include(<gmlib/gm/papi/PlaceholderAPI.h>)
 #include <gmlib/gm/papi/PlaceholderAPI.h>
-#define GMLIB_JSONI18N_LITERALS_PAPI(i18nInstance)
-template <::ll::FixedString Fmt>
-[[nodiscard]] constexpr auto operator""_trp() {
-    return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {
-        return gmlib::PlaceholderAPI::translate(i18nInstance.tr(Fmt.str(), args...), actor);
-    };
-}
-template <::ll::FixedString Fmt>
-[[nodiscard]] constexpr auto operator""_trlp() {
-    return [=]<class... Args>(std::string const& languageCode, optional_ref<Actor> actor, Args&&... args) {
-        return gmlib::PlaceholderAPI::translate(i18nInstance.trl(Fmt.str(), languageCode, args...), actor);
-    };
-}
+#define GMLIB_JSONI18N_LITERALS_PAPI(i18nInstance)                                                                     \
+    template <::ll::FixedString Fmt>                                                                                   \
+    [[nodiscard]] constexpr auto operator""_trp() {                                                                    \
+        return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {                                         \
+            return gmlib::PlaceholderAPI::translate(i18nInstance.tr(Fmt.str(), args...), actor);                       \
+        };                                                                                                             \
+    }                                                                                                                  \
+    template <::ll::FixedString Fmt>                                                                                   \
+    [[nodiscard]] constexpr auto operator""_trlp() {                                                                   \
+        return [=]<class... Args>(std::string const& languageCode, optional_ref<Actor> actor, Args&&... args) {        \
+            return gmlib::PlaceholderAPI::translate(i18nInstance.trl(Fmt.str(), languageCode, args...), actor);        \
+        };                                                                                                             \
+    }
 #else
 #define GMLIB_JSONI18N_LITERALS_PAPI(i18nInstance)
 #endif

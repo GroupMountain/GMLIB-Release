@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.1] - 2025-10-12
+
+### Fixed
+
+- Fixed the Chinese path of ZipUtils @zimuya4153
+- Fixed API calls @zimuya4153
+- Fixed the loading of the ResourceI18n material package @zimuya4153
+- Fixed the JsonI18n header file @zimuya4153
+
 ## [1.5.0] - 2025-09-26
 
 ### Added
@@ -312,7 +321,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#148]: https://github.com/GroupMountain/GMLIB-Release/issues/148
 [#149]: https://github.com/GroupMountain/GMLIB-Release/issues/149
 
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.1...HEAD
+[1.5.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.4.1...v1.4.3
 [1.4.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.4.0...v1.4.1
