@@ -5,7 +5,7 @@
 #define GMLIB_VERSION_MINOR         5
 #define GMLIB_VERSION_PATCH         1
 /* #undef GMLIB_VERSION_PRERELEASE */
-#define GMLIB_VERSION_COMMIT_SHA    d6aab32
+#define GMLIB_VERSION_COMMIT_SHA    a7251fc
 // clang-format on
 
 #define GMLIB_VERSION_TO_STRING_INNER(ver) #ver

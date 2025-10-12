@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fixed the Chinese path of ZipUtils @zimuya4153
+- Fixed the path creation and Chinese path of ZipUtils @zimuya4153
 - Fixed API calls @zimuya4153
 - Fixed the loading of the ResourceI18n material package @zimuya4153
 - Fixed the JsonI18n header file @zimuya4153
