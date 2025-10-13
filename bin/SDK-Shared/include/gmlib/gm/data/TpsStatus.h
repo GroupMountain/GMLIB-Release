@@ -15,7 +15,6 @@ private:
 
 public:
     GMLIB_NDAPI static TpsStatus& getInstance();
-    GMLIB_NDAPI Impl&           getImpl();
 
     GMLIB_NDAPI ushort getLevelCurrentTps();
     GMLIB_NDAPI float  getLevelAverageTps();

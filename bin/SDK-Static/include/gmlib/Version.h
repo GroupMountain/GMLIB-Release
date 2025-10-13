@@ -3,9 +3,9 @@
 // clang-format off
 #define GMLIB_VERSION_MAJOR         1
 #define GMLIB_VERSION_MINOR         5
-#define GMLIB_VERSION_PATCH         1
+#define GMLIB_VERSION_PATCH         2
 /* #undef GMLIB_VERSION_PRERELEASE */
-#define GMLIB_VERSION_COMMIT_SHA    bb97e73
+#define GMLIB_VERSION_COMMIT_SHA    182f3d2
 // clang-format on
 
 #define GMLIB_VERSION_TO_STRING_INNER(ver) #ver

@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.2] - 2025-10-13
+
+### Changed
+
+- Rename the key names of the parameters "compare" and "operation" in the builtin Placeholder @zimuya4153
+
+### Fixed
+
+- Fixed the TpsStatus crash @zimuya4153
+
 ## [1.5.1] - 2025-10-12
 
 ### Fixed
@@ -321,7 +331,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#148]: https://github.com/GroupMountain/GMLIB-Release/issues/148
 [#149]: https://github.com/GroupMountain/GMLIB-Release/issues/149
 
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.1...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.2...HEAD
+[1.5.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.4.1...v1.4.3
