@@ -12,10 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Rename the key names of the parameters "compare" and "operation" in the builtin Placeholder @zimuya4153
+- Modify DenseMap in the PlaceholderAPI to SmallDenseMap @zimuya4153
 
 ### Fixed
 
 - Fixed the TpsStatus crash @zimuya4153
+- Fixed the Packet send @killcer @zimuya4153
 
 ## [1.5.1] - 2025-10-12
 

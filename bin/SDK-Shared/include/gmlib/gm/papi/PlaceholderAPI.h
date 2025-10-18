@@ -179,9 +179,9 @@ public:
 
     GMLIB_NDAPI static std::optional<PlaceholderData> getPlaceholderData(std::string const& placeholder);
 
-    GMLIB_NDAPI static ll::DenseMap<std::string, PlaceholderData> getAllPlaceholderData();
+    GMLIB_NDAPI static ll::SmallDenseMap<std::string, PlaceholderData> getAllPlaceholderData();
 
-    GMLIB_NDAPI static ll::DenseMap<std::string, PlaceholderData>
+    GMLIB_NDAPI static ll::SmallDenseMap<std::string, PlaceholderData>
     getAllPlaceholderData(std::weak_ptr<ll::mod::Mod> mod);
 };
 

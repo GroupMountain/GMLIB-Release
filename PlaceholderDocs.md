@@ -91,7 +91,7 @@ ${papi:format: format={0} \, {1}, 0=X, 1=Y}
 
 ### 玩家变量
 
-#### player_name (玩家名)
+#### player_realname (玩家名)
 
 - 示例返回值: `zimuya4153`
 
@@ -99,9 +99,21 @@ ${papi:format: format={0} \, {1}, 0=X, 1=Y}
 
 - 示例返回值: `61708b79-cdc0-3cbf-8491-49b2b14fd7e3`
 
-#### player_ping (玩家的延迟)
+#### player_avg_ping (玩家的平均延迟)
 
 - 示例返回值: `35`
+
+#### player_last_ping (玩家的当前延迟)
+
+- 示例返回值: `35`
+
+#### player_avg_packet_loss (玩家的平均丢包率)
+
+- 示例返回值: `0.5`
+
+#### player_last_packet_loss (玩家的当前丢包率)
+
+- 示例返回值: `0.5`
 
 #### player_gamemode (玩家的游戏模式)
 
@@ -367,122 +379,122 @@ ${papi:format: format={0} \, {1}, 0=X, 1=Y}
 
 ### Emoji
 
-| Emoji 名                                | Unicode  | 图片                                                                                                |
-| --------------------------------------- | -------- | --------------------------------------------------------------------------------------------------- |
-| emoji_food                              | `U+E100` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/hud/food.png)                            |
-| emoji_armor                             | `U+E101` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/hud/armor.png)                           |
-| emoji_heart                             | `U+E10C` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/hud/heart.png)                           |
-| emoji_wooden_pickaxe                    | `U+E108` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/items/wooden_pickaxe.png)                |
-| emoji_wooden_sword                      | `U+E109` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/items/wooden_sword.png)                  |
-| emoji_crafting_table                    | `U+E10A` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/items/crafting_table.png)                |
-| emoji_furnace                           | `U+E10B` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/items/furnace.png)                       |
-| emoji_minecoin                          | `U+E102` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/marketplace/minecoin.png)                |
-| emoji_token                             | `U+E105` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/marketplace/token.png)                   |
-| emoji_craft_toggle_on                   | `U+E0A0` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/inventory/craft_toggle_on.png)           |
-| emoji_craft_toggle_off                  | `U+E0A1` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/inventory/craft_toggle_off.png)          |
-| emoji_jump_touch                        | `U+E014` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/jump.png)                      |
-| emoji_attack_touch                      | `U+E015` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/attack.png)                    |
-| emoji_joy_stick_touch                   | `U+E016` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/joystick.png)                  |
-| emoji_place_touch                       | `U+E018` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/place.png)                     |
-| emoji_sneak_touch                       | `U+E019` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/sneak.png)                     |
-| emoji_sprint_touch                      | `U+E01A` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/sprint.png)                    |
-| emoji_fly_up_touch                      | `U+E01B` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/fly_up.png)                    |
-| emoji_fly_down_touch                    | `U+E01C` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/fly_down.png)                  |
-| emoji_dismount_touch                    | `U+E01D` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/new_touch/dismount.png)                  |
-| emoji_jump_small_touch                  | `U+E084` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/jump.png)                          |
-| emoji_crouch_small_touch                | `U+E085` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/crouch.png)                        |
-| emoji_fly_up_small_touch                | `U+E086` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/fly_up.png)                        |
-| emoji_fly_down_small_touch              | `U+E087` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/fly_down.png)                      |
-| emoji_stop_flying_small_touch           | `U+E088` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/stop_flying.png)                   |
-| emoji_left_arrow_small_touch            | `U+E081` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/left_arrow.png)                    |
-| emoji_right_arrow_small_touch           | `U+E083` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/right_arrow.png)                   |
-| emoji_up_arrow_small_touch              | `U+E080` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/up_arrow.png)                      |
-| emoji_down_arrow_small_touch            | `U+E082` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/touch/down_arrow.png)                    |
-| emoji_left_click                        | `U+E060` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/keyboard/left_click.png)                 |
-| emoji_right_click                       | `U+E061` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/keyboard/right_click.png)                |
-| emoji_middle_click                      | `U+E062` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/keyboard/middle_click.png)               |
-| emoji_small_left_click                  | `U+E070` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/keyboard/small_left_click.png)           |
-| emoji_small_right_click                 | `U+E071` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/keyboard/small_right_click.png)          |
-| emoji_small_middle_click                | `U+E072` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/keyboard/small_middle_click.png)         |
-| emoji_small_mouse                       | `U+E073` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/keyboard/small_mouse.png)                |
-| emoji_xbox_y                            | `U+E003` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/y_button.png)                       |
-| emoji_xbox_b                            | `U+E001` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/b_button.png)                       |
-| emoji_xbox_a                            | `U+E000` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/a_button.png)                       |
-| emoji_xbox_x                            | `U+E002` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/x_button.png)                       |
-| emoji_xbox_back                         | `U+E008` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/back.png)                           |
-| emoji_xbox_start                        | `U+E009` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/start.png)                          |
-| emoji_xbox_lb                           | `U+E004` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/left_bumper.png)                    |
-| emoji_xbox_rb                           | `U+E005` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/right_bumper.png)                   |
-| emoji_xbox_lt                           | `U+E006` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/left_trigger.png)                   |
-| emoji_xbox_rt                           | `U+E007` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/right_trigger.png)                  |
-| emoji_xbox_ls                           | `U+E00A` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/left_stick.png)                     |
-| emoji_xbox_rs                           | `U+E00B` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/right_stick.png)                    |
-| emoji_xbox_d_pad_up                     | `U+E00C` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/dpad_up.png)                        |
-| emoji_xbox_d_pad_right                  | `U+E00F` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/dpad_right.png)                     |
-| emoji_xbox_d_pad_down                   | `U+E00E` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/dpad_down.png)                      |
-| emoji_xbox_d_pad_left                   | `U+E00D` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/xbox/dpad_left.png)                      |
-| emoji_switch_x                          | `U+E042` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/x_button.png)                     |
-| emoji_switch_a                          | `U+E040` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/a_button.png)                     |
-| emoji_switch_b                          | `U+E041` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/b_button.png)                     |
-| emoji_switch_y                          | `U+E043` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/y_button.png)                     |
-| emoji_switch_plus                       | `U+E049` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/plus.png)                         |
-| emoji_switch_minus                      | `U+E048` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/minus.png)                        |
-| emoji_switch_l                          | `U+E044` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/left_bumper.png)                  |
-| emoji_switch_r                          | `U+E045` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/right_bumper.png)                 |
-| emoji_switch_zl                         | `U+E046` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/left_trigger.png)                 |
-| emoji_switch_rl                         | `U+E047` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/right_trigger.png)                |
-| emoji_switch_l_stick                    | `U+E04A` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/left_stick.png)                   |
-| emoji_switch_r_stick                    | `U+E04B` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/right_stick.png)                  |
-| emoji_switch_d_pad_up                   | `U+E04C` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/dpad_up.png)                      |
-| emoji_switch_d_pad_right                | `U+E04F` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/dpad_right.png)                   |
-| emoji_switch_d_pad_down                 | `U+E04E` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/dpad_down.png)                    |
-| emoji_switch_d_pad_left                 | `U+E04D` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/switch/dpad_left.png)                    |
-| emoji_ps_triangle                       | `U+E023` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/triangle.png)                |
-| emoji_ps_circle                         | `U+E021` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/circle.png)                  |
-| emoji_ps_cross                          | `U+E020` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/cross.png)                   |
-| emoji_ps_square                         | `U+E022` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/square.png)                  |
-| emoji_ps_options_share                  | `U+E029` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/options_share.png)           |
-| emoji_ps_touch_pad                      | `U+E028` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/touch_pad.png)               |
-| emoji_ps_l1                             | `U+E024` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/left_bumper.png)             |
-| emoji_ps_r1                             | `U+E025` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/right_bumper.png)            |
-| emoji_ps_l2                             | `U+E026` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/left_trigger.png)            |
-| emoji_ps_r2                             | `U+E027` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/right_trigger.png)           |
-| emoji_ps_l3                             | `U+E02A` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/left_stick.png)              |
-| emoji_ps_r3                             | `U+E02B` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/right_stick.png)             |
-| emoji_ps_d_pad_up                       | `U+E02C` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/dpad_up.png)                 |
-| emoji_ps_d_pad_right                    | `U+E02F` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/dpad_right.png)              |
-| emoji_ps_d_pad_down                     | `U+E02E` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/dpad_down.png)               |
-| emoji_ps_d_pad_left                     | `U+E02D` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/playstation/dpad_left.png)               |
-| emoji_oculus_0                          | `U+E0E0` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/0_button.png)                     |
-| emoji_oculus_b                          | `U+E0E2` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/b_button.png)                     |
-| emoji_oculus_a                          | `U+E0E1` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/a_button.png)                     |
-| emoji_oculus_y                          | `U+E0EA` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/y_button.png)                     |
-| emoji_oculus_x                          | `U+E0E9` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/x_button.png)                     |
-| emoji_oculus_lg                         | `U+E0E3` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/left_grip.png)                    |
-| emoji_oculus_rg                         | `U+E0E4` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/right_grip.png)                   |
-| emoji_oculus_lt                         | `U+E0E7` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/left_trigger.png)                 |
-| emoji_oculus_rt                         | `U+E0E8` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/right_trigger.png)                |
-| emoji_oculus_ls                         | `U+E0E5` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/left_stick.png)                   |
-| emoji_oculus_rs                         | `U+E0E6` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/oculus/right_stick.png)                  |
-| emoji_windows_menu                      | `U+E0C2` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/menu.png)                      |
-| emoji_windows_key                       | `U+E0CD` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/windows.png)                   |
-| emoji_windows_left_touchpad             | `U+E0C5` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/left_touchpad.png)             |
-| emoji_windows_left_horizontal_touchpad  | `U+E0C6` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/left_touchpad_horizontal.png)  |
-| emoji_windows_left_vertical_touchpad    | `U+E0C7` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/left_touchpad_vertical.png)    |
-| emoji_windows_right_touchpad            | `U+E0C8` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/right_touchpad.png)            |
-| emoji_windows_right_horizontal_touchpad | `U+E0C9` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/right_touchpad_horizontal.png) |
-| emoji_windows_right_vertical_touchpad   | `U+E0CA` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/right_touchpad_vertical.png)   |
-| emoji_windows_lt                        | `U+E0CB` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/left_trigger.png)              |
-| emoji_windows_rt                        | `U+E0CC` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/right_trigger.png)             |
-| emoji_windows_lg                        | `U+E0C0` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/left_grab.png)                 |
-| emoji_windows_rg                        | `U+E0C1` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/right_grab.png)                |
-| emoji_windows_ls                        | `U+E0C3` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/left_stick.png)                |
-| emoji_windows_rs                        | `U+E0C4` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/windowsMR/right_stick.png)               |
-| emoji_crosshair                         | `U+E017` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/other/crosshair.png)                     |
-| emoji_agent                             | `U+E103` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/other/agent.png)                         |
-| emoji_immersive_reader                  | `U+E104` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/other/immersive_reader.png)              |
-| emoji_hollow_star                       | `U+E106` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/other/hollow_star.png)                   |
-| emoji_solid_star                        | `U+E107` | ![](https://wiki.bedrock.dev/assets/images/concepts/emojis/other/solid_star.png)                    |
+| Emoji 名                                | Unicode  | 图片                                                                                            |
+| --------------------------------------- | -------- | ----------------------------------------------------------------------------------------------- |
+| emoji_food                              | `U+E100` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/hud/shank.png)                           |
+| emoji_armor                             | `U+E101` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/hud/armor.png)                           |
+| emoji_heart                             | `U+E10C` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/hud/heart.png)                           |
+| emoji_wooden_pickaxe                    | `U+E108` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/items/wooden_pickaxe.png)                |
+| emoji_wooden_sword                      | `U+E109` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/items/wooden_sword.png)                  |
+| emoji_crafting_table                    | `U+E10A` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/items/crafting_table.png)                |
+| emoji_furnace                           | `U+E10B` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/items/furnace.png)                       |
+| emoji_minecoin                          | `U+E102` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/marketplace/minecoin.png)                |
+| emoji_token                             | `U+E105` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/marketplace/token.png)                   |
+| emoji_craft_toggle_on                   | `U+E0A0` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/recipe-book/craftable_toggle_on.png)     |
+| emoji_craft_toggle_off                  | `U+E0A1` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/recipe-book/craftable_toggle_off.png)    |
+| emoji_jump_touch                        | `U+E014` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/jump.png)                          |
+| emoji_attack_touch                      | `U+E015` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/attack.png)                        |
+| emoji_joy_stick_touch                   | `U+E016` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/joystick.png)                      |
+| emoji_place_touch                       | `U+E018` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/place.png)                         |
+| emoji_sneak_touch                       | `U+E019` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/sneak.png)                         |
+| emoji_sprint_touch                      | `U+E01A` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/sprint.png)                        |
+| emoji_fly_up_touch                      | `U+E01B` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/fly_up.png)                        |
+| emoji_fly_down_touch                    | `U+E01C` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/fly_down.png)                      |
+| emoji_dismount_touch                    | `U+E01D` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/dismount.png)                      |
+| emoji_jump_small_touch                  | `U+E084` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/jump.png)                          |
+| emoji_crouch_small_touch                | `U+E085` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/crouch.png)                        |
+| emoji_fly_up_small_touch                | `U+E086` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/fly_up.png)                        |
+| emoji_fly_down_small_touch              | `U+E087` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/fly_down.png)                      |
+| emoji_stop_flying_small_touch           | `U+E088` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/stop_flying.png)                   |
+| emoji_left_arrow_small_touch            | `U+E081` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/left.png)                          |
+| emoji_right_arrow_small_touch           | `U+E083` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/right.png)                         |
+| emoji_up_arrow_small_touch              | `U+E080` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/forward.png)                       |
+| emoji_down_arrow_small_touch            | `U+E082` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/touch/back.png)                          |
+| emoji_left_click                        | `U+E060` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/mouse/left_button.png)                   |
+| emoji_right_click                       | `U+E061` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/mouse/right_button.png)                  |
+| emoji_middle_click                      | `U+E062` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/mouse/middle_button.png)                 |
+| emoji_small_left_click                  | `U+E070` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/mouse/light_left_button.png)             |
+| emoji_small_right_click                 | `U+E071` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/mouse/light_right_button.png)            |
+| emoji_small_middle_click                | `U+E072` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/mouse/light_middle_button.png)           |
+| emoji_small_mouse                       | `U+E073` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/keyboard/small_mouse.png)                |
+| emoji_xbox_y                            | `U+E003` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/y_button.png)                       |
+| emoji_xbox_b                            | `U+E001` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/b_button.png)                       |
+| emoji_xbox_a                            | `U+E000` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/a_button.png)                       |
+| emoji_xbox_x                            | `U+E002` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/x_button.png)                       |
+| emoji_xbox_back                         | `U+E008` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/back.png)                           |
+| emoji_xbox_start                        | `U+E009` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/start.png)                          |
+| emoji_xbox_lb                           | `U+E004` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/left_bumper.png)                    |
+| emoji_xbox_rb                           | `U+E005` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/right_bumper.png)                   |
+| emoji_xbox_lt                           | `U+E006` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/left_trigger.png)                   |
+| emoji_xbox_rt                           | `U+E007` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/right_trigger.png)                  |
+| emoji_xbox_ls                           | `U+E00A` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/left_stick.png)                     |
+| emoji_xbox_rs                           | `U+E00B` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/right_stick.png)                    |
+| emoji_xbox_d_pad_up                     | `U+E00C` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/dpad_up.png)                        |
+| emoji_xbox_d_pad_right                  | `U+E00F` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/dpad_right.png)                     |
+| emoji_xbox_d_pad_down                   | `U+E00E` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/dpad_down.png)                      |
+| emoji_xbox_d_pad_left                   | `U+E00D` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/xbox/dpad_left.png)                      |
+| emoji_switch_x                          | `U+E042` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/x_button.png)                     |
+| emoji_switch_a                          | `U+E040` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/a_button.png)                     |
+| emoji_switch_b                          | `U+E041` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/b_button.png)                     |
+| emoji_switch_y                          | `U+E043` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/y_button.png)                     |
+| emoji_switch_plus                       | `U+E049` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/plus.png)                         |
+| emoji_switch_minus                      | `U+E048` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/minus.png)                        |
+| emoji_switch_l                          | `U+E044` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/left_bumper.png)                  |
+| emoji_switch_r                          | `U+E045` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/right_bumper.png)                 |
+| emoji_switch_zl                         | `U+E046` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/left_trigger.png)                 |
+| emoji_switch_rl                         | `U+E047` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/right_trigger.png)                |
+| emoji_switch_l_stick                    | `U+E04A` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/left_stick.png)                   |
+| emoji_switch_r_stick                    | `U+E04B` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/right_stick.png)                  |
+| emoji_switch_d_pad_up                   | `U+E04C` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/dpad_up.png)                      |
+| emoji_switch_d_pad_right                | `U+E04F` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/dpad_right.png)                   |
+| emoji_switch_d_pad_down                 | `U+E04E` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/dpad_down.png)                    |
+| emoji_switch_d_pad_left                 | `U+E04D` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/switch/dpad_left.png)                    |
+| emoji_ps_triangle                       | `U+E023` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/triangle.png)                |
+| emoji_ps_circle                         | `U+E021` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/circle.png)                  |
+| emoji_ps_cross                          | `U+E020` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/cross.png)                   |
+| emoji_ps_square                         | `U+E022` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/square.png)                  |
+| emoji_ps_options_share                  | `U+E029` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/options_share.png)           |
+| emoji_ps_touch_pad                      | `U+E028` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/touch_pad.png)               |
+| emoji_ps_l1                             | `U+E024` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/left_bumper.png)             |
+| emoji_ps_r1                             | `U+E025` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/right_bumper.png)            |
+| emoji_ps_l2                             | `U+E026` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/left_trigger.png)            |
+| emoji_ps_r2                             | `U+E027` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/right_trigger.png)           |
+| emoji_ps_l3                             | `U+E02A` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/left_stick.png)              |
+| emoji_ps_r3                             | `U+E02B` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/right_stick.png)             |
+| emoji_ps_d_pad_up                       | `U+E02C` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/dpad_up.png)                 |
+| emoji_ps_d_pad_right                    | `U+E02F` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/dpad_right.png)              |
+| emoji_ps_d_pad_down                     | `U+E02E` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/dpad_down.png)               |
+| emoji_ps_d_pad_left                     | `U+E02D` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/playstation/dpad_left.png)               |
+| emoji_oculus_0                          | `U+E0E0` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/0_button.png)                     |
+| emoji_oculus_b                          | `U+E0E2` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/b_button.png)                     |
+| emoji_oculus_a                          | `U+E0E1` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/a_button.png)                     |
+| emoji_oculus_y                          | `U+E0EA` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/y_button.png)                     |
+| emoji_oculus_x                          | `U+E0E9` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/x_button.png)                     |
+| emoji_oculus_lg                         | `U+E0E3` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/left_grip.png)                    |
+| emoji_oculus_rg                         | `U+E0E4` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/right_grip.png)                   |
+| emoji_oculus_lt                         | `U+E0E7` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/left_trigger.png)                 |
+| emoji_oculus_rt                         | `U+E0E8` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/right_trigger.png)                |
+| emoji_oculus_ls                         | `U+E0E5` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/left_stick.png)                   |
+| emoji_oculus_rs                         | `U+E0E6` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/oculus/right_stick.png)                  |
+| emoji_windows_menu                      | `U+E0C2` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/menu.png)                      |
+| emoji_windows_key                       | `U+E0CD` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/windows.png)                   |
+| emoji_windows_left_touchpad             | `U+E0C5` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/left_touchpad.png)             |
+| emoji_windows_left_horizontal_touchpad  | `U+E0C6` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/left_touchpad_horizontal.png)  |
+| emoji_windows_left_vertical_touchpad    | `U+E0C7` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/left_touchpad_vertical.png)    |
+| emoji_windows_right_touchpad            | `U+E0C8` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/right_touchpad.png)            |
+| emoji_windows_right_horizontal_touchpad | `U+E0C9` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/right_touchpad_horizontal.png) |
+| emoji_windows_right_vertical_touchpad   | `U+E0CA` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/right_touchpad_vertical.png)   |
+| emoji_windows_lt                        | `U+E0CB` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/left_trigger.png)              |
+| emoji_windows_rt                        | `U+E0CC` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/right_trigger.png)             |
+| emoji_windows_lg                        | `U+E0C0` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/left_grab.png)                 |
+| emoji_windows_rg                        | `U+E0C1` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/right_grab.png)                |
+| emoji_windows_ls                        | `U+E0C3` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/left_stick.png)                |
+| emoji_windows_rs                        | `U+E0C4` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/windowsMR/right_stick.png)               |
+| emoji_crosshair                         | `U+E017` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/hud/crosshair.png)                       |
+| emoji_agent                             | `U+E103` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/other/agent.png)                         |
+| emoji_immersive_reader                  | `U+E104` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/other/immersive_reader.png)              |
+| emoji_hollow_star                       | `U+E106` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/other/hollow_star.png)                   |
+| emoji_solid_star                        | `U+E107` | ![](https://wiki.bedrock.dev/assets/images/text/emojis/other/solid_star.png)                    |
 
 ### 逻辑运算
 
