@@ -209,14 +209,3 @@ public:
     ::ScoreboardId const& getScoreboardId(::PlayerScoreboardId const& id) const;
 };
 } // namespace gmlib
-
-bool operator==(ScoreboardId const&, ScoreboardId const&);
-
-namespace std {
-
-template <>
-struct hash<::ScoreboardId> {
-    size_t operator()(ScoreboardId const&) const;
-};
-
-} // namespace std

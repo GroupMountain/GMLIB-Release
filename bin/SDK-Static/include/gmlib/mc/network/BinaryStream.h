@@ -33,7 +33,14 @@ class GMBinaryStream : public BinaryStream {
 public:
     using BinaryStream::BinaryStream;
     GMBinaryStream(GMBinaryStream const&);
+    GMBinaryStream(GMBinaryStream&& other) noexcept;
+    bool operator==(GMBinaryStream const& other) const noexcept;
+
     explicit GMBinaryStream(Packet const& packet);
+    explicit GMBinaryStream(BinaryStream const&);
+    explicit GMBinaryStream(BinaryStream&& other) noexcept;
+    bool operator==(BinaryStream const& other) const noexcept;
+
     // When allowModify is false, it will copy itself and then execute toPacket
     std::shared_ptr<Packet> toPacket(bool allowModify = true);
     std::shared_ptr<Packet> toPacket() const;

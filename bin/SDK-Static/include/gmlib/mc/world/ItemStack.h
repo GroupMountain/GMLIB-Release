@@ -10,7 +10,7 @@ public:
     GMItemStack();
     GMItemStack(ItemStack const& rhs);
     explicit GMItemStack(::ItemInstance const& rhs);
-    GMItemStack(::BlockType const& block, int count = 1);
+    GMItemStack(::BlockType const& block, int count = 1, GMCompoundTag const* _userData = nullptr);
 
     GMItemStack(::Item const& item, int count = 1, int auxValue = 0, GMCompoundTag const* _userData = nullptr);
 
