@@ -139,14 +139,14 @@ template <::ll::FixedString Fmt>
 template <::ll::FixedString Fmt>
 [[nodiscard]] constexpr auto operator""_transp() {
     return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {
-        return gmlib::PlaceholderAPI::translate(I18nAPI::tr(Fmt.str(), args...), actor);
+        return gmlib::PlaceholderAPI::getInstance().translate(I18nAPI::tr(Fmt.str(), args...), actor);
     };
 }
 
 template <::ll::FixedString Fmt>
 [[nodiscard]] constexpr auto operator""_translp() {
     return [=]<class... Args>(std::string const& languageCode, optional_ref<Actor> actor, Args&&... args) {
-        return gmlib::PlaceholderAPI::translate(I18nAPI::trl(Fmt.str(), languageCode, args...), actor);
+        return gmlib::PlaceholderAPI::getInstance().translate(I18nAPI::trl(Fmt.str(), languageCode, args...), actor);
     };
 }
 

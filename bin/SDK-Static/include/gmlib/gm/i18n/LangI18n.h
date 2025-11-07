@@ -85,13 +85,13 @@ private:
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trp() {                                                                    \
         return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {                                         \
-            return gmlib::PlaceholderAPI::translate(i18nInstance.tr(Fmt.str(), args...), actor);                       \
+            return gmlib::PlaceholderAPI::getInstance().translate(i18nInstance.tr(Fmt.str(), args...), actor);                       \
         };                                                                                                             \
     }                                                                                                                  \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trlp() {                                                                   \
         return [=]<class... Args>(std::string const& languageCode, optional_ref<Actor> actor, Args&&... args) {        \
-            return gmlib::PlaceholderAPI::translate(i18nInstance.trl(Fmt.str(), languageCode, args...), actor);        \
+            return gmlib::PlaceholderAPI::getInstance().translate(i18nInstance.trl(Fmt.str(), languageCode, args...), actor);        \
         };                                                                                                             \
     }
 #else

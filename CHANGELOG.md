@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.0] - 2025-11-07
+
+### Changed
+
+- Adapt to LeviLamina 1.7.x and bds 1.21.120 @zimuya4153
+- Refactor PlaceholderAPI @zimuya4153
+
 ## [1.6.0] - 2025-10-21
 
 ### Added
@@ -344,7 +351,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#148]: https://github.com/GroupMountain/GMLIB-Release/issues/148
 [#149]: https://github.com/GroupMountain/GMLIB-Release/issues/149
 
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.2...v1.6.0
 [1.5.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.0...v1.5.1

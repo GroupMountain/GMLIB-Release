@@ -12,6 +12,8 @@ bool isInteger(std::string const& str);
 
 bool isFloat(std::string const& str);
 
+bool isScientificNumber(std::string const& str);
+
 bool isNumber(std::string const& str);
 
 std::string trim(std::string const& str);
