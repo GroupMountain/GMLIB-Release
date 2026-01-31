@@ -12,7 +12,7 @@ class Vec3;
 class Vec2;
 class SerializedAbilitiesData;
 class NetworkConnection;
-class SerializedSkin;
+class SerializedSkinImpl;
 class NetworkPeer;
 class NetworkItemStackDescriptor;
 struct NetworkIdentifierWithSubId;
@@ -132,7 +132,7 @@ public:
     void writeVec2(::Vec2 const& data);
     void writeBlockPos(::BlockPos const& data);
     void writeAbilitiesData(::SerializedAbilitiesData const& data);
-    void writeSkin(::SerializedSkin const& data);
+    void writeSkin(::SerializedSkinImpl const& data);
     void writeActorLink(::ActorLink const& data);
     void writeUuid(::mce::UUID const& data);
     void writeNetworkItemStackDescriptor(::NetworkItemStackDescriptor const& data);

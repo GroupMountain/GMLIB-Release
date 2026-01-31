@@ -35,8 +35,14 @@ public:
         ObjectiveSortOrder                              sortOrder = ObjectiveSortOrder::Ascending
     );
     void removeClientSidebar();
-    void setAttributeMax(Attribute att, float value);
-    void setAttributeCurrent(Attribute att, float value);
+
+    void setAttributeMax(Attribute, float value);
+    void setAttributeMin(Attribute, float value);
+    void setAttributeCurrent(Attribute, float value);
+
+    void setAttributeMax(std::string_view name, float value);
+    void setAttributeMin(std::string_view name, float value);
+    void setAttributeCurrent(std::string_view name, float value);
 
     // set the gamemode of the client
     // It won't affect the server-side gamemode

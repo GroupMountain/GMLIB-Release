@@ -20,13 +20,16 @@ public:
     std::unique_ptr<GMCompoundTag> getNbt() const;
     void                           setNbt(GMCompoundTag const& nbt);
 
-    bool isUnbreakable() const;
+    [[deprecated("use bool getUnbreakable() const to instead")]] bool isUnbreakable() const;
+
+    bool getUnbreakable() const;
     void setUnbreakable(bool value);
 
     // If success, the item will have gloss of enchantment bt not have any enchantment tag.
     // Only can use when item has no enchantment.
     bool setEmptyEnchanted();
 
+    void         setShouldKeepOnDeath(bool keepOnDeath);
     bool         getShouldKeepOnDeath() const;
     void         setItemLockMode(ItemLockMode mode);
     ItemLockMode getItemLockMode() const;

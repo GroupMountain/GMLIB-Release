@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0] - 2026-1-31
+
+### Added
+
+- Added overloaded versions of setAttributeMax, setAttributeMin, and setAttributeCurrent functions that accept std::string_view for attribute names for GMActor and GMPlayer. @killcerr
+- Added setShouldKeepOnDeath function to set whether the item should be kept on death for GMItemStack. @killcerr
+
+### Changed
+
+- Marked isUnbreakable as deprecated, recommending use of getUnbreakable instead for GMItemStack. @killcerr
+- Modified setAttributeMax, setAttributeMin, and setAttributeCurrent functions to accept const Attribute& as parameter type for GMActor and GMPlayer. @killcerr
+- Removed the old QueryType enumeration and replaced it with ::gmlib::QueryType; updated from and remove functions to accept std::string_view as parameter type and adjusted query logic accordingly for UserCache. @killcerr
+
 ## [1.7.0] - 2025-11-07
 
 ### Changed
@@ -351,7 +364,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#148]: https://github.com/GroupMountain/GMLIB-Release/issues/148
 [#149]: https://github.com/GroupMountain/GMLIB-Release/issues/149
 
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.7.0...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.9.0...HEAD
+[1.9.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.7.0...v1.9.0
 [1.7.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.2...v1.6.0
 [1.5.2]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.1...v1.5.2

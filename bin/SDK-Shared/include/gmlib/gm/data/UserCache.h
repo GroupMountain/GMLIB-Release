@@ -1,5 +1,6 @@
 #pragma once
 #include "gmlib/Macros.h"
+#include "gmlib/gm/utils/FlagEnum.h"
 #include "ll/api/Expected.h"
 #include "ll/api/coro/Generator.h"
 #include "mc/legacy/ActorUniqueID.h"
@@ -7,6 +8,8 @@
 
 
 namespace gmlib {
+class UserCache;
+using QueryType = FlagEnum<std::uint16_t, UserCache>;
 class UserCache {
     struct Impl;
     std::unique_ptr<Impl> pimpl;
@@ -23,23 +26,13 @@ public:
         std::string   mServerId;
         ActorUniqueID mActorUniqueID = ActorUniqueID::INVALID_ID();
     };
-    struct QueryType : std::bitset<sizeof(int)> {
-        using std::bitset<sizeof(int)>::bitset;
-        static LL_CONSTEXPR23 std::bitset<sizeof(int)> Name{1 << 0};
-        static LL_CONSTEXPR23 std::bitset<sizeof(int)> Xuid{1 << 1};
-        static LL_CONSTEXPR23 std::bitset<sizeof(int)> ServerId{1 << 2};
-        static LL_CONSTEXPR23 std::bitset<sizeof(int)> Default = {Name | Xuid | ServerId};
-        LL_CONSTEXPR23 QueryType(std::bitset<sizeof(int)> val) /*NOLINT*/ : std::bitset<sizeof(int)>(val) {}
-    };
+
+    ~UserCache();
 
 public:
-    GMLIB_API ~UserCache();
-
     GMLIB_NDAPI optional_ref<UserCacheEntry const> from(mce::UUID uuid);
 
     GMLIB_NDAPI optional_ref<UserCacheEntry const> from(ActorUniqueID actorUniqueID);
-
-    GMLIB_NDAPI optional_ref<UserCacheEntry const> from(std::string const& key, QueryType type);
 
     GMLIB_NDAPI ll::coro::Generator<UserCacheEntry const&> entries();
 
@@ -52,13 +45,22 @@ public:
 
     GMLIB_API ll::Expected<void> remove(ActorUniqueID actorUniqueID);
 
-    GMLIB_API
-    ll::Expected<void> remove(std::string const& key, QueryType type = {QueryType::Default});
-
     /***
     @details if you want use UserCache, please call it before first player enters server.
      */
     GMLIB_NDAPI static optional_ref<UserCache> getInstance();
+
+    static inline LL_CONSTEXPR23 ::gmlib::QueryType Name{1 << 0};
+    static inline LL_CONSTEXPR23 ::gmlib::QueryType Xuid{1 << 1};
+    static inline LL_CONSTEXPR23 ::gmlib::QueryType ServerId{1 << 2};
+    static inline LL_CONSTEXPR23 ::gmlib::QueryType ActorUniqueID{1 << 3};
+    static inline LL_CONSTEXPR23 ::gmlib::QueryType Uuid{1 << 4};
+    static inline LL_CONSTEXPR23 ::gmlib::QueryType Default{Name | Xuid | ServerId};
+    static inline LL_CONSTEXPR23 ::gmlib::QueryType All{Name | Xuid | ServerId | ActorUniqueID | Uuid};
+
+    GMLIB_NDAPI optional_ref<UserCacheEntry const> from(std::string_view key, const ::gmlib::QueryType& type = Default);
+    GMLIB_API
+    ll::Expected<void> remove(std::string_view key, const ::gmlib::QueryType& type = {Default});
 };
 } // namespace gmlib
 

@@ -14,8 +14,13 @@ public:
     bool setNbt(CompoundTag const& nbt);
     // a simple way to set the max and current value of an attribute
     // Any attribute, such as health, hunger, etc.
-    void setAttributeMax(Attribute, float value);
-    void setAttributeCurrent(Attribute, float value);
+    void setAttributeMax(const Attribute&, float value);
+    void setAttributeMin(const Attribute&, float value);
+    void setAttributeCurrent(const Attribute&, float value);
+
+    void setAttributeMax(std::string_view name, float value);
+    void setAttributeMin(std::string_view name, float value);
+    void setAttributeCurrent(std::string_view name, float value);
 
 public:
     // Some inline functions in 1.21.60

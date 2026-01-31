@@ -23,6 +23,7 @@
 #include "gmlib/gm/memory/Function.h"
 #include "gmlib/gm/memory/MemoryArchive.h"
 #include "gmlib/gm/memory/Resource.h"
+#include "gmlib/gm/utils/FlagEnum.h"
 #include "gmlib/gm/utils/StringUtils.h"
 #include "gmlib/gm/utils/SystemUtils.h"
 #include "gmlib/include_ll.h"
