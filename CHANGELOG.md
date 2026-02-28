@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.1] - 2026-2-28
+
+### Fixed
+
+- Fixed `sendPacketRawToXXX`. @n15421
+
 ## [1.9.0] - 2026-1-31
 
 ### Added
@@ -364,7 +370,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#148]: https://github.com/GroupMountain/GMLIB-Release/issues/148
 [#149]: https://github.com/GroupMountain/GMLIB-Release/issues/149
 
-[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.9.0...HEAD
+[Unreleased]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.9.1...HEAD
+[1.9.1]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.9.0...v1.9.1
 [1.9.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.7.0...v1.9.0
 [1.7.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/GroupMountain/GMLIB-Release/compare/v1.5.2...v1.6.0
