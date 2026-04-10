@@ -126,9 +126,9 @@ public:
        comparator will be ignored
     */
     std::vector<optional_ref<ItemStack>> getItems(
-        std::string_view                      name,
-        std::function<bool(const ItemStack&)> comparator       = nullptr,
-        bool                                  requireExtraData = false
+        std::string_view                            name,
+        brstd::function_ref<bool(const ItemStack&)> comparator,
+        bool                                        requireExtraData = false
     );
 
     std::vector<optional_ref<ItemStack>> getItems(std::string_view name, int data);

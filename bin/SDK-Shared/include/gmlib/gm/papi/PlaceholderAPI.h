@@ -51,7 +51,7 @@ public:
                 || std::same_as<T, GMPlayer>
 #endif
             ) {
-                if (mActor && mActor->isPlayer()) {
+                if (mActor && mActor->getEntityTypeId() == ActorType::Player) {
                     res = *reinterpret_cast<T*>(mActor.as_ptr());
                     return true;
                 }

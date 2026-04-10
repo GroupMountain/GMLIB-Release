@@ -1,8 +1,7 @@
 #pragma once
-#include "gmlib/mc/world/Level.h"
 #include "mc/deps/core/math/Vec3.h"
+#include "mc/deps/nbt/CompoundTag.h"
 #include "mc/legacy/ActorUniqueID.h"
-#include "mc/nbt/CompoundTag.h"
 #include "mc/platform/UUID.h"
 #include "mc/world/actor/Actor.h"
 #include "mc/world/level/dimension/Dimension.h"
@@ -19,7 +18,7 @@ protected:
 public:
     explicit OfflinePlayer(mce::UUID const& uuid, std::string const& serverId);
 
-    OfflinePlayer(OfflinePlayer&& other);
+    OfflinePlayer(OfflinePlayer&& other) noexcept;
 
     ~OfflinePlayer();
 

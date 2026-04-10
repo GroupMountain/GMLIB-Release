@@ -15,7 +15,7 @@ private:
     std::unique_ptr<Impl> pImpl;
 
 public:
-    LangI18n(std::filesystem::path const& languageDirectory, std::string const& languageCode = "en_US");
+    explicit LangI18n(std::filesystem::path const& languageDirectory, std::string const& languageCode = "en_US");
 
     LangI18n() = delete;
 
@@ -75,7 +75,7 @@ public:
         std::string const&              data   = "%0$s");
 
 private:
-    bool loadOrCreateLanguage(std::string const& languageCode, std::shared_ptr<LangLanguage> language);
+    bool loadOrCreateLanguage(std::string const& languageCode, const std::shared_ptr<LangLanguage>& language);
 };
 
 } // namespace gmlib::i18n
@@ -85,13 +85,16 @@ private:
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trp() {                                                                    \
         return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {                                         \
-            return gmlib::PlaceholderAPI::getInstance().translate(i18nInstance.tr(Fmt.str(), args...), actor);                       \
+            return gmlib::PlaceholderAPI::getInstance().translate(i18nInstance.tr(Fmt.str(), args...), actor);         \
         };                                                                                                             \
     }                                                                                                                  \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trlp() {                                                                   \
         return [=]<class... Args>(std::string const& languageCode, optional_ref<Actor> actor, Args&&... args) {        \
-            return gmlib::PlaceholderAPI::getInstance().translate(i18nInstance.trl(Fmt.str(), languageCode, args...), actor);        \
+            return gmlib::PlaceholderAPI::getInstance().translate(                                                     \
+                i18nInstance.trl(Fmt.str(), languageCode, args...),                                                    \
+                actor                                                                                                  \
+            );                                                                                                         \
         };                                                                                                             \
     }
 #else

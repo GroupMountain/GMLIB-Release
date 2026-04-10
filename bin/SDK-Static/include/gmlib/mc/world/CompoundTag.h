@@ -1,6 +1,7 @@
 #pragma once
-#include <mc/nbt/CompoundTag.h>
+#include <mc/deps/nbt/CompoundTag.h>
 #include <memory>
+#include <utility>
 
 class DataLoadHelper;
 class Actor;
@@ -15,15 +16,17 @@ class GMCompoundTag : public CompoundTag {
 public:
     GMCompoundTag() = default;
 
-    GMCompoundTag(TagMap tags) : CompoundTag(tags) {}
+    explicit GMCompoundTag(TagMap tags) : CompoundTag(std::move(tags)) {}
 
-    GMCompoundTag(CompoundTag const& tag) : CompoundTag(tag) {}
+    explicit GMCompoundTag(CompoundTag const& tag) : CompoundTag(tag) {}
+    explicit GMCompoundTag(CompoundTag&& tag) : CompoundTag(std::move(tag)) {}
+
 
     GMCompoundTag(std::initializer_list<TagMap::value_type> tags) : CompoundTag(tags) {}
 
     GMCompoundTag(GMCompoundTag const&)            = default;
     GMCompoundTag& operator=(GMCompoundTag const&) = default;
-    GMCompoundTag(GMCompoundTag&&)                 = default;
+    GMCompoundTag(GMCompoundTag&&) noexcept        = default;
     GMCompoundTag& operator=(GMCompoundTag&&)      = default;
 
 public:

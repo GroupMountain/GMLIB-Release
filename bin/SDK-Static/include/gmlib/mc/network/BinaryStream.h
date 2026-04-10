@@ -85,9 +85,9 @@ public:
         Compressibility          compressible = Compressibility::Compressible
     );
     void sendToClients(
-        std::function<bool(GMPlayer&)> filter,
-        NetworkPeer::Reliability       reliability  = NetworkPeer::Reliability::ReliableOrdered,
-        Compressibility                compressible = Compressibility::Compressible
+        brstd::function_ref<bool(GMPlayer&)> filter,
+        NetworkPeer::Reliability             reliability  = NetworkPeer::Reliability::ReliableOrdered,
+        Compressibility                      compressible = Compressibility::Compressible
     );
     void sendToDimension(
         DimensionType            dimId,
@@ -127,6 +127,7 @@ public:
         serialize<T>::write(x, *this);
     }
     void writeCompoundTag(GMCompoundTag const& data);
+    void writeCompoundTag(CompoundTag const& data);
     void writeDataItem(std::vector<std::unique_ptr<::DataItem>> const& data);
     void writeVec3(::Vec3 const& data);
     void writeVec2(::Vec2 const& data);

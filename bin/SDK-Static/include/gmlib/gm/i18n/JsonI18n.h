@@ -13,7 +13,7 @@ private:
     std::unique_ptr<Impl> pImpl;
 
 public:
-    JsonI18n(std::filesystem::path const& languageDirectory, std::string const& languageCode = "en_US");
+    explicit JsonI18n(std::filesystem::path const& languageDirectory, std::string const& languageCode = "en_US");
 
     JsonI18n() = delete;
 
@@ -73,7 +73,7 @@ public:
         std::string const&              data   = "%0$s");
 
 private:
-    bool loadOrCreateLanguage(std::string const& languageCode, std::shared_ptr<JsonLanguage> language);
+    bool loadOrCreateLanguage(std::string const& languageCode, const std::shared_ptr<JsonLanguage>& language);
 };
 
 } // namespace gmlib::i18n
@@ -84,13 +84,16 @@ private:
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trp() {                                                                    \
         return [=]<class... Args>(optional_ref<Actor> actor, Args&&... args) {                                         \
-            return gmlib::PlaceholderAPI::getInstance().translate(i18nInstance.tr(Fmt.str(), args...), actor);                       \
+            return gmlib::PlaceholderAPI::getInstance().translate(i18nInstance.tr(Fmt.str(), args...), actor);         \
         };                                                                                                             \
     }                                                                                                                  \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trlp() {                                                                   \
         return [=]<class... Args>(std::string const& languageCode, optional_ref<Actor> actor, Args&&... args) {        \
-            return gmlib::PlaceholderAPI::getInstance().translate(i18nInstance.trl(Fmt.str(), languageCode, args...), actor);        \
+            return gmlib::PlaceholderAPI::getInstance().translate(                                                     \
+                i18nInstance.trl(Fmt.str(), languageCode, args...),                                                    \
+                actor                                                                                                  \
+            );                                                                                                         \
         };                                                                                                             \
     }
 #else
@@ -100,12 +103,12 @@ private:
 #define GMLIB_JSONI18N_LITERALS(i18nInstance)                                                                          \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_tr() {                                                                     \
-        return [=]<class... Args>(Args&&... args) { return i18nInstance.tr(Fmt.str(), args...); };                     \
+        return [=]<class... Args>(Args&&... args) { return (i18nInstance).tr(Fmt.str(), args...); };                   \
     }                                                                                                                  \
     template <::ll::FixedString Fmt>                                                                                   \
     [[nodiscard]] constexpr auto operator""_trl() {                                                                    \
         return [=]<class... Args>(std::string const& languageCode, Args&&... args) {                                   \
-            return i18nInstance.trl(Fmt.str(), languageCode, args...);                                                 \
+            return (i18nInstance).trl(Fmt.str(), languageCode, args...);                                               \
         };                                                                                                             \
     }                                                                                                                  \
     GMLIB_JSONI18N_LITERALS_PAPI(i18nInstance)

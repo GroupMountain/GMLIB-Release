@@ -50,9 +50,9 @@ public:
     );
 
     static std::optional<std::string> tryGet(
-        std::string const&              key,
-        std::vector<std::string> const& params,
-        std::shared_ptr<::Localization> localization
+        std::string const&                     key,
+        std::vector<std::string> const&        params,
+        const std::shared_ptr<::Localization>& localization
     );
 
     static std::string
@@ -61,7 +61,9 @@ public:
         std::string const&              languageCode = getCurrentLanguageCode());
 
     static std::string
-    get(std::string const& key, std::vector<std::string> const& params, std::shared_ptr<::Localization> localization);
+    get(std::string const&                     key,
+        std::vector<std::string> const&        params,
+        const std::shared_ptr<::Localization>& localization);
 
     template <typename... Args>
     [[nodiscard]] static std::string tr(std::string const& key, Args&&... args) {
