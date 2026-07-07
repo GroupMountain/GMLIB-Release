@@ -133,16 +133,17 @@ public:
         bool                               override = false,
         std::weak_ptr<ll::mod::Mod> const& mod      = ll::mod::NativeMod::current()
     );
-    virtual bool                       unregisterPlaceholder(std::string const& placeholder);
-    virtual bool                       unregisterPlaceholder(std::weak_ptr<ll::mod::Mod> mod);
+    virtual bool unregisterPlaceholder(std::string const& placeholder);
+    virtual bool unregisterPlaceholder(const std::weak_ptr<ll::mod::Mod>& mod = ll::mod::NativeMod::current());
     virtual std::optional<std::string> getValue(
         std::string const&                     placeholder,
         optional_ref<Actor>                    actor    = std::nullopt,
         ll::SmallStringMap<std::string> const& params   = {},
         std::string const&                     language = {}
     );
-    virtual std::optional<PlaceholderData>                  getPlaceholderData(std::string const& placeholder);
-    virtual ll::SmallDenseMap<std::string, PlaceholderData> getAllPlaceholderData(std::weak_ptr<ll::mod::Mod> mod = {});
+    virtual std::optional<PlaceholderData> getPlaceholderData(std::string const& placeholder);
+    virtual ll::SmallDenseMap<std::string, PlaceholderData>
+    getAllPlaceholderData(const std::weak_ptr<ll::mod::Mod>& mod = ll::mod::NativeMod::current());
     // NOLINTEND(google-default-arguments)
 
     inline std::string& translate(

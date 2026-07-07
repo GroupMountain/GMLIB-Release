@@ -4,6 +4,7 @@
 #include <mc/network/Compressibility.h>
 #include <mc/network/MinecraftPacketIds.h>
 #include <mc/network/NetworkIdentifier.h>
+#include <mc/network/Packet.h>
 #include <mc/network/NetworkPeer.h>
 
 class CompoundTag;
@@ -45,12 +46,24 @@ public:
     std::shared_ptr<Packet> toPacket(bool allowModify = true);
     std::shared_ptr<Packet> toPacket() const;
     template <std::derived_from<Packet> T>
-    [[nodiscard]] constexpr inline std::shared_ptr<T> toPacket(bool allowModify = true) {
-        return std::static_pointer_cast<T>(toPacket(allowModify));
+    [[nodiscard]] inline std::shared_ptr<T> toPacket(bool allowModify = true) {
+        auto packet = toPacket(allowModify);
+        if constexpr (std::default_initializable<T>) {
+            if (!packet || packet->getId() != T{}.getId()) {
+                return nullptr;
+            }
+        }
+        return std::static_pointer_cast<T>(packet);
     }
     template <std::derived_from<Packet> T>
-    [[nodiscard]] constexpr inline std::shared_ptr<T> toPacket() const {
-        return std::static_pointer_cast<T>(toPacket());
+    [[nodiscard]] inline std::shared_ptr<T> toPacket() const {
+        auto packet = toPacket();
+        if constexpr (std::default_initializable<T>) {
+            if (!packet || packet->getId() != T{}.getId()) {
+                return nullptr;
+            }
+        }
+        return std::static_pointer_cast<T>(packet);
     }
 
 public:
@@ -100,8 +113,8 @@ public:
     bool read(T* target, bool bigEndian = false);
 
     template <typename T>
-    [[nodiscard]] inline Bedrock::Result<T> getType(T const& x) {
-        return serialize<T>::read(x, *this);
+    [[nodiscard]] inline Bedrock::Result<T> getType() {
+        return serialize<T>::read(*this);
     }
     bool        getBool();
     uchar       getByte();
@@ -137,6 +150,7 @@ public:
     void writeActorLink(::ActorLink const& data);
     void writeUuid(::mce::UUID const& data);
     void writeNetworkItemStackDescriptor(::NetworkItemStackDescriptor const& data);
+    void writeNetworkItemStackDescriptorCereal(::NetworkItemStackDescriptor const& data);
     void writeMoveActorAbsoluteData(::MoveActorAbsoluteData const& data);
 
     // Using GMBinaryStream::write##TYPE(value) to call the following functions

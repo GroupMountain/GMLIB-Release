@@ -3,6 +3,7 @@
 #include <mc/legacy/ActorUniqueID.h>
 #include <mc/world/level/BlockPos.h>
 #include <mc/world/level/ChunkPos.h>
+#include <mc/world/level/dimension/DimensionType.h>
 
 namespace gmlib {
 

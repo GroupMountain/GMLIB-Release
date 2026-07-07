@@ -5,7 +5,6 @@
 #pragma once
 
 // IWYU pragma: begin_exports
-#include "glacie/GlacieAPI.h"
 #include "gmlib/gm/enum/CompressionLevel.h"
 #include "gmlib/gm/enum/FillMode.h"
 #include "gmlib/gm/enum/WeatherType.h"

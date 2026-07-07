@@ -2,10 +2,10 @@
 
 // clang-format off
 #define GMLIB_VERSION_MAJOR         26
-#define GMLIB_VERSION_MINOR         10
+#define GMLIB_VERSION_MINOR         20
 #define GMLIB_VERSION_PATCH         0
 /* #undef GMLIB_VERSION_PRERELEASE */
-#define GMLIB_VERSION_COMMIT_SHA    f65af78
+#define GMLIB_VERSION_COMMIT_SHA    5169a64
 // clang-format on
 
 #define GMLIB_VERSION_TO_STRING_INNER(ver) #ver
