@@ -90,6 +90,10 @@ public:
 
     // Set the player's Freezing state (In powder_snow's state)
     // The percentage affect the player's client HUD
+    // Note: this only drives the visual strength (and the movement slowdown the game derives from
+    // it). Freeze damage is dealt by the game itself: `FreezingSystemInternal::tickFreezeComponent`
+    // hurts the actor only when the strength reached 1.0 while it is standing in a block that causes
+    // the freeze effect (powder snow), and then only once every 40 ticks.
     void setFreezing(float percentage = 1.0f);
 
     void updateClientBlock(

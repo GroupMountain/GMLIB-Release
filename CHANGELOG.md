@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [26.40.0] - 2026-9-12
+
+### Added
+
+- Restored `GMBinaryStream::writeSkin` (plus a `SerializedSkinRef` overload) for BDS 26.40. The game removed `SerializedSkinImpl::read`/`write` and rewrote the skin serializer, so GMLIB now serializes `SerializedSkinRef` itself following the r26_u4 protocol documentation.
+
+### Changed
+
+- Adapted to LeviLamina 26.40.x / BDS 26.40.8 @killcerr
+  - `PlayerListAPI` now builds `PlayerListPacketPayload` entries (`AddEntry` / `RemoveEntry`) since `PlayerListPacket::mEntries` / `mAction` were replaced by `PlayerListPacketPayload`.
+  - `GMPlayer::setClientSidebar` now sends `ChangeFakePlayerScore` entries since `ScorePacketInfo` / `ScorePacketType` were removed.
+  - The TPS block-tick hook was re-pointed from the `BlockStepOffEvent` to the `BlockQueuedTickEvent` instantiation of `BlockEvents::Detail::BlockEventPublishingExecutor<...>::dispatch`; the previous target always reported `EventType::StepOff`, so the block TPS was never recorded.
+- The `bs` test no longer sends its packets from a thread pool. `GMBinaryStream::sendTo` touches the connection state, so racing the server tick corrupted engine state (which showed up as crashes inside unrelated game code), and the `Player&` captured by reference outlived the `forEachPlayer` frame it came from. It now sends on the server thread and stops after 100 iterations instead of looping forever.
+
+### Fixed
+
+- `GMPlayer::updateClientBlockActor` writes the `y` of the block position as a signed (zig zag) varint like `x` and `z` do. It used an unsigned varint, which encodes `y >= 64` in one byte instead of two, so the client read a shifted stream and then failed to decode the packets that followed it in the same batch.
+- `GMPlayer::setFreezing` keeps `FreezingComponent::mFreezingEffectStrength` and the synched `ActorDataIDs::FreezingEffectStrength` (120) item in sync. It used to write the item only, and only when that item already existed and was a `Byte` (it is a `Float`), so the call was a no-op; the dirty flag was also set on the copy inside `SynchedActorData` instead of on the entity's `ActorDataDirtyFlagsComponent`, which is what the game packs from.
+- `GMPlayer::setFreezing` clamps its argument to `[0, 1]` like the game does.
+- Data items (`DataItemEntry`) now write their type byte twice, as the game does: once as the explicit `Type` field and once as the discriminant of the branching write that follows. Packets built by `GMBinaryStream::writeDataItem`, `FloatingText` and `NpcDialogueForm` were missing the second byte, so clients could not decode their `SetActorData` / `AddActor` metadata (spotted with Spyglass: `wrong const value for member "Type"`).
+- `GMBinaryStream::writeNetworkItemStackDescriptorCereal` no longer writes a `ItemStackNetIdVariant` discriminant byte before the raw id; the variant is transmitted as a single signed varint.
+
 ## [1.9.1] - 2026-2-28
 
 ### Fixed

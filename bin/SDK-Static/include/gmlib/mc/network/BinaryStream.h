@@ -14,6 +14,7 @@ class Vec2;
 class SerializedAbilitiesData;
 class NetworkConnection;
 class SerializedSkinImpl;
+class SerializedSkinRef;
 class NetworkPeer;
 class NetworkItemStackDescriptor;
 struct NetworkIdentifierWithSubId;
@@ -147,6 +148,7 @@ public:
     void writeBlockPos(::BlockPos const& data);
     void writeAbilitiesData(::SerializedAbilitiesData const& data);
     void writeSkin(::SerializedSkinImpl const& data);
+    void writeSkin(::SerializedSkinRef const& data);
     void writeActorLink(::ActorLink const& data);
     void writeUuid(::mce::UUID const& data);
     void writeNetworkItemStackDescriptor(::NetworkItemStackDescriptor const& data);
@@ -190,6 +192,16 @@ public:
     template <ll::concepts::IsString T>
     inline void writeString(T value) {
         BinaryStream::writeString(std::string_view{value}, nullptr, nullptr);
+    }
+
+    // `DataItemEntry` puts its type on the wire twice: once as the explicit `Type` field and once as
+    // the discriminant written by the branching write that follows it. Writing it only once shifts
+    // everything after it and the client fails to decode the packet.
+    template <typename T>
+        requires(std::is_enum_v<T> || std::is_integral_v<T>)
+    inline constexpr void writeDataItemType(T type) {
+        BinaryStream::writeUnsignedVarInt(static_cast<uint>(type), nullptr, nullptr);
+        BinaryStream::writeUnsignedVarInt(static_cast<uint>(type), nullptr, nullptr);
     }
 
 #undef GMBinaryStream_Write_Macro

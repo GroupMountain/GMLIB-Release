@@ -4,6 +4,7 @@
 #include <ll/api/Expected.h>
 #include <mc/network/packet/SetTitlePacket.h>
 #include <mc/server/commands/CommandPermissionLevel.h>
+#include <mc/world/level/storage/GameRule.h>
 #include <mc/world/level/Level.h>
 #include <mc/world/level/storage/AllExperiments.h>
 
