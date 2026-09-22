@@ -7,6 +7,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [26.51.0] - 2026-9-22
+
+### Changed
+
+- Adapted to LeviLamina 26.51.x / BDS 26.51.1
+  - `include_ll.h` / `include_mc.h` regenerated from the 26.51.5 headers, and the pinned
+    `levilamina` requirement moved to `26.51.*`.
+  - Every hook target was re-verified against the 26.51.1 `bedrockdata` symbol database; all of them
+    still resolve, so no hook had to be re-pointed. The TPS block-tick hook keeps its mangled
+    `BlockEventPublishingExecutor<BlockQueuedTickEvent, void>::dispatch` target: 26.51 gives
+    `BlockEventExecutor<T>` a real body in the headers, but it still does not override `dispatch`,
+    so the vtable slot continues to hold the base instantiation.
+  - The `EXPERIMENT_MAPPING` signature scan still matches exactly one location in the 26.51.5 binary,
+    and the table still holds `AllExperiments::Count` (24) entries.
+
+### Fixed
+
+- `GMPlayer::setFreezing` writes the synched actor data dirty flag straight into the entity's
+  `ActorDataDirtyFlagsComponent::mDirtyFlags` bitset. 26.51 removed the
+  `SynchedActorDataEntityWrapper::markDirty` helper that used to do it.
+- `PlayerListAPI` no longer defines `PlayerListPacketPayload::AddEntry`'s default constructor and
+  fills the payload entry field by field. 26.51 declares both the default and the
+  `PlayerListEntry` converting constructor inline in the header, so the local definitions were
+  redefinitions; `toAddEntry` now just uses the header's converting constructor.
+
+## [26.40.1] - 2026-9-13
+
+### Added
+
+- A self-checking i18n test suite (`src-test/TestI18n.cpp`) covering `.lang`/JSON parsing, parameter substitution, `LangI18n`/`JsonI18n`/`ResourceI18n` and the engine `I18nAPI` (including whether the vanilla resource pack languages are loaded at all). It reports `passed`/`failed` counts to `plugins/test/i18n-test-report.txt` and can be re-run with the `test i18n` console command. Replaces the commented out `TestMcLang.cpp` and the empty `TestResourceI18n.cpp`.
+
+### Fixed
+
+- The i18n fix no longer leaves the server without a single translation. The engine's language pass is still suppressed while the server initializes, but the suppressing hooks are now removed unconditionally and the languages are loaded from the server resource pack manager when the server starts. Previously the languages were re-loaded at the end of `ServerInstance::initializeServer`, where the resource pack stack is not usable yet, so nothing was loaded and every vanilla translation (and `I18nAPI::get`) was served as a raw key.
+- `I18nAPI::getCurrentLanguage`/`getCurrentLanguageCode` no longer dereference the engine's null current language, which crashed the process when no language could be resolved.
+- `I18nAPI::tryGet` returns the translated string and `nullopt` only for a missing key; it used to discard the lookup result and always return `nullopt`.
+- `I18nAPI::loadLanguagesFromDirectory` loads every `.lang` file in the directory; it used to stop at the first entry that was not one.
+- `McLang::parse`/`parse_file` ignore lines without `=` (they were stored as bogus `key=value` entries), drop the carriage return of CRLF files on every platform, and trim leading whitespace from the value like the trailing one.
+- `McLang::get` substitutes every plain `%s` in a translation (not only when exactly one parameter is passed), so `"%s and %s"` is no longer returned verbatim for multi-parameter calls.
+- `McLang::from_json` returns an empty language for a malformed or non-object JSON value instead of throwing at the caller.
+- `JsonLanguage::init`/`reload` no longer throw on a malformed language file: `init` falls back to the defaults and rewrites the file, `reload` reports the failure.
+- `ResourceI18n::loadAllLanguages` rebuilds a corrupted `manifest.json` and regenerates a corrupted `texts/languages.json` instead of aborting during server start-up.
+- `LangI18n`/`JsonI18n::updateOrCreateLanguage` refresh the currently selected language, so a language updated at runtime is visible immediately.
+- `file_utils::getAll*InDirectory` return an empty list instead of throwing for a missing or unreadable directory, which crashed the caller (e.g. the first `LangI18n::loadAllLanguages` on a fresh installation).
+- `McLang::to_json` returns an empty object instead of `null` for an empty language.
+
 ## [26.40.0] - 2026-9-12
 
 ### Added
