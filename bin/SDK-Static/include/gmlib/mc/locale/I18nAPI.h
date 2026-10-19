@@ -43,6 +43,11 @@ public:
 
     static std::vector<std::string> getSupportedLanguageCodes();
 
+    // Both `get` and `tryGet` look the key up in the requested language first and then in the default
+    // language (`en_US`), the language mods register their strings for: the engine only serves the
+    // strings of the language it selected, so without the fallback every string of a server whose
+    // language is any other one is served as its raw key. `get` returns the key itself only when
+    // neither language has it (the behaviour of the engine), `tryGet` returns an empty optional then.
     static std::optional<std::string> tryGet(
         std::string const&              key,
         std::vector<std::string> const& params       = {},
@@ -80,6 +85,10 @@ public:
     }
 
 public:
+    // Registers strings for a language. The engine has no language to insert them into while the mod
+    // loads (the server loads its resource packs later), so strings registered that early, and strings
+    // registered for a language the engine does not know, are applied as soon as the engine resolves a
+    // locale for that language.
     static void
     loadLanguage(std::string const& languageCode, std::unordered_map<std::string, std::string> const& language);
 

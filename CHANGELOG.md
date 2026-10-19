@@ -7,6 +7,54 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [26.51.1] - 2026-10-19
+
+### Fixed
+
+- The engine no longer ends up without a usable language when the server is configured for a
+  language other than English, which served every translation of the server (including the output of
+  the console commands) as its raw key.
+  - `I18nAPI::get`/`tryGet` fall back to the default language (`en_US`) when the requested or current
+    language has no such string, and return the raw key only when neither language has it. Strings
+    that a mod registers for the default language are therefore visible on a server whose language is
+    any other one; previously they were served as their raw key. `tr`/`trl` and the built-in
+    `i18n_translate` placeholder inherit the fallback.
+  - The language the server is configured for is selected by its loaded code, accepting `-`/`_` and
+    case differences (`zh-CN` selects `zh_CN`), and a code that is not loaded at all now logs a
+    warning and falls back to a language that is, instead of leaving the engine without a selected
+    language. Previously the engine silently selected a different language, or, when no language
+    could be loaded at all, none.
+  - The language set of the engine is no longer replaced by the languages of a pack manager that
+    carries fewer of them (the server manager of a dedicated server is empty unless the world applies
+    resource packs, while the built-in pack with the `.lang` files is reachable through the client
+    manager), and a language is re-selected after the engine reloaded its language set.
+  - The suppression of the engine's early language pass is no longer undone only by unhooking: the
+    hooks pass through as soon as the server initialized, so an unhook that does not happen (or a
+    hook that never fires) can no longer leave the whole server without a single translation.
+- `I18nAPI::loadLanguage` (and everything built on it, e.g. `loadLanguageFromFile`,
+  `loadLanguagesFromDirectory`, `updateOrCreateLanguageFile`) no longer crashes the server when it is
+  called while the mod loads, i.e. before the server loaded its resource packs: the strings are kept
+  and applied as soon as the engine resolves a locale for their language, instead of calling
+  `I18nImpl::appendAdditionalTranslations`, which dereferences the language the engine has not
+  selected yet. The same registration also no longer loses its strings when the engine replaces its
+  language set.
+- `I18nAPI::chooseLanguage`, `get`, `tryGet` and `loadLanguage` no longer dereference the language the
+  engine has not selected (the process crashed when they were called before the server had loaded a
+  language, e.g. from a mod's `load()`).
+- The i18n test suite is language independent and passes on a server that is not configured for
+  English; its fixtures used to be registered for `en_US` and read through the current language.
+- A process that created floating texts no longer crashes while exiting
+  (`FloatingTextManager::~Impl` → `~FloatingText` → `Packet::sendToClients`, the frames of
+  `logs/crash/trace_*`). A floating text sends to the level and the network system, both of which are
+  gone once the server stopped, while the floating texts themselves survive into process exit: the
+  manager singleton and the update coroutine of a dynamic floating text are destroyed there, and a mod
+  can hold a reference of its own.
+  - Every send (`sendToClients`, `updateClients`, `removeFromClients`, `sendTo`, `update`,
+    `removeFrom`) is skipped while the server is stopping or the network system is gone, so a floating
+    text destroyed at that point is torn down without sending.
+  - The manager singleton is intentionally never destroyed, so its destructor no longer unregisters a
+    dead event listener and hook and tears every floating text down during process exit.
+
 ## [26.51.0] - 2026-9-22
 
 ### Changed
