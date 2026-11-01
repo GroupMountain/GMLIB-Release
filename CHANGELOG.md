@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [26.51.2] - 2026-11-01
+
+### Fixed
+
+- Fixed `TpsStatus` memory exhaustion and restored exact chunk/block-entity TPS statistics.
+
 ## [26.51.1] - 2026-10-19
 
 ### Fixed
