@@ -11,28 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Player list packets are no longer sent with an empty body on 26.4x/26.5x.
-  - `PlayerListPacket::writeWithSerializationMode` writes nothing at all unless it is asked for
-    `SerializationMode::CerealOnly`, and a packet built by a mod starts with
-    `mSerializationMode == ManualOnly` because BDS' constructor is not reachable from the mod side, so
-    even leaving the mode to the packet (`std::nullopt`) produced a header-only packet. `GMPlayer::
-    sendPacket` / `GMLevel::sendPacketRawToClients` now take an explicit `SerializationMode` (the old
-    one-argument overloads keep the previous manual behaviour) and the player list sends request the
-    cereal writer.
-  - The fake-entry injection hooks `PlayerListPacket::writeWithSerializationMode` instead of the
-    manual `$write`, which BDS no longer calls for a sent player list: besides the empty bodies, the
-    renames and the `Top`/`Bottom` modes were dead as well. A packet edited this way is serialized by
-    the cereal writer, so the injected entries are actually transmitted.
+- Player list packets are no longer sent with an empty body on 26.4x/26.5x; fake entries, renames
+  and the `Top`/`Bottom` modes reach the client again.
 - `TpsStatus` no longer races its cleanup coroutine against the tick hooks.
-  - `ll::DenseMap` is a phmap `parallel_flat_hash_map`, whose default mutex is `phmap::NullMutex`
-    ("use std::mutex to enable internal locks"), so `modify_if`/`if_contains`/`for_each_m`/
-    `try_emplace` take no lock: `cleanup()` walked a sub-map while a tick hook inserted into it, and a
-    rehash could move the entry the walk was holding. The sampled state is now a plain value guarded
-    by one mutex shared by the hooks, the cleanup pass and the getters.
-  - A crash of the previous `shared_ptr<atomic<ushort>>` + `deque` layout is the origin of this
-    report: the cleanup pass appended to a deque that a hook's rehash was migrating, the deque read an
-    inconsistent map size, `memset` received `size_t(-64)` as its length and the process died inside
-    `deque::_Growmap` (GMLIB+0x27F71 → `VCRUNTIME140!memset`, `vmovntdq [rcx+0xA0]`).
 
 ## [26.51.2] - 2026-11-01
 
