@@ -2,6 +2,7 @@
 #include "gmlib/gm/enum/WeatherType.h"
 #include "ll/api/data/Version.h"
 #include "mc/network/packet/SetTitlePacket.h"
+#include "mc/network/packet/cerealize/core/SerializationMode.h"
 #include "mc/server/ServerPlayer.h"
 #include "mc/world/actor/ai/util/BossBarColor.h"
 #include "mc/world/actor/ai/util/BossBarOverlay.h"
@@ -159,7 +160,13 @@ public:
 
     std::optional<BlockPos> locateNearestStructureFeature(std::string const& structure, bool useNewChunksOnly = false);
 
+    /// @brief Serialize \p packet with the manual writer and send it to this player.
     void sendPacket(Packet& packet);
+
+    /// @brief Serialize \p packet with an explicit serialization mode and send it to this player.
+    /// @note Packets that only implement the cereal writer (e.g. PlayerListPacket since 26.4x) write
+    ///       no body at all unless ::SerializationMode::CerealOnly is requested.
+    void sendPacket(Packet& packet, SerializationMode mode);
 
     void sendText(std::string_view message);
 

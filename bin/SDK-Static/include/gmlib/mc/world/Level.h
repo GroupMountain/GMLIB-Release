@@ -3,6 +3,7 @@
 #include "gmlib/gm/enum/WeatherType.h"
 #include <ll/api/Expected.h>
 #include <mc/network/packet/SetTitlePacket.h>
+#include <mc/network/packet/cerealize/core/SerializationMode.h>
 #include <mc/server/commands/CommandPermissionLevel.h>
 #include <mc/world/level/storage/GameRule.h>
 #include <mc/world/level/Level.h>
@@ -177,6 +178,11 @@ public:
     ::DBStorage& getDBStorage();
 
     void sendPacketRawToClients(::Packet const& packet);
+
+    /// @brief Serialize \p packet with an explicit serialization mode and send it to every client.
+    /// @note Packets that only implement the cereal writer (e.g. PlayerListPacket since 26.4x) write
+    ///       no body at all unless ::SerializationMode::CerealOnly is requested.
+    void sendPacketRawToClients(::Packet const& packet, SerializationMode mode);
 
     void sendPacketRawToDimension(::Packet const& packet, DimensionType dimId);
 

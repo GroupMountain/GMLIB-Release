@@ -38,7 +38,10 @@ public:
     GMBinaryStream(GMBinaryStream&& other) noexcept;
     bool operator==(GMBinaryStream const& other) const noexcept;
 
-    explicit GMBinaryStream(Packet const& packet);
+    /// @brief Serialize the body of \p packet behind the packet header.
+    /// @note The mode has to match what the packet actually implements: packets that only carry a
+    ///       cereal writer (PlayerListPacket since 26.4x) write nothing unless CerealOnly is used.
+    explicit GMBinaryStream(Packet const& packet, SerializationMode mode = SerializationMode::ManualOnly);
     explicit GMBinaryStream(BinaryStream const&);
     explicit GMBinaryStream(BinaryStream&& other) noexcept;
     bool operator==(BinaryStream const& other) const noexcept;
