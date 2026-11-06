@@ -154,8 +154,8 @@ public:
     void writeSkin(::SerializedSkinRef const& data);
     void writeActorLink(::ActorLink const& data);
     void writeUuid(::mce::UUID const& data);
+    /// @note Writes the `cerealizer<NetworkItemStackDescriptor>::SerializedData` layout.
     void writeNetworkItemStackDescriptor(::NetworkItemStackDescriptor const& data);
-    void writeNetworkItemStackDescriptorCereal(::NetworkItemStackDescriptor const& data);
     void writeMoveActorAbsoluteData(::MoveActorAbsoluteData const& data);
 
     // Using GMBinaryStream::write##TYPE(value) to call the following functions
