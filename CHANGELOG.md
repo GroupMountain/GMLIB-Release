@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [26.60.0] - 2026-11-06
+
+### Changed
+
+- Adapted to LeviLamina 26.60.x / BDS 26.60.6
+  - `GMBinaryStream::writeNetworkItemStackDescriptorCereal` was removed: its behaviour (the item
+    stack layout the game itself uses) now lives in `writeNetworkItemStackDescriptor`, and the old
+    manual writer is gone. Callers only rename the call.
+
+### Fixed
+
+- Skin packets are serialized in the 26.60 layout again; the PlayFab id the game dropped is no longer
+  written.
+- `AddActor` packets (boss bar, floating text, NPC dialogue form) carry the field 26.60 appended to
+  the packet, so the client no longer reads past its end.
+- `pieceTypeToString` knows the `CoCo` persona piece.
+
 ## [26.51.3] - 2026-11-05
 
 ### Fixed
