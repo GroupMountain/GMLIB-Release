@@ -34,7 +34,8 @@
                 }
             ],
             "remove_files": [
-                "plugins/GMLIB"
+                "plugins/GMLIB",
+                "mods/GMLIB"
             ]
         }
     ]
