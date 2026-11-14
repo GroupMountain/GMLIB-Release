@@ -28,7 +28,7 @@
                         {
                             "type": "dir",
                             "src": "bin/DLL/GMLIB",
-                            "dest": "plugins/GMLIB/"
+                            "dest": "mods/GMLIB/"
                         }
                     ]
                 }
