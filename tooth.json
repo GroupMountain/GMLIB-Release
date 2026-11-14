@@ -28,13 +28,14 @@
                         {
                             "type": "dir",
                             "src": "bin/DLL/GMLIB",
-                            "dest": "plugins/GMLIB/"
+                            "dest": "mods/GMLIB/"
                         }
                     ]
                 }
             ],
             "remove_files": [
-                "plugins/GMLIB"
+                "plugins/GMLIB",
+                "mods/GMLIB"
             ]
         }
     ]
